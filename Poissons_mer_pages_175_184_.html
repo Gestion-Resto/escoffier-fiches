@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Poissons de mer (fin pages 175-184) – Auguste Escoffier | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Poissons de mer (pages 175-184) · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🐠 Poissons de mer</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 23 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES DES POISSONS DE MER (pages 175-184) ==========
+const itemsData = [
+  { id:"filets_sole_pilaw", nom:"Filets de sole en pilaw", page:175, source:"Riz pilaw, sauce tomate ou curry",
+    tags:["Pilaw","Riz"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Riz pilaw",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Escaloper les filets, les sauter au beurre, les mélanger au riz pilaw. Servir avec sauce tomate ou curry."}], equip:["Sautoir","Casserole"], allerg:["Poisson","Gluten","Lait"], nut:{kcal:280,prot:18,lip:12,glu:28}, co2:"0.7 kg", eau:"170 L", env:40 },
+  { id:"filets_sole_polignac", nom:"Filets de sole Polignac", page:175, source:"Champignons, truffe, sauce vin blanc",
+    tags:["Polignac","Truffe"], prepBase:15, cookBase:15, dressBase:5,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Champignons, truffe",qtyRef:0.05,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.05},{name:"Sauce vin blanc",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Cuire",d:"Plier les filets, les pocher. Préparer une julienne de champignons et truffe, lier à la sauce. Napper les filets, glacer."}], equip:["Casserole","Salamandre"], allerg:["Poisson","Gluten","Lait"], nut:{kcal:210,prot:17,lip:11,glu:5}, co2:"0.6 kg", eau:"150 L", env:36 },
+  { id:"filets_sole_provencale", nom:"Filets de sole Provençale", page:175, source:"Tomates, huile d'olive, vin blanc",
+    tags:["Provençale","Tomate"], prepBase:15, cookBase:12, dressBase:5,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Tomates, oignon, ail, persil",qtyRef:0.3,unit:"kg",priceUnit:2.2,defaultPrice:2.2,defaultQty:0.3},{name:"Vin blanc, huile d'olive",qtyRef:0.05,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Faire revenir l'oignon, ajouter les tomates, ail, persil. Coucher les filets dans un plat, ajouter la sauce tomate, vin blanc, cuire 10-12 min."}], equip:["Four"], allerg:["Poisson","Sulfites"], nut:{kcal:220,prot:17,lip:12,glu:6}, co2:"0.65 kg", eau:"160 L", env:38 },
+  { id:"filets_sole_rachel", nom:"Filets de sole Rachel", page:175, source:"Truffe, pointes d'asperges",
+    tags:["Rachel","Asperges"], prepBase:15, cookBase:15, dressBase:10,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Truffe (lamelles)",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02},{name:"Pointes d'asperges",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Sauce vin blanc",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Dresser",d:"Pocher les filets, les dresser, disposer une lamelle de truffe sur chacun, napper de sauce vin blanc. Garnir les extrémités de pointes d'asperges."}], equip:["Casserole","Four"], allerg:["Poisson","Gluten","Lait"], nut:{kcal:230,prot:16,lip:12,glu:6}, co2:"0.8 kg", eau:"200 L", env:48 },
+  { id:"filets_sole_saint_germain", nom:"Filets de sole Saint-Germain", page:176, source:"Panés, grillés, pommes noisettes",
+    tags:["Saint-Germain","Grillé"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Mie de pain fine, beurre fondu",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},{name:"Pommes de terre noisettes",qtyRef:0.3,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.3},{name:"Sauce béarnaise",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Griller",d:"Tremper les filets dans le beurre fondu, les passer à la mie de pain, les grillers à feu doux. Servir avec pommes noisettes et sauce béarnaise."}], equip:["Grill"], allerg:["Poisson","Gluten","Lait","Œufs"], nut:{kcal:290,prot:16,lip:16,glu:18}, co2:"0.65 kg", eau:"160 L", env:38 },
+  { id:"filets_sole_veronique", nom:"Filets de sole Véronique", page:176, source:"Raisins muscat, sauce vin blanc",
+    tags:["Véronique","Raisins"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Raisins muscat frais",qtyRef:0.1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.1},{name:"Sauce vin blanc",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Cuire",d:"Pocher les filets, les dresser, les garnir de grains de raisin pelés et épépinés. Napper de sauce vin blanc, glacer."}], equip:["Four","Salamandre"], allerg:["Poisson","Gluten","Lait","Sulfites"], nut:{kcal:210,prot:16,lip:10,glu:8}, co2:"0.55 kg", eau:"140 L", env:34 },
+  { id:"filets_sole_victoria", nom:"Filets de sole Victoria", page:176, source:"Homard, truffe, sauce béarnaise aux écrevisses",
+    tags:["Victoria","Homard"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Homard cuit",qtyRef:0.2,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.2},{name:"Truffe, sauce Béchamel au beurre d'écrevisses",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02}],
+    steps:[{t:"Gratiner",d:"Pocher les filets, les ranger dans un plat, garnir de dés de homard et truffe, napper de sauce béchamel au beurre d'écrevisses, saupoudrer de fromage, gratiner."}], equip:["Four"], allerg:["Poisson","Crustacés","Gluten","Lait"], nut:{kcal:260,prot:18,lip:15,glu:8}, co2:"0.9 kg", eau:"230 L", env:50 },
+  { id:"filets_sole_walewska", nom:"Filets de sole Walewska", page:176, source:"Langoustines, truffe, sauce Mornay",
+    tags:["Walewska","Langoustines"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Filets de sole",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Langoustines (ou écrevisses)",qtyRef:0.1,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.1},{name:"Truffe, sauce Mornay",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02}],
+    steps:[{t:"Cuire",d:"Pocher les filets, les dresser, entourer de langoustines et lamelles de truffe, napper de sauce Mornay, gratiner."}], equip:["Four","Salamandre"], allerg:["Poisson","Crustacés","Gluten","Lait","Œufs"], nut:{kcal:260,prot:18,lip:14,glu:8}, co2:"0.9 kg", eau:"230 L", env:50 },
+  { id:"timbale_grimaldi", nom:"Timbale de filets de sole Grimaldi", page:176, source:"Macaroni, écrevisses, truffe",
+    tags:["Timbale","Écrevisses"], prepBase:40, cookBase:30, dressBase:20,
+    ingredients:[{name:"Filets de sole (12)",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Écrevisses (36)",qtyRef:0.5,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.5},{name:"Macaroni, truffe, sauce Béchamel",qtyRef:0.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Préparer",d:"Faire une croûte à timbale. Cuire les écrevisses, préparer le beurre d'écrevisses. Cuire le macaroni, le lier au beurre et parmesan. Rouler les filets en paupiettes, les pocher. Assembler dans la timbale avec les queues d'écrevisses et truffes, napper de sauce."}], equip:["Four","Casserole"], allerg:["Poisson","Crustacés","Gluten","Lait"], nut:{kcal:340,prot:20,lip:18,glu:28}, co2:"1.2 kg", eau:"300 L", env:60 },
+  { id:"timbale_richelieu", nom:"Timbale de filets de sole Richelieu", page:177, source:"Raviolis aux épinards",
+    tags:["Richelieu","Raviolis"], prepBase:40, cookBase:30, dressBase:20,
+    ingredients:[{name:"Filets de sole",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Raviolis aux épinards",qtyRef:0.3,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.3},{name:"Écrevisses, truffe",qtyRef:0.1,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Même préparation que la timbale Grimaldi, remplacer le macaroni par des raviolis aux épinards."}], equip:["Four","Casserole"], allerg:["Poisson","Crustacés","Gluten","Lait","Œufs"], nut:{kcal:330,prot:18,lip:16,glu:30}, co2:"1.1 kg", eau:"280 L", env:55 },
+  { id:"filets_sole_froids", nom:"Filets de sole froids (gelée)", page:177, source:"Gelée, décors",
+    tags:["Froid","Gelée"], prepBase:30, cookBase:15, dressBase:30,
+    ingredients:[{name:"Filets de sole (pochés)",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Gelée de volaille",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5},{name:"Sauce chaud-froid blonde",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Dresser",d:"Pocher les filets, les enrober de sauce chaud-froid, décorer. Couler de la gelée dans un plat, disposer les filets, recouvrir de gelée."}], equip:["Plat","Glace"], allerg:["Poisson","Gluten","Lait","Œufs"], nut:{kcal:180,prot:14,lip:8,glu:6}, co2:"0.6 kg", eau:"150 L", env:38 },
+  { id:"stockfish_niçoise", nom:"Stockfish (morue de Norvège) mode niçoise", page:178, source:"Tomates, pommes de terre, olives",
+    tags:["Stockfish","Niçoise"], prepBase:24, cookBase:120, dressBase:10,
+    ingredients:[{name:"Stockfish (morue séchée)",qtyRef:1.25,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:1.25},{name:"Tomates mûres",qtyRef:2,unit:"kg",priceUnit:2.2,defaultPrice:2.2,defaultQty:2},{name:"Pommes de terre nouvelles",qtyRef:1.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:1.2},{name:"Olives noires, huile d'olive",qtyRef:0.2,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.2}],
+    steps:[{t:"Cuire",d:"Faire tremper le stockfish 3-4 jours. Le couper en morceaux. Faire revenir les aromates à l'huile, ajouter les tomates, le poisson, les boyaux, cuire 1h45. Ajouter pommes de terre et olives 30 min avant la fin."}], equip:["Grande cocotte"], allerg:["Poisson"], nut:{kcal:280,prot:22,lip:15,glu:18}, co2:"1.2 kg", eau:"300 L", env:55 },
+  { id:"thon_frais", nom:"Thon frais", page:179, source:"Rouelles cuites comme fricandeaux",
+    tags:["Thon","Rouelles"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Thon frais (rouelles)",qtyRef:0.8,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.8}],
+    steps:[{t:"Cuire",d:"Diviser le thon en rouelles, les cuire sur fonds d'aromatés (carottes, oignons, vin blanc). Servir avec épinards, oseille, tomates ou petits pois."}], equip:["Casserole"], allerg:["Poisson","Sulfites"], nut:{kcal:220,prot:22,lip:14,glu:0}, co2:"0.7 kg", eau:"170 L", env:40 },
+  { id:"turbot_court_bouillon", nom:"Turbot (court-bouillon)", page:179, source:"Poché, pommes de terre, sauces",
+    tags:["Turbot","Poché"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Turbot",qtyRef:1.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.5},{name:"Court-bouillon (eau, sel, lait, citron)",qtyRef:3,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:3}],
+    steps:[{t:"Pocher",d:"Inciser le turbot, le dégorger à l'eau salée. Le pocher doucement dans l'eau salée avec lait et citron. Compter 12-15 min par kg."}], equip:["Turbotière"], allerg:["Poisson","Lait"], nut:{kcal:180,prot:18,lip:11,glu:0}, co2:"0.7 kg", eau:"180 L", env:40 },
+  { id:"cadgery_turbot", nom:"Cadgery de turbot", page:180, source:"Riz pilaw au curry, œufs durs",
+    tags:["Cadgery","Curry"], prepBase:20, cookBase:20, dressBase:5,
+    ingredients:[{name:"Turbot cuit effeuillé",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Riz pilaw",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Œufs durs",qtyRef:5,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:5},{name:"Sauce Béchamel au curry",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Alterner",d:"Mélanger le riz pilaw au curry avec les œufs durs en dés. Alterner en timbale avec le turbot, napper de sauce."}], equip:["Casserole"], allerg:["Poisson","Gluten","Lait","Œufs"], nut:{kcal:260,prot:18,lip:12,glu:22}, co2:"0.7 kg", eau:"180 L", env:42 },
+  { id:"turbot_creme_gratin", nom:"Turbot crème gratin", page:180, source:"Pommes duchesse, sauce béchamel",
+    tags:["Gratin","Pommes duchesse"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[{name:"Turbot cuit escalopé",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Pommes duchesse (bordure)",qtyRef:0.5,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.5},{name:"Sauce Béchamel, fromage",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}],
+    steps:[{t:"Gratiner",d:"Former une bordure en pommes duchesse. Napper le fond de béchamel, disposer le turbot, recouvrir de béchamel, saupoudrer de fromage, gratiner."}], equip:["Four"], allerg:["Poisson","Gluten","Lait","Œufs"], nut:{kcal:250,prot:15,lip:14,glu:18}, co2:"0.65 kg", eau:"160 L", env:38 },
+  { id:"coquilles_turbot_gratin", nom:"Coquilles de turbot au gratin", page:180, source:"Béchamel, fromage",
+    tags:["Gratin","Coquille"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Escalopes de turbot cuites",qtyRef:0.4,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.4},{name:"Sauce Béchamel",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3},{name:"Fromage râpé, beurre",qtyRef:0.05,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.05}],
+    steps:[{t:"Gratiner",d:"Napper le fond des coquilles de béchamel, disposer les escalopes, recouvrir de béchamel, saupoudrer de fromage, arroser de beurre, gratiner."}], equip:["Four"], allerg:["Poisson","Gluten","Lait"], nut:{kcal:220,prot:14,lip:13,glu:8}, co2:"0.55 kg", eau:"140 L", env:34 },
+  { id:"turbot_richelieu", nom:"Turbot Richelieu", page:181, source:"Homard, sauce normande, pommes parisiennes",
+    tags:["Richelieu","Homard"], prepBase:30, cookBase:30, dressBase:15,
+    ingredients:[{name:"Turbot (3-4kg)",qtyRef:3,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:3},{name:"Homard cuit",qtyRef:0.8,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.8},{name:"Sauce Normande au beurre d'écrevisses",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5}],
+    steps:[{t:"Dresser",d:"Pocher le turbot. Le dresser, le saucer légèrement. Disposer le homard au milieu, entourer de champignons, truffes, napper de sauce. Servir avec pommes parisiennes."}], equip:["Turbotière","Four"], allerg:["Poisson","Crustacés","Gluten","Lait","Œufs"], nut:{kcal:280,prot:22,lip:18,glu:8}, co2:"1.3 kg", eau:"350 L", env:60 },
+  { id:"turbotin_amiral", nom:"Turbotin à l'amiral", page:181, source:"Queues d'écrevisses, huîtres, laitances, truffe",
+    tags:["Amiral","Écrevisses"], prepBase:25, cookBase:20, dressBase:15,
+    ingredients:[{name:"Turbotin (1kg)",qtyRef:1,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1},{name:"Queues d'écrevisses, huîtres, laitances, truffe",qtyRef:0.2,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.2},{name:"Sauce Normande au beurre d'écrevisses",qtyRef:0.3,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.3}],
+    steps:[{t:"Pocher",d:"Pocher le turbotin au vin blanc. Le dresser, l'entourer de bouchées de queues d'écrevisses, huîtres à la Villeroy, laitances, truffes. Napper de sauce normande."}], equip:["Four","Casserole"], allerg:["Poisson","Crustacés","Mollusques","Gluten","Lait"], nut:{kcal:270,prot:20,lip:15,glu:8}, co2:"1 kg", eau:"260 L", env:52 },
+  { id:"turbotin_bonne_femme", nom:"Turbotin bonne-femme", page:182, source:"Champignons, sauce liée aux jaunes",
+    tags:["Bonne-Femme","Champignons"], prepBase:20, cookBase:20, dressBase:10,
+    ingredients:[{name:"Turbotin (1kg)",qtyRef:1,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1},{name:"Champignons, échalote",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Vin blanc, beurre, farine",qtyRef:0.15,unit:"L",priceUnit:5.5,defaultPrice:5.5,defaultQty:0.15},{name:"Jaunes d'œufs",qtyRef:2,unit:"pièces",priceUnit:0.2,defaultPrice:0.2,defaultQty:2}],
+    steps:[{t:"Cuire",d:"Pocher le turbotin au vin blanc. Préparer une duxelle de champignons. Lier la cuisson avec beurre manié et jaunes d'œufs, ajouter les champignons. Napper le poisson, glacer."}], equip:["Four","Casserole"], allerg:["Poisson","Sulfites","Gluten","Lait","Œufs"], nut:{kcal:250,prot:19,lip:14,glu:6}, co2:"0.8 kg", eau:"200 L", env:44 },
+  { id:"turbotin_duglere", nom:"Turbotin Dugléré", page:182, source:"Tomates, oignon, vin blanc",
+    tags:["Dugléré","Tomate"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Turbotin (1kg)",qtyRef:1,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1},{name:"Tomates, oignon, échalotes, ail",qtyRef:0.3,unit:"kg",priceUnit:2.2,defaultPrice:2.2,defaultQty:0.3},{name:"Vin blanc, beurre, farine",qtyRef:0.15,unit:"L",priceUnit:5.5,defaultPrice:5.5,defaultQty:0.15}],
+    steps:[{t:"Cuire",d:"Partager le poisson, disposer dans un plat avec la garniture de tomates, oignons, épices. Mouiller de vin blanc et eau, cuire 15-20 min. Lier la cuisson, beurrer."}], equip:["Four"], allerg:["Poisson","Sulfites","Gluten","Lait"], nut:{kcal:230,prot:18,lip:12,glu:6}, co2:"0.75 kg", eau:"190 L", env:42 },
+  { id:"turbotin_fermiere", nom:"Turbotin fermière", page:183, source:"Vin rouge, laurier, oignon",
+    tags:["Fermière","Vin rouge"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Turbotin",qtyRef:1,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1},{name:"Vin rouge",qtyRef:0.4,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.4},{name:"Oignon, persil, laurier",qtyRef:0.05,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Même préparation que bonne-femme, mais remplacer le vin blanc par du vin rouge (double quantité). Supprimer l'eau."}], equip:["Four"], allerg:["Poisson","Sulfites","Lait"], nut:{kcal:230,prot:18,lip:11,glu:4}, co2:"0.8 kg", eau:"190 L", env:44 },
+  { id:"turbotin_hollande", nom:"Turbotin à la mode de Hollande", page:183, source:"Poché, homard, beurre fondre aux œufs",
+    tags:["Hollande","Homard"], prepBase:20, cookBase:20, dressBase:10,
+    ingredients:[{name:"Turbotin",qtyRef:1,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1},{name:"Homard cuit",qtyRef:0.4,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.4},{name:"Beurre fondu, œufs durs hachés",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05}],
+    steps:[{t:"Dresser",d:"Pocher le turbotin à l'eau salée. Le dresser, disposer le homard ouvert. Servir avec pommes de terre anglaises et beurre fondu aux œufs durs."}], equip:["Poissonnière"], allerg:["Poisson","Crustacés","Lait","Œufs"], nut:{kcal:250,prot:20,lip:16,glu:2}, co2:"0.9 kg", eau:"230 L", env:48 },
+  { id:"turbotin_regency", nom:"Turbotin Régence", page:183, source:"Quenelles, huîtres, truffes, écrevisses",
+    tags:["Régence","Mollusques"], prepBase:30, cookBase:20, dressBase:15,
+    ingredients:[{name:"Turbotin (1.5kg)",qtyRef:1.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.5},{name:"Quenelles de merlan, huîtres, champignons, truffe",qtyRef:0.3,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.3},{name:"Laitances, queues d'écrevisses",qtyRef:0.1,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.1}],
+    steps:[{t:"Pocher",d:"Pocher le turbotin au vin blanc. Le dresser, l'entourer des garnitures, napper de sauce normande."}], equip:["Four"], allerg:["Poisson","Mollusques","Crustacés","Gluten","Lait"], nut:{kcal:280,prot:20,lip:16,glu:8}, co2:"1.1 kg", eau:"280 L", env:54 },
+  { id:"escalopes_turbotin", nom:"Escalopes de turbotin", page:183, source:"Gratinées, soufflé au parmesan",
+    tags:["Escalopes","Soufflé"], prepBase:30, cookBase:20, dressBase:15,
+    ingredients:[{name:"Filets de turbotin",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Truffe, queues d'écrevisses",qtyRef:0.1,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.1},{name:"Sauce Béchamel, soufflé au parmesan",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Détailler des escalopes, les pocher. Les disposer dans une bordure en pommes duchesse, garnir de truffes et écrevisses, napper de béchamel, gratiner, puis recouvrir d'un appareil à soufflé au parmesan et cuire."}], equip:["Four","Salamandre"], allerg:["Poisson","Crustacés","Gluten","Lait","Œufs"], nut:{kcal:290,prot:18,lip:16,glu:16}, co2:"0.9 kg", eau:"230 L", env:48 },
+  { id:"crabe_anglaise", nom:"Crabe à l'Anglaise", page:184, source:"Carapace farcie, mayonnaise",
+    tags:["Crabe","Mayonnaise"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Crabe",qtyRef:0.8,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.8},{name:"Moutarde anglaise, cayenne",qtyRef:0.005,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.005},{name:"Huile, vinaigre, œufs durs",qtyRef:0.05,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Farcir",d:"Cuire le crabe, extraire les chairs. Mélanger les parties crémeuses avec moutarde, cayenne, monter à l'huile et vinaigre comme une mayonnaise. Ajouter le reste des chairs, remplir la carapace. Décorer."}], equip:["Casserole"], allerg:["Crustacés","Œufs","Moutarde"], nut:{kcal:180,prot:12,lip:13,glu:2}, co2:"0.6 kg", eau:"150 L", env:38 }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null;
+let currentPortions = 12;
+let coeffVente = 3.5;
+let autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw;
+let ingredientsData = [];
+let defaultIngredients = [];
+let defaultPrep, defaultDress;
+
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span class="small-unit">${ing.unit}</span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+
+function applyAutoTimes() {
+  if(!autoTimes) return;
+  const ratio = currentPortions / 12;
+  currentPrepRaw = Math.round(defaultPrep * ratio);
+  currentDressRaw = Math.round(defaultDress * ratio);
+  syncTimesToUI();
+}
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() {
+  if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = prepInput.value; }
+  if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = dressInput.value; }
+  if(cookInput) currentCookRaw = cookInput.value;
+}
+
+function updateQuantitiesByPortions() {
+  const factor = currentPortions / 12;
+  for(let i=0; i<ingredientsData.length; i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor;
+  renderIngredientTable();
+  updateAllCosts();
+}
+
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase;
+  defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase;
+  currentCookRaw = item.cookBase.toString();
+  currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12;
+  coeffVente = 3.5;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `
+    <div class="fiche-header">
+      <div class="title-row">
+        <div class="main-title">${escapeHtml(item.nom)}</div>
+        <div class="reference">MA CUISINE · Page ${item.page}</div>
+      </div>
+      <div class="fiche-source">${escapeHtml(item.source)}</div>
+      <div class="tags">${tagsHtml}</div>
+    </div>
+    <div class="two-col">
+      <div class="card">
+        <div class="clabel">⏱ TEMPS</div>
+        <div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+        <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+        <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+        <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+        <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div>
+      </div>
+      <div class="card">
+        <div class="clabel">💰 Coût & marge (HT)</div>
+        <div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+        <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div>
+        <div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+        <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+      <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;">
+        <div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+        <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+        <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div>
+      </div>
+      <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+      <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div>
+    </div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col">
+      <div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+      <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div>
+    </div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Servir les poissons bien chauds, les turbotins entiers ou en escalopes.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Poisson très frais.<br>• Chaîne du froid respectée.<br>• Cuisson à cœur.<br>• Traçabilité.</p></div>
+    <div class="two-col">
+      <div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+      <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div>
+    </div>
+  `;
+}
+
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime');
+  cookInput = document.getElementById('cookTime');
+  dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox');
+  portionsInput = document.getElementById('portionsInput');
+  coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel');
+  qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue');
+  costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue');
+  marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost');
+  marginBar = document.getElementById('marginBar');
+  tbody = document.getElementById('ingredientTbody');
+}
+
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', onPortionsChange);
+  if(coeffInput) coeffInput.addEventListener('input', onCoeffChange);
+  if(autoCheckbox) autoCheckbox.addEventListener('change', onAutoChange);
+  if(prepInput) prepInput.addEventListener('input', onTimeChange);
+  if(cookInput) cookInput.addEventListener('input', onTimeChange);
+  if(dressInput) dressInput.addEventListener('input', onTimeChange);
+}
+
+function onPortionsChange() { let newP = parseInt(portionsInput.value) || 1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl => lbl.innerText = currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); saveToLocal(); }
+function onCoeffChange() { coeffVente = parseFloat(coeffInput.value) || 3.0; updateAllCosts(); saveToLocal(); }
+function onAutoChange() { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); saveToLocal(); }
+function onTimeChange() { syncTimesFromUI(); if(autoTimes) { autoCheckbox.checked = false; autoTimes = false; } saveToLocal(); }
+function saveToLocal() { /* localStorage */ }
+
+// Initialisation du menu
+const select = document.getElementById('itemSelect');
+itemsData.forEach(item => {
+  const opt = document.createElement('option');
+  opt.value = item.id;
+  opt.textContent = `${item.nom} (p. ${item.page})`;
+  select.appendChild(opt);
+});
+ficheContainer = document.getElementById('ficheContainer');
+select.addEventListener('change', (e) => loadItem(e.target.value));
+loadItem(itemsData[0].id);
+</script>
+</body>
+</html>
