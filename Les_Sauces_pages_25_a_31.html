@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Les Sauces – Auguste Escoffier (p.25-31) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Les Sauces · pages 25 à 31 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🥄 Les Sauces</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 34 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES SAUCES pages 25-31 ==========
+const itemsData = [
+  { id:"sauce_normande", nom:"Sauce normande (ancienne)", page:25, source:"Sauce blonde, beurre fin", tags:["Normande"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce blonde ou allemande",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Beurre très fin",qtyRef:0.15,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.15}],
+    steps:[{t:"Préparer",d:"Réduire la sauce blonde au point voulu, incorporer le beurre fin au moment de servir."}], equip:["Casserole"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:320,prot:2,lip:34,glu:4}, co2:"1 kg", eau:"0.7 L", env:38 },
+  { id:"sauce_smitane", nom:"Sauce smitane (crème aigre)", page:25, source:"Crème aigre, vin blanc, oignon", tags:["Smitane"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Oignon finement haché",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02},{name:"Vin blanc sec",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},{name:"Crème aigre",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5}],
+    steps:[{t:"Blondir l'oignon",d:"Faire blondir l'oignon au beurre, ajouter le vin blanc, réduire à fond."},{t:"Ajouter la crème",d:"Ajouter la crème aigre, bouillir, passer, ajouter le jus de citron."}], equip:["Casserole"], allerg:["Lait","Sulfites"], nut:{kcal:220,prot:2,lip:20,glu:6}, co2:"0.9 kg", eau:"0.6 L", env:35 },
+  { id:"puree_soubise", nom:"Sauce ou purée Soubise", page:25, source:"Oignons, riz, crème", tags:["Soubise"], prepBase:15, cookBase:25, dressBase:10,
+    ingredients:[{name:"Oignons blancs",qtyRef:0.5,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.5},{name:"Riz Caroline",qtyRef:0.15,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.15},{name:"Bouillon blanc",qtyRef:0.66,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.66},{name:"Crème fraîche",qtyRef:0.1,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.1}],
+    steps:[{t:"Cuire oignons et riz",d:"Blanchir les oignons, les étuver au beurre avec le riz et le bouillon, sucre, cuire au four."},{t:"Broyer et passer",d:"Broyer au mortier, passer au tamis fin."},{t:"Finition",d:"Chauffer, ajouter beurre et crème."}], equip:["Mortier","Tamis","Four"], allerg:["Lait"], nut:{kcal:180,prot:3,lip:8,glu:22}, co2:"0.8 kg", eau:"0.6 L", env:32 },
+  { id:"sauce_soubise_tomatee", nom:"Sauce Soubise tomatée", page:25, source:"Purée Soubise, purée de tomate", tags:["Soubise","Tomate"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Purée Soubise",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3},{name:"Purée de tomate réduite",qtyRef:0.15,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.15}],
+    steps:[{t:"Mélanger",d:"Mélanger la purée Soubise et la purée de tomate."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:130,prot:2,lip:6,glu:16}, co2:"0.7 kg", eau:"0.5 L", env:30 },
+  { id:"sauce_venitienne", nom:"Sauce vénitienne", page:25, source:"Vinaigre à l'estragon, sauce blonde, vert d'épinards", tags:["Vénitienne"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Vinaigre à l'estragon",qtyRef:0.3,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.3},{name:"Sauce blonde",qtyRef:0.35,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.35},{name:"Vert d'épinards, estragon, cerfeuil",qtyRef:0.01,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.01}],
+    steps:[{t:"Réduire le vinaigre",d:"Réduire des 2/3 avec échalotes, cerfeuil, poivre, beurre."},{t:"Ajouter la sauce",d:"Ajouter la sauce blonde, bouillir, passer. Compléter avec beurre, vert d'épinards et herbes hachées."}], equip:["Casserole"], allerg:["Gluten","Lait","Œufs","Sulfites"], nut:{kcal:180,prot:1,lip:16,glu:4}, co2:"0.8 kg", eau:"0.6 L", env:35 },
+  { id:"sauce_villeroy", nom:"Sauce Villeroy", page:25, source:"Sauce blonde réduite", tags:["Villeroy"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Sauce blonde",qtyRef:0.5,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.5}],
+    steps:[{t:"Réduire",d:"Réduire la sauce blonde à plein feu jusqu'à ce qu'elle enveloppe bien les objets."}], equip:["Casserole","Spatule"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:150,prot:2,lip:11,glu:8}, co2:"0.7 kg", eau:"0.5 L", env:32 },
+  { id:"sauce_villeroy_tomatee", nom:"Sauce Villeroy tomatée", page:26, source:"Sauce Villeroy, purée de tomate", tags:["Villeroy","Tomate"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce Villeroy",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3},{name:"Purée de tomate",qtyRef:0.1,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.1}],
+    steps:[{t:"Ajouter",d:"Ajouter un tiers de purée de tomate à la sauce Villeroy."}], equip:["Casserole"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:140,prot:2,lip:10,glu:9}, co2:"0.7 kg", eau:"0.5 L", env:32 },
+  { id:"sauce_vin_blanc_1", nom:"Sauce vin blanc (1ère méthode)", page:26, source:"Velouté au fumet, jaunes, beurre", tags:["Vin blanc"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Velouté au fumet de poisson réduit",qtyRef:0.5,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.5},{name:"Jaunes d'œufs (3)",qtyRef:3,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:3},{name:"Beurre fin",qtyRef:0.3,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.3}],
+    steps:[{t:"Lier",d:"Délayer les jaunes avec du fumet, les ajouter au velouté bouillant, monter au beurre."}], equip:["Casserole","Fouet"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:380,prot:4,lip:36,glu:5}, co2:"1.1 kg", eau:"0.8 L", env:44 },
+  { id:"sauce_vin_blanc_2", nom:"Sauce vin blanc (2ème méthode)", page:26, source:"Fumet de poisson, jaunes, beurre (hollandaise)", tags:["Vin blanc","Hollandaise"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Fumet de poisson",qtyRef:0.15,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.15},{name:"Jaunes d'œufs (4-5)",qtyRef:5,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:5},{name:"Beurre",qtyRef:0.5,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.5}],
+    steps:[{t:"Réduire",d:"Réduire le fumet de moitié. Procéder comme une sauce hollandaise avec les jaunes et le beurre."}], equip:["Casserole","Fouet"], allerg:["Œufs","Lait"], nut:{kcal:500,prot:4,lip:52,glu:1}, co2:"1.4 kg", eau:"1 L", env:48 },
+  { id:"sauce_airelles", nom:"Sauce aux airelles (Cranberries-sauce)", page:26, source:"Airelles, sucre", tags:["Airelles","Anglaise"], prepBase:5, cookBase:15, dressBase:5,
+    ingredients:[{name:"Airelles rouges",qtyRef:0.25,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.25},{name:"Eau",qtyRef:0.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.5},{name:"Sucre (selon goût)",qtyRef:0.05,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Cuire les airelles à couvert dans l'eau. Égoutter, passer au tamis fin, sucrer."}], equip:["Casserole","Tamis"], allerg:["Aucun"], nut:{kcal:80,prot:0.5,lip:0.2,glu:20}, co2:"0.3 kg", eau:"0.2 L", env:15 },
+  { id:"sauce_beurre_anglaise", nom:"Sauce au beurre à l'anglaise (butter-sauce)", page:26, source:"Beurre, eau, sel", tags:["Beurre","Anglaise"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Beurre",qtyRef:0.1,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.1},{name:"Eau",qtyRef:0.1,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.1}],
+    steps:[{t:"Faire fondre",d:"Faire fondre le beurre avec un peu d'eau, saler. Ne pas lier aux jaunes."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:360,prot:0,lip:40,glu:0}, co2:"0.8 kg", eau:"0.3 L", env:30 },
+  { id:"sauce_capres_anglaise", nom:"Sauce aux câpres (capers-sauce)", page:26, source:"Sauce au beurre, câpres", tags:["Câpres","Anglaise"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce au beurre anglaise",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Câpres",qtyRef:0.02,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.02}],
+    steps:[{t:"Ajouter",d:"Ajouter les câpres à la sauce au beurre."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:350,prot:0,lip:38,glu:1}, co2:"0.8 kg", eau:"0.5 L", env:32 },
+  { id:"sauce_celeri_anglaise", nom:"Sauce au céleri (celery-sauce)", page:27, source:"Céleri, Béchamel", tags:["Céleri","Anglaise"], prepBase:15, cookBase:20, dressBase:10,
+    ingredients:[{name:"Céleri (cœur et feuilles)",qtyRef:0.3,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.3},{name:"Oignon émincé",qtyRef:0.03,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.03},{name:"Bouillon blanc",qtyRef:0.3,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.3},{name:"Béchamel",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}],
+    steps:[{t:"Cuire le céleri",d:"Émincer, cuire avec l'oignon dans le bouillon à couvert. Égoutter, piler, passer."},{t:"Mélanger",d:"Mélanger la purée à volume égal de Béchamel."}], equip:["Casserole","Pilon"], allerg:["Gluten","Lait"], nut:{kcal:120,prot:2,lip:8,glu:8}, co2:"0.7 kg", eau:"0.6 L", env:32 },
+  { id:"sauce_creme_anglaise", nom:"Sauce crème à l'anglaise (cream-sauce)", page:27, source:"Sauce diable, Lea Perrin, crème", tags:["Crème","Anglaise"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce diable",qtyRef:0.25,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Lea Perrin sauce",qtyRef:0.02,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.02},{name:"Crème",qtyRef:0.062,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.062}],
+    steps:[{t:"Mélanger",d:"Ajouter Lea Perrin et la crème à la sauce diable."}], equip:["Casserole"], allerg:["Lait","Gluten"], nut:{kcal:120,prot:1,lip:10,glu:4}, co2:"0.7 kg", eau:"0.5 L", env:30 },
+  { id:"sauce_oeufs_anglaise", nom:"Sauce aux œufs à l'anglaise (eggs-sauce)", page:27, source:"Béchamel, œufs durs", tags:["Œufs","Anglaise"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce Béchamel",qtyRef:0.25,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25},{name:"Œufs durs chauds",qtyRef:2,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:2}],
+    steps:[{t:"Ajouter",d:"Ajouter les œufs durs coupés en dés à la Béchamel."}], equip:["Casserole"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:180,prot:5,lip:14,glu:8}, co2:"0.8 kg", eau:"0.6 L", env:32 },
+  { id:"sauce_pain_anglaise", nom:"Sauce au pain (bread-sauce)", page:27, source:"Mie de pain, lait, oignon, crème", tags:["Pain","Anglaise"], prepBase:10, cookBase:15, dressBase:5,
+    ingredients:[{name:"Lait",qtyRef:0.5,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.5},{name:"Mie de pain blanc frais",qtyRef:0.08,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.08},{name:"Oignon piqué de girofle",qtyRef:0.03,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.03},{name:"Crème",qtyRef:0.1,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Cuire la mie de pain dans le lait avec l'oignon et le beurre 15 min. Retirer l'oignon, lisser au fouet, ajouter la crème."}], equip:["Casserole","Fouet"], allerg:["Gluten","Lait"], nut:{kcal:150,prot:4,lip:8,glu:16}, co2:"0.7 kg", eau:"0.5 L", env:28 },
+  { id:"sauce_persil_anglaise", nom:"Sauce persil (parsley-sauce)", page:27, source:"Sauce au beurre, persil", tags:["Persil","Anglaise"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Sauce au beurre anglaise",qtyRef:0.25,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Persil haché et blanchi",qtyRef:0.01,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.01}],
+    steps:[{t:"Ajouter",d:"Ajouter l'infusion de persil et le persil haché à la sauce au beurre."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:340,prot:0,lip:38,glu:1}, co2:"0.8 kg", eau:"0.5 L", env:32 },
+  { id:"sauce_pommes_anglaise", nom:"Sauce aux pommes (apple-sauce)", page:27, source:"Marmelade de pommes, cannelle", tags:["Pommes","Anglaise"], prepBase:10, cookBase:15, dressBase:5,
+    ingredients:[{name:"Pommes",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Sucre, cannelle",qtyRef:0.05,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Préparer une marmelade de pommes très sucrée, ajouter un soupçon de cannelle."}], equip:["Casserole"], allerg:["Aucun"], nut:{kcal:120,prot:0.3,lip:0.2,glu:30}, co2:"0.4 kg", eau:"0.3 L", env:20 },
+  { id:"sauce_reforme", nom:"Sauce réforme (reform-sauce)", page:28, source:"Sauce diable, julienne de cornichons, œuf, champignon, truffe, langue", tags:["Réforme"], prepBase:10, cookBase:5, dressBase:10,
+    ingredients:[{name:"Sauce diable",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Cornichons (2), blanc d'œuf dur, champignons (2), truffe (20g), langue écarlate (30g)",qtyRef:0.1,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.1}],
+    steps:[{t:"Préparer la julienne",d:"Détailler tous les ingrédients en julienne, ajouter à la sauce diable."}], equip:["Casserole"], allerg:["Œufs","Moutarde","Sulfites","Gluten"], nut:{kcal:120,prot:3,lip:8,glu:6}, co2:"0.8 kg", eau:"0.6 L", env:35 },
+  { id:"sauce_sauge_oignons", nom:"Sauce sauge et oignons (sage-and-onions-sauce)", page:28, source:"Oignons, mie de pain, sauge", tags:["Sauge","Oignons"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Oignons blancs (2 gros)",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2},{name:"Mie de pain trempée au lait",qtyRef:0.15,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.15},{name:"Sauge hachée",qtyRef:0.01,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.01}],
+    steps:[{t:"Cuire les oignons",d:"Cuire les oignons au four, les peler, hacher. Mélanger à la mie de pain exprimée, à la sauge, sel, poivre. Servir en saucière avec du bon jus de rôti."}], equip:["Four","Casserole"], allerg:["Gluten","Lait"], nut:{kcal:130,prot:4,lip:3,glu:22}, co2:"0.6 kg", eau:"0.5 L", env:25 },
+  { id:"sauce_yorkshire", nom:"Sauce Yorkshire", page:28, source:"Porto, zeste d'orange, demi-glace, gelée de groseille", tags:["Yorkshire"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Porto",qtyRef:0.2,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.2},{name:"Zeste d'orange (julienne fine)",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01},{name:"Sauce demi-glace, gelée de groseille",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3},{name:"Jus d'orange, cannelle, cayenne",qtyRef:0.02,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.02}],
+    steps:[{t:"Cuire",d:"Cuire la julienne de zeste dans le Porto, égoutter. Au vin ajouter demi-glace, gelée de groseille, cannelle, cayenne, bouillir, passer, ajouter jus d'orange et zeste."}], equip:["Casserole"], allerg:["Sulfites","Gluten","Lait"], nut:{kcal:140,prot:1,lip:4,glu:10}, co2:"0.7 kg", eau:"0.5 L", env:32 },
+  { id:"sauce_mayonnaise_base", nom:"Sauce mayonnaise (base)", page:28, source:"Jaunes d'œufs, huile, vinaigre ou citron, moutarde (option)", tags:["Mayonnaise"], prepBase:10, cookBase:0, dressBase:5,
+    ingredients:[{name:"Jaunes d'œufs (3-4)",qtyRef:4,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:4},{name:"Huile",qtyRef:0.5,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.5},{name:"Vinaigre ou citron",qtyRef:0.02,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.02},{name:"Moutarde de Dijon (option)",qtyRef:0.005,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.005}],
+    steps:[{t:"Préparer",d:"Mettre les jaunes, sel, poivre, un filet de vinaigre dans une terrine concave. Broyer, ajouter l'huile goutte à goutte, puis en filet. Ajouter de temps en temps du vinaigre. Terminer avec 2 cuillerées d'eau bouillante."}], equip:["Terrine","Fouet"], allerg:["Œufs","Moutarde"], nut:{kcal:450,prot:2,lip:50,glu:1}, co2:"1.2 kg", eau:"0.5 L", env:45 },
+  { id:"sauce_chantilly", nom:"Sauce Chantilly", page:29, source:"Mayonnaise, crème fouettée", tags:["Chantilly"], prepBase:5, cookBase:0, dressBase:5,
+    ingredients:[{name:"Mayonnaise",qtyRef:0.25,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.25},{name:"Crème fouettée bien ferme",qtyRef:0.02,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.02}],
+    steps:[{t:"Incorporer",d:"Incorporer la crème fouettée à la mayonnaise au moment de servir."}], equip:["Fouet"], allerg:["Œufs","Lait"], nut:{kcal:450,prot:2,lip:49,glu:1}, co2:"1.2 kg", eau:"0.5 L", env:45 },
+  { id:"sauce_raifort_noix", nom:"Sauce raifort aux noix fraîches", page:30, source:"Raifort, noix, crème, citron", tags:["Raifort","Noix"], prepBase:10, cookBase:0, dressBase:5,
+    ingredients:[{name:"Raifort râpé",qtyRef:0.15,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.15},{name:"Noix fraîches hachées",qtyRef:0.15,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.15},{name:"Crème fraîche",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2},{name:"Sucre, sel, vinaigre ou citron",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02}],
+    steps:[{t:"Mélanger",d:"Mélanger tous les ingrédients, ajouter le vinaigre en dernier."}], equip:["Terrine"], allerg:["Lait","Noix"], nut:{kcal:280,prot:5,lip:24,glu:10}, co2:"1 kg", eau:"0.7 L", env:45 },
+  { id:"sauce_ravigote_vinaigrette", nom:"Sauce ravigote (vinaigrette)", page:30, source:"Huile, vinaigre, câpres, herbes, oignon", tags:["Ravigote","Vinaigrette"], prepBase:5, cookBase:0, dressBase:5,
+    ingredients:[{name:"Huile",qtyRef:0.25,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.25},{name:"Vinaigre",qtyRef:0.05,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05},{name:"Câpres, persil, estragon, cerfeuil, ciboulette, oignon (option)",qtyRef:0.03,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.03}],
+    steps:[{t:"Mélanger",d:"Mélanger l'huile, le vinaigre, les herbes hachées, les câpres, sel, poivre. Option : moutarde, sauce anglaise, œuf dur."}], equip:["Bol"], allerg:["Sulfites","Moutarde"], nut:{kcal:260,prot:0,lip:28,glu:2}, co2:"0.8 kg", eau:"0.4 L", env:30 },
+  { id:"sauce_remoulade", nom:"Sauce rémoulade", page:30, source:"Mayonnaise, moutarde, cornichons, câpres, anchois", tags:["Rémoulade"], prepBase:10, cookBase:0, dressBase:5,
+    ingredients:[{name:"Mayonnaise",qtyRef:0.25,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.25},{name:"Moutarde de Dijon",qtyRef:0.005,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.005},{name:"Cornichons, câpres hachés, persil, cerfeuil, estragon, essence d'anchois",qtyRef:0.03,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.03}],
+    steps:[{t:"Mélanger",d:"Ajouter à la mayonnaise la moutarde, les cornichons et câpres hachés, les herbes, l'essence d'anchois."}], equip:["Terrine"], allerg:["Œufs","Moutarde","Poisson"], nut:{kcal:430,prot:2,lip:47,glu:2}, co2:"1.2 kg", eau:"0.6 L", env:44 },
+  { id:"sauce_suedoise", nom:"Sauce suédoise", page:30, source:"Marmelade de pommes, moutarde, raifort, mayonnaise", tags:["Suédoise"], prepBase:10, cookBase:5, dressBase:5,
+    ingredients:[{name:"Marmelade de pommes réduite",qtyRef:0.25,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Moutarde forte",qtyRef:0.005,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.005},{name:"Raifort râpé",qtyRef:0.01,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.01},{name:"Mayonnaise ou crème et citron",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Mélanger",d:"Mélanger la marmelade, moutarde, raifort et mayonnaise (ou crème et citron)."}], equip:["Casserole"], allerg:["Œufs","Lait","Moutarde"], nut:{kcal:200,prot:1,lip:15,glu:16}, co2:"0.9 kg", eau:"0.6 L", env:35 },
+  { id:"sauce_tartare", nom:"Sauce tartare", page:30, source:"Jaunes d'œufs durs, huile, ciboulette, mayonnaise", tags:["Tartare"], prepBase:15, cookBase:0, dressBase:5,
+    ingredients:[{name:"Jaunes d'œufs durs (4-5)",qtyRef:5,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:5},{name:"Huile",qtyRef:0.35,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.35},{name:"Vinaigre",qtyRef:0.01,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.01},{name:"Ciboulette pilée, mayonnaise",qtyRef:0.02,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.02}],
+    steps:[{t:"Préparer",d:"Passer les jaunes durs au tamis, les travailler en pâte lisse, ajouter l'huile petit à petit, puis le vinaigre, la ciboulette et 2 cuillerées de mayonnaise."}], equip:["Tamis","Terrine"], allerg:["Œufs","Lait"], nut:{kcal:450,prot:3,lip:48,glu:2}, co2:"1.2 kg", eau:"0.6 L", env:45 },
+  { id:"sauce_verte", nom:"Sauce verte", page:30, source:"Épinards, cresson, persil, estragon, cerfeuil, mayonnaise", tags:["Verte"], prepBase:15, cookBase:5, dressBase:5,
+    ingredients:[{name:"Feuilles d'épinards (50g), cresson (50g), persil (30g), estragon, cerfeuil",qtyRef:0.16,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.16},{name:"Mayonnaise",qtyRef:0.25,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.25}],
+    steps:[{t:"Préparer le jus vert",d:"Blanchir les herbes 3-4 min, rafraîchir, presser, piler, tordre pour extraire le jus. Ajouter ce jus à la mayonnaise relevée de cayenne."}], equip:["Casserole","Pilon"], allerg:["Œufs","Lait"], nut:{kcal:390,prot:2,lip:42,glu:3}, co2:"1.1 kg", eau:"0.7 L", env:42 },
+  { id:"sauce_cumberland", nom:"Sauce Cumberland (Cumberland-sauce)", page:31, source:"Gelée de groseille, Porto, zeste d'orange, citron, moutarde", tags:["Cumberland"], prepBase:10, cookBase:5, dressBase:5,
+    ingredients:[{name:"Gelée de groseille",qtyRef:0.06,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.06},{name:"Porto",qtyRef:0.1,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Échalote hachée (blanchie)",qtyRef:0.005,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.005},{name:"Zestes d'orange et citron (julienne)",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01},{name:"Jus d'orange, jus de citron, moutarde anglaise, cayenne, gingembre",qtyRef:0.05,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Mélanger",d:"Dissoudre la gelée de groseille, ajouter le Porto, l'échalote blanchie, les zestes blanchis, les jus, la moutarde, cayenne, gingembre. Bien mélanger."}], equip:["Casserole","Bol"], allerg:["Moutarde","Sulfites"], nut:{kcal:110,prot:0.5,lip:0.5,glu:25}, co2:"0.5 kg", eau:"0.3 L", env:22 },
+  { id:"sauce_menthe_anglaise", nom:"Sauce menthe (mint-sauce)", page:31, source:"Menthe fraîche, sucre, vinaigre", tags:["Menthe","Anglaise"], prepBase:5, cookBase:0, dressBase:5,
+    ingredients:[{name:"Feuilles de menthe fraîche",qtyRef:0.05,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.05},{name:"Sucre en poudre",qtyRef:0.02,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.02},{name:"Vinaigre",qtyRef:0.05,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05}],
+    steps:[{t:"Hacher",d:"Hacher finement la menthe, mélanger avec le sucre, le vinaigre et une pincée de sel."}], equip:["Bol"], allerg:["Sulfites"], nut:{kcal:40,prot:0.3,lip:0.1,glu:10}, co2:"0.3 kg", eau:"0.2 L", env:15 },
+  { id:"sauce_raifort_anglaise", nom:"Sauce raifort (raifort-sauce)", page:31, source:"Raifort, sucre, mie de pain, crème, vinaigre", tags:["Raifort","Anglaise"], prepBase:10, cookBase:0, dressBase:5,
+    ingredients:[{name:"Raifort râpé",qtyRef:0.1,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.1},{name:"Sucre en poudre",qtyRef:0.05,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.05},{name:"Mie de pain blanc frais",qtyRef:0.1,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.1},{name:"Crème fraîche",qtyRef:0.25,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25},{name:"Vinaigre",qtyRef:0.01,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.01}],
+    steps:[{t:"Mélanger",d:"Mélanger tous les ingrédients, ajouter le vinaigre en dernier."}], equip:["Terrine"], allerg:["Gluten","Lait"], nut:{kcal:180,prot:3,lip:10,glu:20}, co2:"0.8 kg", eau:"0.6 L", env:35 }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Les sauces chaudes se servent très chaudes, les sauces froides bien fraîches. Respecter les températures pour les émulsions (mayonnaise, béarnaise).</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Matières premières fraîches. • Cuisson à cœur si nécessaire. • Hygiène des ustensiles. • Traçabilité.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('itemSelect');
+  itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', (e) => loadItem(e.target.value));
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
