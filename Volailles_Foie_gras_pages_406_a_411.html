@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Volailles & Foie gras – Auguste Escoffier (p.406-411) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Volailles & Foie gras · pages 406 à 411 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🐔 Volailles & Foie gras</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 15 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES VOLAILLES & FOIE GRAS pages 406-411 ==========
+const itemsData = [
+  { id:"timbale_caneton_toulousaine", nom:"Timbale de Caneton à la Toulousaine", page:406, source:"Caneton rôti, salmis en gelée, pâte feuilletée, foie gras, truffes", tags:["Timbale","Caneton","Toulousaine"], prepBase:40, cookBase:40, dressBase:30,
+    ingredients:[{name:"Caneton (2 pièces)",qtyRef:1.2,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:1.2},{name:"Pâte feuilletée (moule)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Chair à saucisses (pour moule)",qtyRef:0.3,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.3},{name:"Parfait de foie gras, truffes, sauce salmis, gelée au Porto",qtyRef:0.3,unit:"kg",priceUnit:40,defaultPrice:40,defaultQty:0.3}],
+    steps:[{t:"Préparer les canetons",d:"Rôtir les canetons (saignants), refroidir, lever les filets. Avec les carcasses, préparer une sauce salmis."},{t:"Cuire la croûte",d:"Foncer un moule de pâte feuilletée, garnir de chair à saucisses, couvrir, cuire au four. Laisser refroidir, vider."},{t:"Monter la timbale",d:"Dans la croûte, alterner gelée, escalopes de canard, foie gras et truffes. Finir avec la gelée au Porto, couvrir, tenir au frais."}], equip:["Four","Moule à pâte"], allerg:["Gluten","Œufs","Lait","Porc","Foie gras"], nut:{kcal:480,prot:24,lip:32,glu:28}, co2:"3.4 kg", eau:"500 L", env:72 },
+  { id:"foie_gras_braise", nom:"Foie gras braisé", page:407, source:"Foie gras truffé, braisé au vin blanc, garniture au choix", tags:["Foie gras","Braisé"], prepBase:25, cookBase:30, dressBase:10,
+    ingredients:[{name:"Foie gras frais (600-800g)",qtyRef:0.7,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.7},{name:"Truffes crues",qtyRef:0.05,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.05},{name:"Vin blanc, cognac, madère",qtyRef:0.2,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.2},{name:"Mirepoix (oignon, carotte, lard)",qtyRef:0.15,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.15}],
+    steps:[{t:"Parer et truffer",d:"Parer, dénerver, clouter le foie de truffes. Assaisonner, arroser de cognac et madère, envelopper de bardes de lard, ficeler."},{t:"Braiser",d:"Faire blondir la mirepoix, placer le foie dans une casserole, entourer de mirepoix, mouiller de vin blanc, réduire, ajouter jus de veau. Cuire au four 25-30 min."},{t:"Finition",d:"Déballer, dresser. Lier le fonds de cuisson avec fécule ou demi-glace."}], equip:["Braisière","Four"], allerg:["Porc","Foie gras","Sulfites"], nut:{kcal:450,prot:18,lip:40,glu:4}, co2:"3.1 kg", eau:"450 L", env:72 },
+  { id:"foie_gras_poche", nom:"Foie gras poché", page:407, source:"Foie gras truffé, poché en mousseline", tags:["Foie gras","Poché"], prepBase:25, cookBase:25, dressBase:10,
+    ingredients:[{name:"Foie gras frais (600-800g)",qtyRef:0.7,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.7},{name:"Truffes crues (quartiers)",qtyRef:0.06,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.06},{name:"Cognac, madère, bardes de lard",qtyRef:0.1,unit:"L",priceUnit:10,defaultPrice:10,defaultQty:0.1}],
+    steps:[{t:"Parer et truffer",d:"Parer, dénerver, clouter le foie de truffes. Assaisonner, arroser de cognac et madère, envelopper de bardes de lard puis d'une mousseline, ficeler."},{t:"Pocher",d:"Pocher 20-25 min à ébullition très lente dans un fonds de veau."},{t:"Servir",d:"Déballer, dresser. Accompagner de garniture financière, de pâtes (nouilles, raviolis, macaronis)."}], equip:["Casserole"], allerg:["Porc","Foie gras"], nut:{kcal:430,prot:18,lip:38,glu:3}, co2:"3 kg", eau:"440 L", env:70 },
+  { id:"foie_gras_en_pate", nom:"Foie gras en pâte", page:407, source:"Foie gras truffé, cuit en croûte", tags:["Foie gras","En croûte"], prepBase:30, cookBase:35, dressBase:10,
+    ingredients:[{name:"Foie gras frais (600-800g)",qtyRef:0.7,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.7},{name:"Truffes (quartiers)",qtyRef:0.06,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.06},{name:"Pâte à pâte",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Bardes de lard, cognac, madère",qtyRef:0.1,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Mariner",d:"Parer, dénerver, clouter le foie. Assaisonner, arroser de cognac et madère. Laisser macérer 2h."},{t:"En croûte",d:"Envelopper le foie de bardes de lard. Foncer une abaisse, déposer le foie, recouvrir d'une seconde abaisse, souder, dorer, faire une cheminée."},{t:"Cuire",d:"Cuire à four moyen 30-35 min. Servir tel quel."}], equip:["Four"], allerg:["Gluten","Porc","Foie gras"], nut:{kcal:460,prot:17,lip:36,glu:24}, co2:"3.2 kg", eau:"470 L", env:72 },
+  { id:"foie_gras_alsacienne", nom:"Foie gras chaud à l'Alsacienne", page:408, source:"Foie gras braisé, nouilles fraîches, truffes", tags:["Foie gras","Alsacienne"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Foie gras braisé (recette précédente)",qtyRef:0.7,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.7},{name:"Lamelles de truffe",qtyRef:0.05,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.05},{name:"Nouilles fraîches alsaciennes",qtyRef:0.3,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Braiser",d:"Braiser le foie selon la méthode indiquée."},{t:"Dresser",d:"Déballer, dresser, couvrir de lamelles de truffes enrobées du fonds réduit additionné de demi-glace et madère."},{t:"Accompagner",d:"Servir avec un plat de nouilles fraîches à l'alsacienne."}], equip:["Braisière","Four"], allerg:["Gluten","Lait","Œufs","Porc","Foie gras"], nut:{kcal:460,prot:18,lip:36,glu:24}, co2:"3.2 kg", eau:"470 L", env:72 },
+  { id:"escalopes_foie_gras_base", nom:"Escalopes de foie gras (base)", page:408, source:"Foie gras en escalopes, farinées, sautées", tags:["Escalopes","Foie gras"], prepBase:10, cookBase:6, dressBase:5,
+    ingredients:[{name:"Foie gras frais (ferme)",qtyRef:0.4,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.4},{name:"Farine, beurre",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Tailler",d:"Tailler des escalopes de 75-100g, assaisonner, passer à la farine."},{t:"Sauter",d:"Sauter au beurre (ou paner à l'œuf et mie de pain puis cuire au beurre clarifié)."},{t:"Servir",d:"Garnitures possibles : pointes d'asperges, petits pois, nouilles, truffes, cèpes, purée de pommes, rizotto."}], equip:["Poêle"], allerg:["Gluten","Lait","Foie gras"], nut:{kcal:480,prot:16,lip:45,glu:4}, co2:"3 kg", eau:"430 L", env:70 },
+  { id:"escalopes_foie_gras_favorite", nom:"Escalopes de foie gras favorite", page:408, source:"Escalopes sautées sur croûtons, truffes, pointes d'asperges", tags:["Escalopes","Favorite"], prepBase:15, cookBase:8, dressBase:10,
+    ingredients:[{name:"Escalopes de foie gras (4)",qtyRef:0.3,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.3},{name:"Croûtons de pain de mie",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Lamelles de truffe, sauce demi-glace",qtyRef:0.1,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.1}],
+    steps:[{t:"Sauter les escalopes",d:"Les sauter au beurre, les dresser sur croûtons frits."},{t:"Sauce",d:"Couvrir de lamelles de truffe enrobées de fine sauce demi-glace."},{t:"Accompagner",d:"Servir avec des pointes d'asperges au beurre."}], equip:["Poêle","Friteuse"], allerg:["Gluten","Lait","Foie gras"], nut:{kcal:520,prot:15,lip:48,glu:12}, co2:"3.2 kg", eau:"460 L", env:72 },
+  { id:"escalopes_foie_gras_rossini", nom:"Escalopes de foie gras Rossini", page:408, source:"Comme favorite, nouilles à l'italienne", tags:["Escalopes","Rossini"], prepBase:15, cookBase:8, dressBase:10,
+    ingredients:[{name:"Escalopes de foie gras",qtyRef:0.3,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.3},{name:"Nouilles à l'italienne",qtyRef:0.3,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Comme Favorite, remplacer les pointes d'asperges par des nouilles à l'italienne."}], equip:["Poêle"], allerg:["Gluten","Lait","Foie gras"], nut:{kcal:540,prot:16,lip:46,glu:22}, co2:"3.3 kg", eau:"480 L", env:74 },
+  { id:"escalopes_foie_gras_richelieu", nom:"Escalopes de foie gras Richelieu", page:408, source:"Panées, glace de viande au beurre, purée de champignons", tags:["Escalopes","Richelieu"], prepBase:15, cookBase:10, dressBase:10,
+    ingredients:[{name:"Escalopes de foie gras",qtyRef:0.3,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.3},{name:"Farine, œuf, mie de pain",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Glace de viande, consommé, beurre",qtyRef:0.1,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Paner",d:"Paner les escalopes à l'anglaise (farine, œuf, mie de pain)."},{t:"Cuire",d:"Cuire au beurre clarifié."},{t:"Sauce",d:"Préparer une sauce avec glace de viande, consommé, monter au beurre, ajouter citron. Décorer de truffes. Servir avec purée de champignons ou purée de marrons."}], equip:["Poêle","Casserole"], allerg:["Gluten","Œufs","Lait","Foie gras"], nut:{kcal:500,prot:15,lip:44,glu:14}, co2:"3.1 kg", eau:"450 L", env:72 },
+  { id:"mignonnettes_foie_gras", nom:"Mignonnettes de foie gras", page:409, source:"Foie gras et farce de volaille, panées, palets", tags:["Mignonnettes","Foie gras"], prepBase:20, cookBase:8, dressBase:10,
+    ingredients:[{name:"Foie gras truffé cuit (2/3)",qtyRef:0.25,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.25},{name:"Farce fine de volaille (1/3)",qtyRef:0.125,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.125},{name:"Chapelure, œuf, beurre",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Mélanger",d:"Écraser le foie gras à la fourchette, mélanger avec la farce de volaille."},{t:"Former",d:"Former des petits palets, paner à l'anglaise."},{t:"Cuire",d:"Cuire doucement au beurre clarifié. Dresser en couronne avec garniture (pointes d'asperges, petits pois, purée de champignons). Sauce comme pour Richelieu."}], equip:["Poêle"], allerg:["Gluten","Œufs","Lait","Foie gras"], nut:{kcal:420,prot:16,lip:36,glu:12}, co2:"2.9 kg", eau:"420 L", env:68 },
+  { id:"parfait_foie_gras", nom:"Parfait de foie gras", page:409, source:"Foies gras truffés, pochés, gelée au champagne", tags:["Parfait","Foie gras"], prepBase:35, cookBase:20, dressBase:30,
+    ingredients:[{name:"Foies gras frais (2, 600-800g total)",qtyRef:0.7,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.7},{name:"Truffes",qtyRef:0.08,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.08},{name:"Cognac, madère",qtyRef:0.2,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.2},{name:"Gelée au champagne ou au Porto",qtyRef:0.4,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.4}],
+    steps:[{t:"Préparer les foies",d:"Parer, dénerver, clouter de truffes. Assaisonner, arroser de cognac et madère, macérer 5-6h."},{t:"Pocher",d:"Envelopper de bardes de lard et d'une mousseline, ficeler, pocher 20 min dans un fonds de veau. Laisser refroidir dans la cuisson."},{t:"Mettre en terrine",d:"Débarrasser des bardes, disposer les foies dans une terrine, couvrir de gelée."}], equip:["Terrine","Casserole"], allerg:["Porc","Gélatine","Foie gras","Sulfites"], nut:{kcal:450,prot:18,lip:40,glu:4}, co2:"3.1 kg", eau:"460 L", env:70 },
+  { id:"aspic_foie_gras", nom:"Aspic de foie gras", page:410, source:"Parfait de foie gras, gelée, décor", tags:["Aspic","Foie gras"], prepBase:30, cookBase:20, dressBase:30,
+    ingredients:[{name:"Parfait de foie gras",qtyRef:0.5,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.5},{name:"Gelée (champagne ou Porto)",qtyRef:0.5,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.5},{name:"Blanc d'œuf dur, truffes pour décor",qtyRef:0.05,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.05}],
+    steps:[{t:"Chemiser",d:"Chemiser un moule à douille de gelée, décorer avec blanc d'œuf et truffe."},{t:"Garnir",d:"Garnir de coquilles ou rectangles de parfait de foie gras alternés de gelée et truffes."},{t:"Démouler",d:"Tenir sur glace, démouler au moment de servir sur serviette."}], equip:["Moule","Glace"], allerg:["Gélatine","Œufs","Foie gras"], nut:{kcal:380,prot:14,lip:32,glu:5}, co2:"2.8 kg", eau:"400 L", env:65 },
+  { id:"mousse_foie_gras", nom:"Mousse de foie gras (au beurre)", page:410, source:"Parfait de foie gras, beurre, crème", tags:["Mousse","Foie gras"], prepBase:20, cookBase:0, dressBase:20,
+    ingredients:[{name:"Parfait de foie gras (500-600g)",qtyRef:0.55,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.55},{name:"Beurre fin ramolli",qtyRef:0.25,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.25},{name:"Crème très fraîche (6-8 cuillerées)",qtyRef:0.1,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.1}],
+    steps:[{t:"Passer",d:"Passer le parfait au tamis fin. Mettre la purée en terrine."},{t:"Travailler",d:"Incorporer le beurre ramolli, travailler pour rendre mousseux, puis ajouter la crème demi-fouettée."},{t:"Mouler",d:"Verser dans un moule à charlotte chemisé de gelée et décoré de truffes. Tenir au frais. Démouler au moment de servir."}], equip:["Tamis","Moule"], allerg:["Lait","Gélatine","Foie gras"], nut:{kcal:480,prot:14,lip:48,glu:2}, co2:"3 kg", eau:"430 L", env:68 },
+  { id:"foie_gras_paprika_hongroise", nom:"Foie gras au paprika doux (Mode hongroise)", page:411, source:"Foie gras, oignons, paprika, cuit au four", tags:["Foie gras","Hongroise"], prepBase:10, cookBase:35, dressBase:10,
+    ingredients:[{name:"Foie gras frais (500-600g)",qtyRef:0.55,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.55},{name:"Oignons blancs (2 gros)",qtyRef:0.3,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.3},{name:"Paprika rose doux (1 cuillère à café)",qtyRef:0.008,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.008}],
+    steps:[{t:"Préparer",d:"Parer le foie, l'assaisonner de sel. Le mettre dans une terrine allant au four."},{t:"Cuire",d:"L'entourer d'oignons émincés saupoudrés de paprika. Cuire au four modéré 30-35 min, jusqu'à ce que les oignons soient bruns."},{t:"Refroidir",d:"Laisser refroidir (préparer la veille). Servir avec des pommes de terre cuites au four."}], equip:["Terrine allant au four"], allerg:["Foie gras"], nut:{kcal:420,prot:17,lip:36,glu:8}, co2:"2.9 kg", eau:"420 L", env:68 }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <table><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody><tr>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Le foie gras demande une cuisson délicate. Les préparations froides doivent être maintenues au frais. Servir avec des garnitures de pâtes ou de légumes fins.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Foie gras frais de première qualité. • Respect de la chaîne du froid. • Cuisson à cœur. • Traçabilité des lots.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('itemSelect');
+  itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', (e) => loadItem(e.target.value));
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
