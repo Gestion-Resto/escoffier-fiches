@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Coquillages, Crustacés & Mollusques – Escoffier (p.184-191) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Coquillages, Crustacés & Mollusques · pages 184 à 191 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🦐 Coquillages & Crustacés</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 24 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES EXCLUSIVES pages 184-191 (Coquillages, Crustacés, Mollusques) ==========
+const itemsData = [
+  { id:"crabe_anglaise", nom:"Crabe à l'Anglaise", page:184, source:"Carapace farcie, mayonnaise maison",
+    tags:["Crabe","Mayonnaise"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[
+      {name:"Crabe (entier)",qtyRef:0.8,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.8},
+      {name:"Moutarde anglaise",qtyRef:0.01,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.01},
+      {name:"Cayenne (pointe)",qtyRef:0.001,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.001},
+      {name:"Huile d'olive",qtyRef:0.1,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.1},
+      {name:"Vinaigre de vin",qtyRef:0.02,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.02},
+      {name:"Œufs durs pour décors",qtyRef:2,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:2}
+    ],
+    steps:[
+      {t:"Cuire le crabe",d:"Le cuire à l'eau salée et laisser refroidir. Extraire les chairs des pattes, pinces et intérieur. Réserver les parties crémeuses."},
+      {t:"Préparer la farce",d:"Dans une terrine, mélanger les parties crémeuses avec la moutarde et le cayenne. Monter à l'huile et vinaigre comme une mayonnaise. Ajouter les chairs effilées."},
+      {t:"Dresser",d:"Remplir la carapace concave, dresser sur serviette en soutenant avec les pinces. Lisser en dôme, décorer de persil, œufs durs hachés, filets d'anchois."}
+    ],
+    equip:["Grande casserole","Terrine","Fouet"], allerg:["Crustacés","Œufs","Moutarde"], nut:{kcal:210,prot:15,lip:16,glu:2}, co2:"0.8 kg", eau:"200 L", env:45,
+    sourceAlt:"Crabe à l'Anglaise – Ma Cuisine p.184" },
+  { id:"coquilles_crevettes", nom:"Coquilles de crevettes", page:185, source:"Pommes Duchesse, sauce Béchamel",
+    tags:["Crevettes","Gratin"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[
+      {name:"Queues de crevettes roses cuites",qtyRef:0.4,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.4},
+      {name:"Pommes Duchesse (appareil)",qtyRef:0.3,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.3},
+      {name:"Sauce Béchamel",qtyRef:0.25,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25},
+      {name:"Fromage râpé (Gruyère)",qtyRef:0.05,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.05},
+      {name:"Beurre fondu",qtyRef:0.02,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.02}
+    ],
+    steps:[
+      {t:"Préparer les coquilles",d:"Border les coquilles d'un petit cordon de pommes Duchesse (poche à douille)."},
+      {t:"Garnir",d:"Mélanger les queues de crevettes à la Béchamel, remplir la coquille en dôme. Saupoudrer de fromage, arroser de beurre fondu."},
+      {t:"Gratiner",d:"Passer à la salamandre ou au four très chaud jusqu'à coloration."}
+    ],
+    equip:["Poche à douille","Salamandre"], allerg:["Crustacés","Gluten","Lait","Œufs"], nut:{kcal:240,prot:14,lip:14,glu:12}, co2:"0.9 kg", eau:"210 L", env:48 },
+  { id:"crevettes_curry", nom:"Crevettes au curry", page:185, source:"Curry, riz à l'Indienne",
+    tags:["Crevettes","Curry"], prepBase:12, cookBase:10, dressBase:5,
+    ingredients:[
+      {name:"Queues de crevettes cuites",qtyRef:0.5,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.5},
+      {name:"Oignon finement haché",qtyRef:0.06,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.06},
+      {name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},
+      {name:"Curry en poudre",qtyRef:0.01,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.01},
+      {name:"Sauce Béchamel",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}
+    ],
+    steps:[
+      {t:"Blondir l'oignon",d:"Faire fondre le beurre, y blondir l'oignon. Ajouter le curry, mélanger."},
+      {t:"Cuire les crevettes",d:"Ajouter les queues de crevettes, puis lier avec la sauce Béchamel. Dresser en timbale."},
+      {t:"Servir",d:"Accompagner de riz à l'Indienne cuit à l’eau salée."}
+    ],
+    equip:["Sautoir","Timbale"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:260,prot:17,lip:14,glu:10}, co2:"0.85 kg", eau:"190 L", env:44 },
+  { id:"crevettes_paprika", nom:"Crevettes au paprika rose", page:185, source:"Paprika doux, riz pilaw",
+    tags:["Crevettes","Paprika"], prepBase:12, cookBase:10, dressBase:5,
+    ingredients:[
+      {name:"Queues de crevettes cuites",qtyRef:0.5,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.5},
+      {name:"Oignon",qtyRef:0.06,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.06},
+      {name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},
+      {name:"Paprika rose doux",qtyRef:0.012,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.012},
+      {name:"Sauce Béchamel",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}
+    ],
+    steps:[
+      {t:"Cuisson",d:"Même préparation que les crevettes au curry, remplacer le curry par le paprika rose."},
+      {t:"Dressage",d:"Servir avec du riz pilaw (riz cuit au bouillon)."}
+    ],
+    equip:["Sautoir"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:255,prot:16,lip:13,glu:10}, co2:"0.85 kg", eau:"190 L", env:44 },
+  { id:"crevettes_frites", nom:"Crevettes frites", page:185, source:"Petites crevettes grises frites",
+    tags:["Friture","Crevettes"], prepBase:8, cookBase:5, dressBase:3,
+    ingredients:[
+      {name:"Petites crevettes grises (vivantes)",qtyRef:0.4,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.4},
+      {name:"Farine de blé",qtyRef:0.1,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.1},
+      {name:"Huile de friture",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5},
+      {name:"Sel fin et Cayenne",qtyRef:0.01,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.01}
+    ],
+    steps:[
+      {t:"Enrober",d:"Rouler les crevettes vivantes dans la farine sans les éplucher."},
+      {t:"Frire",d:"Plonger dans l'huile chaude (180°C) jusqu'à ce qu'elles soient croustillantes."},
+      {t:"Assaisonner",d:"Égoutter, saler avec une pointe de Cayenne, dresser sur serviette."}
+    ],
+    equip:["Friteuse","Écumoire"], allerg:["Crustacés","Gluten"], nut:{kcal:290,prot:13,lip:20,glu:12}, co2:"1 kg", eau:"220 L", env:52 },
+  { id:"mousse_froide_crevettes", nom:"Mousse froide de crevettes", page:185, source:"Gelée, crème fouettée",
+    tags:["Mousse","Froid"], prepBase:30, cookBase:15, dressBase:25,
+    ingredients:[
+      {name:"Crevettes roses crues",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},
+      {name:"Beurre frais",qtyRef:0.06,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.06},
+      {name:"Velouté de volaille",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2},
+      {name:"Gelée de volaille",qtyRef:0.2,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.2},
+      {name:"Crème fraîche (entière)",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}
+    ],
+    steps:[
+      {t:"Cuire et décortiquer",d:"Cuire les crevettes dans une mirepoix au vin blanc et cognac, décortiquer, réserver les queues."},
+      {t:"Préparer la purée",d:"Piler les débris avec beurre, ajouter au velouté. Passer au tamis fin."},
+      {t:"Monter la mousse",d:"Incorporer la gelée à la purée sur glace. Lorsque l’appareil prend corps, ajouter la crème à moitié fouettée. Verser dans un plat, décorer de queues et de gelée."}
+    ],
+    equip:["Tamis","Fouet","Bain de glace"], allerg:["Crustacés","Lait","Œufs"], nut:{kcal:230,prot:12,lip:18,glu:4}, co2:"0.95 kg", eau:"240 L", env:50 },
+  { id:"ecrevisses_bordelaises", nom:"Écrevisses à la Bordelaise", page:186, source:"Mirepoix, fine champagne, vin blanc",
+    tags:["Écrevisses","Bordelaise"], prepBase:20, cookBase:12, dressBase:5,
+    ingredients:[
+      {name:"Grosses écrevisses (24)",qtyRef:0.8,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.8},
+      {name:"Carotte (rouge)",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},
+      {name:"Oignon",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},
+      {name:"Jambon cuit dégraissé",qtyRef:0.05,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.05},
+      {name:"Cognac (fine champagne)",qtyRef:0.1,unit:"L",priceUnit:25,defaultPrice:25,defaultQty:0.1},
+      {name:"Vin blanc sec",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},
+      {name:"Glace de viande",qtyRef:0.05,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.05},
+      {name:"Beurre",qtyRef:0.125,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.125}
+    ],
+    steps:[
+      {t:"Préparer la mirepoix",d:"Faire suer carotte, oignon, jambon, thym, laurier, persil dans le beurre."},
+      {t:"Cuire les écrevisses",d:"Ajouter les écrevisses, assaisonner, faire sauter 2 min. Flamber au cognac, ajouter vin blanc. Couvrir et cuire 10 min."},
+      {t:"Lier la sauce",d:"Dresser les écrevisses. Monter la sauce avec glace de viande et beurre divisé. Verser sur les écrevisses."}
+    ],
+    equip:["Sautoir","Timbale"], allerg:["Crustacés","Sulfites"], nut:{kcal:290,prot:21,lip:17,glu:3}, co2:"1.3 kg", eau:"290 L", env:58 },
+  { id:"ecrevisses_buisson", nom:"Écrevisses en buisson", page:187, source:"Court-bouillon, présentation en pyramide",
+    tags:["Écrevisses","Buisson"], prepBase:15, cookBase:10, dressBase:15,
+    ingredients:[
+      {name:"Écrevisses",qtyRef:0.9,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.9},
+      {name:"Court-bouillon (carotte, oignon, vin blanc)",qtyRef:1.2,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:1.2}
+    ],
+    steps:[
+      {t:"Cuire",d:"Préparer un court-bouillon comme pour les écrevisses à la nage. Plonger les écrevisses, cuire 10 min à couvert."},
+      {t:"Dresser en buisson",d:"Les égoutter. Accrocher chaque écrevisse par la queue sur un ustensile spécial (buisson). Garnir de persil en branches."}
+    ],
+    equip:["Ustensile à buisson","Casserole"], allerg:["Crustacés"], nut:{kcal:190,prot:18,lip:9,glu:1}, co2:"1 kg", eau:"250 L", env:50 },
+  { id:"coquilles_ecrevisses_cardinal", nom:"Coquilles d'écrevisses cardinal", page:187, source:"Béchamel au beurre d'écrevisses, truffe",
+    tags:["Écrevisses","Cardinal"], prepBase:20, cookBase:10, dressBase:10,
+    ingredients:[
+      {name:"Queues d'écrevisses cuites",qtyRef:0.4,unit:"kg",priceUnit:30,defaultPrice:30,defaultQty:0.4},
+      {name:"Truffes (lamelles)",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},
+      {name:"Sauce Béchamel au beurre d'écrevisses",qtyRef:0.3,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.3},
+      {name:"Fromage râpé",qtyRef:0.05,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.05},
+      {name:"Beurre fondu",qtyRef:0.02,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.02}
+    ],
+    steps:[
+      {t:"Préparer les coquilles",d:"Saucer le fond des coquilles de sauce Béchamel au beurre d'écrevisses."},
+      {t:"Garnir",d:"Mettre 6 queues d'écrevisses et lamelles de truffe par coquille. Masquer de sauce."},
+      {t:"Gratiner",d:"Saupoudrer de fromage, arroser de beurre, gratiner légèrement au four."}
+    ],
+    equip:["Four","Coquilles à gratin"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:270,prot:18,lip:16,glu:6}, co2:"1.2 kg", eau:"280 L", env:56 },
+  { id:"ecrevisses_nage", nom:"Écrevisses à la nage", page:187, source:"Court-bouillon, légumes en rondelles",
+    tags:["Écrevisses","Nage"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[
+      {name:"Écrevisses",qtyRef:0.8,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.8},
+      {name:"Carotte",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},
+      {name:"Oignon",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},
+      {name:"Échalotes",qtyRef:0.03,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.03},
+      {name:"Vin blanc",qtyRef:0.3,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.3},
+      {name:"Eau",qtyRef:0.2,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.2},
+      {name:"Sel, poivre en grains, Cayenne",qtyRef:0.01,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.01}
+    ],
+    steps:[
+      {t:"Préparer le court-bouillon",d:"Faire bouillir carotte, oignon, échalotes, vin blanc, eau, épices."},
+      {t:"Pocher",d:"Plonger les écrevisses, cuire 10 min à couvert."},
+      {t:"Dresser",d:"Servir en timbale avec le court-bouillon et la garniture de légumes."}
+    ],
+    equip:["Casserole"], allerg:["Crustacés","Sulfites"], nut:{kcal:185,prot:17,lip:8,glu:3}, co2:"0.9 kg", eau:"230 L", env:47 },
+  { id:"souffle_ecrevisses_florentine", nom:"Soufflé d'écrevisses à la Florentine", page:187, source:"Parmesan, truffe, queues d'écrevisses",
+    tags:["Soufflé","Écrevisses"], prepBase:20, cookBase:18, dressBase:5,
+    ingredients:[
+      {name:"Appareil à soufflé au parmesan (base)",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5},
+      {name:"Beurre d'écrevisse",qtyRef:0.02,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.02},
+      {name:"Lamelles de truffe noire",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},
+      {name:"Queues d'écrevisses cuites",qtyRef:0.1,unit:"kg",priceUnit:30,defaultPrice:30,defaultQty:0.1}
+    ],
+    steps:[
+      {t:"Préparer l'appareil",d:"Appareil à soufflé parmesan additionné de beurre d'écrevisse."},
+      {t:"Dresser en couches",d:"Dans une timbale beurrée, alterner couches d'appareil, lamelles de truffe et queues d'écrevisses."},
+      {t:"Cuire",d:"Enfourner à four chaud (200°C) comme un soufflé ordinaire, environ 18 min."}
+    ],
+    equip:["Timbale à soufflé","Four"], allerg:["Crustacés","Œufs","Lait","Gluten"], nut:{kcal:285,prot:14,lip:19,glu:14}, co2:"1.1 kg", eau:"260 L", env:54 },
+  { id:"souffle_ecrevisses_rothschild", nom:"Soufflé d'écrevisses Léopold de Rothschild", page:187, source:"Pointes d'asperges, truffe",
+    tags:["Soufflé","Asperges"], prepBase:20, cookBase:18, dressBase:5,
+    ingredients:[
+      {name:"Appareil à soufflé parmesan",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5},
+      {name:"Pointes d'asperges fraîchement cuites",qtyRef:0.1,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.1},
+      {name:"Truffe lamelles",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},
+      {name:"Queues d'écrevisses",qtyRef:0.1,unit:"kg",priceUnit:30,defaultPrice:30,defaultQty:0.1}
+    ],
+    steps:[
+      {t:"Préparer",d:"Même procédé que Florentine, ajouter des pointes d'asperges fraîchement cuites (non rafraîchies) dans les couches."},
+      {t:"Cuire",d:"Cuire comme un soufflé classique."}
+    ],
+    equip:["Timbale","Four"], allerg:["Crustacés","Œufs","Lait","Gluten"], nut:{kcal:280,prot:13,lip:18,glu:14}, co2:"1.1 kg", eau:"270 L", env:54 },
+  { id:"souffle_ecrevisses_piemontaise", nom:"Soufflé d'écrevisses à la Piémontaise", page:187, source:"Truffes blanches crues",
+    tags:["Soufflé","Truffes blanches"], prepBase:20, cookBase:18, dressBase:5,
+    ingredients:[
+      {name:"Appareil soufflé parmesan",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5},
+      {name:"Truffes blanches crues du Piémont",qtyRef:0.04,unit:"kg",priceUnit:450,defaultPrice:450,defaultQty:0.04},
+      {name:"Queues d'écrevisses",qtyRef:0.1,unit:"kg",priceUnit:30,defaultPrice:30,defaultQty:0.1}
+    ],
+    steps:[
+      {t:"Préparer",d:"Comme Florentine mais remplacer les truffes noires par des truffes blanches crues détaillées en copeaux."},
+      {t:"Cuire",d:"Cuisson identique à un soufflé ordinaire."}
+    ],
+    equip:["Four","Timbale"], allerg:["Crustacés","Œufs","Lait","Gluten"], nut:{kcal:280,prot:13,lip:18,glu:14}, co2:"1.2 kg", eau:"280 L", env:56 },
+  { id:"timbales_queues_ecrevisses", nom:"Timbales de queues d'écrevisses", page:188, source:"Macaroni, truffe, parmesan",
+    tags:["Timbale","Écrevisses"], prepBase:30, cookBase:25, dressBase:15,
+    ingredients:[
+      {name:"Gros macaroni",qtyRef:0.25,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.25},
+      {name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},
+      {name:"Parmesan frais râpé",qtyRef:0.05,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.05},
+      {name:"Truffes (lamelles)",qtyRef:0.1,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.1},
+      {name:"Écrevisses cuites au beurre (50)",qtyRef:0.9,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.9},
+      {name:"Sauce Béchamel à la crème",qtyRef:0.3,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.3}
+    ],
+    steps:[
+      {t:"Cuire les écrevisses",d:"Les faire sauter au beurre, cognac, vin blanc, décortiquer, réserver les queues."},
+      {t:"Préparer le macaroni",d:"Cuire le macaroni, le lier avec beurre, parmesan et un peu de Béchamel."},
+      {t:"Assembler la timbale",d:"Garnir le fond de macaroni, ajouter le ragoût de queues et truffes, recouvrir de macaroni. Terminer par quelques lames de truffe."}
+    ],
+    equip:["Timbale","Sautoir","Casserole"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:340,prot:19,lip:18,glu:30}, co2:"1.4 kg", eau:"350 L", env:62 },
+  { id:"vol_au_vent_ecrevisses", nom:"Vol-au-vent de queues d'écrevisses", page:188, source:"Quenelles de sole, truffe",
+    tags:["Vol-au-vent","Écrevisses"], prepBase:35, cookBase:20, dressBase:15,
+    ingredients:[
+      {name:"Écrevisses (60)",qtyRef:1,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:1},
+      {name:"Truffes pelées (lamelles)",qtyRef:0.12,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.12},
+      {name:"Quenelles de sole à la crème (15)",qtyRef:0.2,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.2},
+      {name:"Sauce Béchamel au beurre d'écrevisses",qtyRef:0.3,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.3},
+      {name:"Croute de vol-au-vent (bouchée)",qtyRef:1,unit:"pièce",priceUnit:2,defaultPrice:2,defaultQty:1}
+    ],
+    steps:[
+      {t:"Cuire les écrevisses",d:"Les cuire au beurre, cognac, vin blanc. Décortiquer, garder les queues."},
+      {t:"Préparer les quenelles",d:"Mouler les quenelles de sole à la cuillère."},
+      {t:"Dresser",d:"Déposer la croute de vol-au-vent. Étaler la sauce, ajouter quenelles, queues d'écrevisses et truffes. Napper légèrement."}
+    ],
+    equip:["Four","Sautoir"], allerg:["Crustacés","Poisson","Gluten","Lait","Œufs"], nut:{kcal:330,prot:18,lip:19,glu:24}, co2:"1.3 kg", eau:"320 L", env:58 },
+  { id:"mousse_ecrevisses", nom:"Mousse d'écrevisses", page:188, source:"Gelée, velouté de volaille",
+    tags:["Mousse","Écrevisses"], prepBase:30, cookBase:15, dressBase:30,
+    ingredients:[
+      {name:"Écrevisses moyennes (40)",qtyRef:0.7,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.7},
+      {name:"Beurre fin",qtyRef:0.075,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.075},
+      {name:"Velouté de volaille",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2},
+      {name:"Gelée de volaille",qtyRef:0.15,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.15},
+      {name:"Crème fraîche très fraîche",qtyRef:0.25,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25}
+    ],
+    steps:[
+      {t:"Cuire et décortiquer",d:"Cuire les écrevisses dans une mirepoix au cognac et vin blanc. Décortiquer, réserver les queues."},
+      {t:"Préparer la purée",d:"Piler les carapaces avec le beurre. Ajouter au velouté, passer à l'étamine."},
+      {t:"Monter la mousse",d:"Sur glace, incorporer la gelée à la purée. Dès prise, ajouter la crème à moitié fouettée. Verser dans un plat, couvrir de gelée, décorer de queues."}
+    ],
+    equip:["Tamis","Fouet","Plat argenté"], allerg:["Crustacés","Lait","Œufs"], nut:{kcal:245,prot:15,lip:18,glu:5}, co2:"1.1 kg", eau:"270 L", env:53 },
+  { id:"homard_americaine", nom:"Homard à l'Américaine", page:189, source:"Cognac, tomates, glace de viande",
+    tags:["Homard","Américaine"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[
+      {name:"Homard vivant (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Huile d'olive",qtyRef:0.05,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.05},
+      {name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},
+      {name:"Cognac",qtyRef:0.08,unit:"L",priceUnit:25,defaultPrice:25,defaultQty:0.08},
+      {name:"Vin blanc sec",qtyRef:0.15,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.15},
+      {name:"Tomates pelées épépinées",qtyRef:0.3,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3},
+      {name:"Échalotes, ail, persil",qtyRef:0.04,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.04},
+      {name:"Glace de viande",qtyRef:0.05,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.05}
+    ],
+    steps:[
+      {t:"Découper le homard",d:"Fendre en deux, retirer la poche à gravier. Tronçonner chaque demi en 3. Réserver les parties crémeuses."},
+      {t:"Sauter",d:"Chauffer huile et beurre, saisir les morceaux. Flamber au cognac, ajouter vin blanc, tomates, échalotes, ail. Cuire 18-20 min."},
+      {t:"Lier la sauce",d:"Incorporer les parties crémeuses, monter au beurre et jus de citron. Verser sur le homard, saupoudrer de persil."}
+    ],
+    equip:["Sautoir","Fouet"], allerg:["Crustacés","Sulfites"], nut:{kcal:310,prot:23,lip:21,glu:6}, co2:"1.7 kg", eau:"450 L", env:70 },
+  { id:"homard_americaine_sans_carapace", nom:"Homard à l'Américaine sans carapace", page:190, source:"Service anglais, timbale",
+    tags:["Homard","Sans carapace"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[
+      {name:"Homard (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Mêmes ingrédients que l'Américaine",qtyRef:0.4,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.4}
+    ],
+    steps:[
+      {t:"Cuire selon Américaine",d:"Suivre la recette de l'Homard Américaine, mais après cuisson ne conserver que les chairs des tronçons et pinces."},
+      {t:"Dresser",d:"Dresser les chairs en timbale, napper de sauce. Les morceaux de coffre peuvent servir pour du beurre rouge ou potage."}
+    ],
+    equip:["Sautoir","Timbale"], allerg:["Crustacés","Sulfites"], nut:{kcal:280,prot:22,lip:19,glu:5}, co2:"1.6 kg", eau:"420 L", env:67 },
+  { id:"homard_bordelaise", nom:"Homard à la Bordelaise", page:190, source:"Vin rouge, champignons",
+    tags:["Homard","Bordelaise"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[
+      {name:"Homard (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Vin de Bordeaux rouge",qtyRef:0.2,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.2},
+      {name:"Champignons frais hachés",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},
+      {name:"Même base que l'Américaine (sans vin blanc)",qtyRef:0.3,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.3}
+    ],
+    steps:[
+      {t:"Préparer",d:"Comme l'Américaine, remplacer le vin blanc par le vin rouge. Ajouter les champignons en même temps."},
+      {t:"Finition",d:"Ne garder que les chairs des pinces et tronçons, dresser en timbale, napper de sauce montée au beurre et parties crémeuses."}
+    ],
+    equip:["Sautoir"], allerg:["Crustacés","Sulfites"], nut:{kcal:295,prot:21,lip:19,glu:5}, co2:"1.6 kg", eau:"420 L", env:67 },
+  { id:"homard_cardinal", nom:"Homard Cardinal", page:190, source:"Sauce Cardinal, truffe, glacé",
+    tags:["Homard","Cardinal"], prepBase:25, cookBase:15, dressBase:15,
+    ingredients:[
+      {name:"Homard cuit au court-bouillon (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Sauce Cardinal (homard)",qtyRef:0.3,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.3},
+      {name:"Lamelles de truffe",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},
+      {name:"Fromage râpé",qtyRef:0.05,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.05},
+      {name:"Beurre fondu",qtyRef:0.03,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.03}
+    ],
+    steps:[
+      {t:"Fendre et escaloper",d:"Cuire le homard, le fendre en deux. Retirer les chairs, les escaloper. Tenir au chaud avec beurre et truffe."},
+      {t:"Garnir les coquilles",d:"Étaler la sauce Cardinal dans chaque demi-carapace, ranger les escalopes et truffes. Saupoudrer de fromage, arroser de beurre."},
+      {t:"Glacer",d:"Passer vivement à la salamandre ou au four. Dresser sur serviette avec persil."}
+    ],
+    equip:["Salamandre","Four"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:300,prot:21,lip:20,glu:5}, co2:"1.5 kg", eau:"400 L", env:66 },
+  { id:"homard_clarence", nom:"Homard Clarence", page:191, source:"Curry, crème",
+    tags:["Homard","Curry"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[
+      {name:"Homard (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Curry doux",qtyRef:0.006,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.006},
+      {name:"Crème très fraîche",qtyRef:0.1,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.1},
+      {name:"Beurre (50 g au lieu de 100)",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},
+      {name:"Même base que l'Américaine",qtyRef:0.3,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.3}
+    ],
+    steps:[
+      {t:"Préparer à l'Américaine modifié",d:"Avant d'ajouter cognac et vin blanc, saupoudrer de curry. Cuire normalement."},
+      {t:"Finition",d:"Après cuisson, monter la sauce avec 50g de beurre et 4 cuillerées de crème fraîche. Dresser avec ou sans carapace."}
+    ],
+    equip:["Sautoir"], allerg:["Crustacés","Lait"], nut:{kcal:305,prot:21,lip:20,glu:5}, co2:"1.5 kg", eau:"390 L", env:65 },
+  { id:"homard_mornay", nom:"Homard en coquilles à la Mornay", page:191, source:"Coquilles Saint-Jacques, sauce Mornay",
+    tags:["Homard","Mornay"], prepBase:20, cookBase:10, dressBase:10,
+    ingredients:[
+      {name:"Homard cuit",qtyRef:0.6,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:0.6},
+      {name:"Lamelles de truffe",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},
+      {name:"Sauce Béchamel",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3},
+      {name:"Fromage râpé",qtyRef:0.06,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.06},
+      {name:"Beurre fondu",qtyRef:0.02,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.02}
+    ],
+    steps:[
+      {t:"Préparer les coquilles",d:"Beurrer des coquilles Saint-Jacques. Mettre une cuillerée de Béchamel et une pincée de fromage."},
+      {t:"Garnir",d:"Émincer la chair de homard, la mélanger aux truffes. Répartir dans les coquilles, masquer de Béchamel."},
+      {t:"Glacer",d:"Saupoudrer de fromage, arroser de beurre, glacer au four ou à la salamandre."}
+    ],
+    equip:["Four"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:275,prot:17,lip:18,glu:8}, co2:"1.3 kg", eau:"330 L", env:60 },
+  { id:"homard_creme", nom:"Homard à la crème", page:191, source:"Crème légère, truffe",
+    tags:["Homard","Crème"], prepBase:20, cookBase:20, dressBase:10,
+    ingredients:[
+      {name:"Homard (1 kg)",qtyRef:1,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:1},
+      {name:"Cognac",qtyRef:0.06,unit:"L",priceUnit:25,defaultPrice:25,defaultQty:0.06},
+      {name:"Vin blanc",qtyRef:0.1,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.1},
+      {name:"Crème légère fraîche",qtyRef:0.5,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.5},
+      {name:"Truffe lamelles",qtyRef:0.04,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.04},
+      {name:"Glace de viande",qtyRef:0.04,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.04}
+    ],
+    steps:[
+      {t:"Sauter le homard",d:"Découper comme Américaine, saisir au beurre/huile, flamber au cognac, ajouter vin blanc."},
+      {t:"Cuire à la crème",d:"Mouiller à la crème, assaisonner, couvrir et cuire. Retirer les chairs."},
+      {t:"Réduire et napper",d:"Réduire la crème de moitié, ajouter glace de viande et citron. Napper les chairs et truffes."}
+    ],
+    equip:["Sautoir"], allerg:["Crustacés","Lait"], nut:{kcal:340,prot:20,lip:24,glu:5}, co2:"1.6 kg", eau:"420 L", env:68 },
+  { id:"croquettes_homard", nom:"Croquettes de homard", page:191, source:"Béchamel, champignons, truffes, panure",
+    tags:["Homard","Croquettes"], prepBase:30, cookBase:15, dressBase:15,
+    ingredients:[
+      {name:"Homard cuit au court-bouillon",qtyRef:0.7,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:0.7},
+      {name:"Champignons et truffes (petits carrés)",qtyRef:0.1,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.1},
+      {name:"Sauce Béchamel fine",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2},
+      {name:"Jaunes d'œufs (liaison)",qtyRef:2,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:2},
+      {name:"Panure: farine, œufs, chapelure",qtyRef:0.15,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.15}
+    ],
+    steps:[
+      {t:"Préparer la farce",d:"Couper le homard en très petits carrés. Mélanger avec champignons et truffe. Lier avec Béchamel additionnée de jaunes."},
+      {t:"Refroidir",d:"Étaler sur un plat, laisser refroidir complètement."},
+      {t:"Former et frire",d:"Former des croquettes, paner (farine, œuf, chapelure), frire à l'huile chaude."}
+    ],
+    equip:["Friteuse","Plat"], allerg:["Crustacés","Gluten","Lait","Œufs"], nut:{kcal:360,prot:16,lip:24,glu:20}, co2:"1.4 kg", eau:"350 L", env:63 }
+];
+
+// ========== FONCTIONS DYNAMIQUES (gestion des portions, coûts, etc.) ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}</td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}</span></td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"></td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit</td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €</td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.sourceAlt||item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Servir les crustacés bien chauds. Pour les mousses, maintenir au froid. Accompagnements classiques : riz pilaw, pommes Duchesse, beurre fondu.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Produits vivants ou extra-frais. • Chaîne du froid rigoureuse. • Cuisson à cœur pour homards et écrevisses. • Traçabilité des lots.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+const select = document.getElementById('itemSelect');
+itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+ficheContainer = document.getElementById('ficheContainer');
+select.addEventListener('change', (e) => loadItem(e.target.value));
+const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+</script>
+</body>
+</html>
