@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Potages & Consommés – Auguste Escoffier (p.51-58) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Potages & Consommés · pages 51 à 58 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🍲 Potages & Consommés</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 33 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES POTAGES & CONSOMMÉS pages 51-58 ==========
+const itemsData = [
+  { id:"beef_tea", nom:"Beef-tea (suc de viande de bœuf) pour malades", page:51, source:"Viande de bœuf dégraissée, eau", tags:["Beef-tea","Malades"], prepBase:10, cookBase:180, dressBase:5,
+    ingredients:[{name:"Viande de bœuf très fraîche (cuisse)",qtyRef:0.5,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.5},{name:"Eau froide (3-4 cuillères)",qtyRef:0.05,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.05}],
+    steps:[{t:"Hacher la viande",d:"Hacher finement la viande, la mettre dans une terrine, lui faire absorber l'eau petit à petit. Ajouter un grain de sel."},{t:"Cuire au bain-marie",d:"Mettre dans un ustensile hermétique, placer dans une casserole d'eau froide, faire bouillir doucement 3h en maintenant le niveau d'eau."},{t:"Passer",d:"Retirer, passer à la serviette."}], equip:["Hachoir","Ustensile hermétique","Casserole"], allerg:["Bœuf"], nut:{kcal:60,prot:8,lip:3,glu:0}, co2:"1.2 kg", eau:"2 L", env:35 },
+  { id:"gelee_viande_malades", nom:"Gelée de viande pour malades", page:51, source:"Bœuf, jarret de veau, pied de veau", tags:["Gelée","Malades"], prepBase:15, cookBase:180, dressBase:15,
+    ingredients:[{name:"Viande de bœuf dégraissée",qtyRef:0.5,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.5},{name:"Jarret de veau haché (100g)",qtyRef:0.1,unit:"kg",priceUnit:9,defaultPrice:9,defaultQty:0.1},{name:"Pied de veau (julienne, 60g)",qtyRef:0.06,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.06},{name:"Eau (6-8 cuillères)",qtyRef:0.12,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.12}],
+    steps:[{t:"Hacher",d:"Hacher les viandes, mélanger avec l'eau."},{t:"Cuire",d:"Procéder comme pour le beef-tea 3h."},{t:"Passer et mouler",d:"Passer à la serviette, verser dans de petites tasses."}], equip:["Ustensile hermétique","Casserole"], allerg:["Bœuf","Veau"], nut:{kcal:50,prot:6,lip:2,glu:1}, co2:"1.3 kg", eau:"2.2 L", env:38 },
+  { id:"pates_potages_clairs", nom:"Pâtes diverses pour potages clairs (pâtes d'Italie)", page:51, source:"Pâtes, consommé", tags:["Pâtes","Potage"], prepBase:2, cookBase:12, dressBase:2,
+    ingredients:[{name:"Pâtes d'Italie (vermicelle, etc.)",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},{name:"Consommé ou bouillon",qtyRef:1,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:1}],
+    steps:[{t:"Cuire",d:"Jeter les pâtes dans l'eau bouillante salée 2 secondes, puis les cuire dans le consommé 10-12 min."}], equip:["Casserole"], allerg:["Gluten"], nut:{kcal:80,prot:2,lip:0.5,glu:16}, co2:"0.3 kg", eau:"1 L", env:15 },
+  { id:"perles_japon", nom:"Perles du Japon pour consommé", page:52, source:"Perles du Japon, consommé", tags:["Perles","Potage"], prepBase:2, cookBase:22, dressBase:2,
+    ingredients:[{name:"Perles du Japon",qtyRef:0.07,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.07},{name:"Consommé",qtyRef:1,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:1}],
+    steps:[{t:"Cuire",d:"Cuire 20-25 min dans le consommé."}], equip:["Casserole"], allerg:["Aucun"], nut:{kcal:85,prot:1,lip:0.2,glu:20}, co2:"0.3 kg", eau:"1 L", env:15 },
+  { id:"riz_potage", nom:"Riz pour consommé", page:52, source:"Riz, consommé", tags:["Riz","Potage"], prepBase:5, cookBase:25, dressBase:2,
+    ingredients:[{name:"Riz",qtyRef:0.05,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05},{name:"Consommé",qtyRef:1,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:1}],
+    steps:[{t:"Blanchir",d:"Recouvrir le riz d'eau, bouillir 2 min, égoutter."},{t:"Cuire",d:"Cuire dans le consommé 20-25 min."}], equip:["Casserole"], allerg:["Aucun"], nut:{kcal:120,prot:2,lip:0.3,glu:27}, co2:"0.4 kg", eau:"1.2 L", env:18 },
+  { id:"semoule_potage", nom:"Semoule pour consommé", page:52, source:"Semoule, consommé", tags:["Semoule"], prepBase:2, cookBase:20, dressBase:2,
+    ingredients:[{name:"Semoule",qtyRef:0.03,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.03}],
+    steps:[{t:"Cuire",d:"Cuire 18-20 min dans le consommé."}], equip:["Casserole"], allerg:["Gluten"], nut:{kcal:100,prot:2,lip:0.3,glu:22}, co2:"0.3 kg", eau:"1 L", env:15 },
+  { id:"royale_ordinaire", nom:"Royale ordinaire pour consommé", page:52, source:"Œufs, consommé", tags:["Royale"], prepBase:10, cookBase:15, dressBase:15,
+    ingredients:[{name:"Œuf entier (1), jaunes d'œufs (3)",qtyRef:4,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:4},{name:"Consommé ou bouillon bouillant",qtyRef:0.2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.2}],
+    steps:[{t:"Battre",d:"Battre les œufs, ajouter le consommé bouillant petit à petit, passer à la mousseline."},{t:"Pocher",d:"Verser en petits moules beurrés, pocher au bain-marie 12-15 min (eau ne doit pas bouillir)."},{t:"Détailler",d:"Refroidir, détailler en rondelles ou cubes, tenir au chaud dans du consommé."}], equip:["Moules","Bain-marie"], allerg:["Œufs"], nut:{kcal:80,prot:5,lip:6,glu:1}, co2:"0.5 kg", eau:"0.8 L", env:20 },
+  { id:"pate_chou_profitroles", nom:"Pâte à chou pour profitroles (potages)", page:53, source:"Farine, beurre, œufs", tags:["Pâte à chou","Profitroles"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Eau",qtyRef:0.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.5},{name:"Beurre",qtyRef:0.1,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.1},{name:"Farine tamisée",qtyRef:0.3,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.3},{name:"Œufs (6)",qtyRef:6,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:6}],
+    steps:[{t:"Chauffer",d:"Faire bouillir eau, beurre, sel. Ajouter la farine hors du feu, mélanger, dessécher sur le feu."},{t:"Incorporer les œufs",d:"Hors du feu, incorporer les œufs un à un."},{t:"Cuire",d:"Coucher des petites noisettes sur plaque, cuire au four."}], equip:["Casserole","Four"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:320,prot:7,lip:14,glu:40}, co2:"0.8 kg", eau:"1 L", env:30 },
+  { id:"royale_creme", nom:"Royale à la crème", page:53, source:"Crème, œufs", tags:["Royale","Crème"], prepBase:10, cookBase:15, dressBase:15,
+    ingredients:[{name:"Œuf entier (1), jaunes d'œufs (3)",qtyRef:4,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:4},{name:"Crème fraîche",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Battre",d:"Battre les œufs, délayer avec la crème, assaisonner, passer."},{t:"Pocher",d:"Pocher au bain-marie comme la royale ordinaire."}], equip:["Moules","Bain-marie"], allerg:["Œufs","Lait"], nut:{kcal:180,prot:5,lip:16,glu:2}, co2:"0.7 kg", eau:"0.9 L", env:25 },
+  { id:"royale_creme_riz", nom:"Royale de crème de riz", page:53, source:"Crème de riz, lait, jaunes", tags:["Royale","Riz"], prepBase:10, cookBase:15, dressBase:15,
+    ingredients:[{name:"Crème de riz",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},{name:"Lait",qtyRef:0.05,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.05},{name:"Jaunes d'œufs (4)",qtyRef:4,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:4}],
+    steps:[{t:"Délayer",d:"Délayer la crème de riz avec le lait, ajouter les jaunes, passer, pocher."}], equip:["Moules","Bain-marie"], allerg:["Œufs","Lait"], nut:{kcal:130,prot:4,lip:6,glu:16}, co2:"0.5 kg", eau:"0.8 L", env:22 },
+  { id:"royale_tomate", nom:"Royale de tomate", page:53, source:"Purée de tomate, crème, œufs", tags:["Royale","Tomate"], prepBase:10, cookBase:15, dressBase:15,
+    ingredients:[{name:"Purée de tomate",qtyRef:0.1,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Crème fraîche",qtyRef:0.04,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.04},{name:"Œuf entier (1), jaunes d'œufs (3)",qtyRef:4,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:4}],
+    steps:[{t:"Mélanger",d:"Mélanger purée, crème, sucre, puis lier avec les œufs, passer, pocher."}], equip:["Moules","Bain-marie"], allerg:["Œufs","Lait"], nut:{kcal:100,prot:4,lip:7,glu:6}, co2:"0.5 kg", eau:"0.7 L", env:20 },
+  { id:"royale_volaille", nom:"Royale de volaille", page:53, source:"Blanc de volaille, Béchamel, crème, œufs", tags:["Royale","Volaille"], prepBase:15, cookBase:15, dressBase:15,
+    ingredients:[{name:"Blanc de volaille cuit (60g)",qtyRef:0.06,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.06},{name:"Sauce Béchamel (2c à soupe)",qtyRef:0.03,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.03},{name:"Crème fraîche (2c à soupe)",qtyRef:0.03,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.03},{name:"Œuf, jaunes",qtyRef:3,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:3}],
+    steps:[{t:"Piler",d:"Piler le blanc de volaille, ajouter Béchamel, crème, muscade, puis les œufs, passer, pocher."}], equip:["Mortier","Tamis","Bain-marie"], allerg:["Lait","Œufs","Gluten"], nut:{kcal:120,prot:7,lip:8,glu:3}, co2:"0.7 kg", eau:"1 L", env:28 },
+  { id:"consomme_ailerons", nom:"Consommé aux ailerons de volaille", page:54, source:"Petite Marmite, ailerons farcis, riz", tags:["Consommé","Ailerons"], prepBase:25, cookBase:45, dressBase:10,
+    ingredients:[{name:"Ailerons de volaille (désossés, farcis)",qtyRef:4,unit:"pièces",priceUnit:3,defaultPrice:3,defaultQty:4},{name:"Riz cuit au consommé",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Consommé de petite marmite",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2}],
+    steps:[{t:"Cuire les ailerons",d:"Les cuire dans la marmite (ou à part)."},{t:"Servir",d:"Sortir les ailerons, retirer le fil, les mettre en soupière avec le riz. Verser le consommé bouillant."}], equip:["Marmite"], allerg:["Volaille","Gluten","Lait"], nut:{kcal:150,prot:10,lip:6,glu:14}, co2:"1.2 kg", eau:"2 L", env:40 },
+  { id:"consomme_ancienne", nom:"Consommé à l'ancienne", page:54, source:"Petite Marmite, croûtes, légumes", tags:["Consommé","Ancienne"], prepBase:10, cookBase:10, dressBase:10,
+    ingredients:[{name:"Consommé de petite marmite",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Pain (croûtes)",qtyRef:0.1,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.1}],
+    steps:[{t:"Préparer les croûtes",d:"Tailler des croûtes, les ranger en couronne, garnir le centre de légumes de la marmite."},{t:"Mitonner",d:"Arroser de consommé un peu gras, mitonner 6-8 min, gratiner légèrement."}], equip:["Four","Plat"], allerg:["Gluten"], nut:{kcal:120,prot:5,lip:4,glu:18}, co2:"1 kg", eau:"1.8 L", env:35 },
+  { id:"consomme_aurore", nom:"Consommé aurore", page:54, source:"Tapioca, purée de tomate, jaunes d'œufs durs", tags:["Consommé","Aurore"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Tapioca léger",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},{name:"Purée de tomate (1/4 volume)",qtyRef:0.5,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Préparer le tapioca dans le consommé de petite marmite, ajouter la purée de tomate passée."},{t:"Garnir",d:"Parsemer de jaunes d'œufs durs passés au tamis."}], equip:["Casserole"], allerg:["Œufs"], nut:{kcal:80,prot:2,lip:1,glu:17}, co2:"0.6 kg", eau:"1.2 L", env:25 },
+  { id:"consomme_bonne_femme", nom:"Consommé dit à la bonne femme", page:55, source:"Cous de mouton, orge perlé, légumes", tags:["Consommé","Bonne femme"], prepBase:15, cookBase:90, dressBase:10,
+    ingredients:[{name:"Cous de mouton (2)",qtyRef:0.4,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.4},{name:"Orge perlé",qtyRef:0.2,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.2},{name:"Carotte, céleri, oignon (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25}],
+    steps:[{t:"Cuire",d:"Désosser les cous, ficeler, cuire avec os, orge, légumes, bouquet garni 3h."},{t:"Servir",d:"Détailler la viande en petits carrés, mettre en soupière, verser le bouillon."}], equip:["Marmite"], allerg:["Mouton","Gluten"], nut:{kcal:150,prot:10,lip:7,glu:14}, co2:"1.8 kg", eau:"3 L", env:50 },
+  { id:"consomme_brunoise", nom:"Consommé brunoise", page:55, source:"Légumes en dés, beurre, consommé", tags:["Consommé","Brunoise"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Carotte, navet, poireau, céleri, oignon (300g légumes)",qtyRef:0.3,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.3},{name:"Beurre, sucre",qtyRef:0.05,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.05},{name:"Consommé",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2}],
+    steps:[{t:"Détailler",d:"Tailler les légumes en dés de 3 mm."},{t:"Étuver",d:"Les étuver au beurre avec sel et sucre, mouiller de bouillon, cuire."},{t:"Ajouter",d:"Ajouter au consommé au moment de servir, avec cerfeuil."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:80,prot:2,lip:3,glu:12}, co2:"0.8 kg", eau:"1.5 L", env:30 },
+  { id:"consomme_carmen", nom:"Consommé Carmen", page:55, source:"Petite Marmite, riz, tomate, poivron", tags:["Consommé","Carmen"], prepBase:20, cookBase:30, dressBase:10,
+    ingredients:[{name:"Jeune poulette (petite marmite)",qtyRef:1,unit:"pièce",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Riz (100g)",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Purée de tomate, poivron rouge doux",qtyRef:0.1,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Cuire la poulette",d:"Préparer une petite marmite."},{t:"Cuire le riz",d:"Blondir oignon, ajouter riz, purée de tomate, poivron, mouiller de consommé, cuire 20 min."},{t:"Réunir",d:"Mettre dans la soupière le blanc de poulette en dés, le riz, verser le consommé."}], equip:["Marmite","Casserole"], allerg:["Volaille"], nut:{kcal:180,prot:12,lip:6,glu:22}, co2:"1.5 kg", eau:"2.5 L", env:45 },
+  { id:"consomme_cendrillon", nom:"Consommé Cendrillon", page:56, source:"Consommé Madrilène, truffe, riz, rognons de coq", tags:["Consommé","Cendrillon"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Consommé Madrilène (volaille)",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Truffe (julienne)",qtyRef:0.05,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.05},{name:"Riz cuit (6c à soupe)",qtyRef:0.06,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.06},{name:"Rognons de coq pochés (12)",qtyRef:0.12,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.12}],
+    steps:[{t:"Préparer la garniture",d:"Réunir truffe, riz, rognons."},{t:"Verser",d:"Verser le consommé bouillant."}], equip:["Casserole"], allerg:["Sulfites","Volaille"], nut:{kcal:120,prot:6,lip:4,glu:14}, co2:"1.2 kg", eau:"2 L", env:38 },
+  { id:"consomme_chasseur", nom:"Consommé Chasseur", page:56, source:"Petite Marmite, perdrix ou faisan, orge perlé", tags:["Consommé","Chasseur"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Perdrix ou faisan",qtyRef:1,unit:"pièce",priceUnit:8,defaultPrice:8,defaultQty:1},{name:"Orge perlé cuit",qtyRef:0.06,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.06}],
+    steps:[{t:"Ajouter le gibier",d:"Ajouter la perdrix à la petite marmite."},{t:"Garnir",d:"Mettre dans la soupière la chair de la poitrine en julienne, le blanc de céleri, l'orge perlé, verser le consommé."}], equip:["Marmite","Casserole"], allerg:["Gibier","Gluten"], nut:{kcal:130,prot:12,lip:6,glu:12}, co2:"1.6 kg", eau:"2.5 L", env:42 },
+  { id:"consomme_colbert", nom:"Consommé Colbert", page:56, source:"Consommé, œuf poché, légumes printaniers", tags:["Consommé","Colbert"], prepBase:15, cookBase:8, dressBase:5,
+    ingredients:[{name:"Consommé clarifié",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Œufs frais (1 par personne)",qtyRef:6,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:6},{name:"Légumes printaniers (carottes, navets, céleri, petits pois)",qtyRef:0.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Pocher les œufs",d:"Pocher les œufs."},{t:"Garnir",d:"Mettre dans chaque assiette un œuf poché, des légumes taillés en dés cuits, verser le consommé bouillant."}], equip:["Casserole","Pocheuse"], allerg:["Œufs"], nut:{kcal:110,prot:8,lip:6,glu:6}, co2:"1 kg", eau:"1.8 L", env:35 },
+  { id:"consomme_croute_pot", nom:"Consommé croûte-au-pot", page:56, source:"Petite Marmite, croûtes", tags:["Croûte-au-pot"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Consommé de petite marmite",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Croûtes de flûte",qtyRef:0.1,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.1}],
+    steps:[{t:"Servir",d:"Servir les légumes de la marmite parés à part, les croûtes arrosées de graisse."}], equip:["Marmite"], allerg:["Gluten"], nut:{kcal:100,prot:4,lip:3,glu:16}, co2:"0.9 kg", eau:"1.5 L", env:30 },
+  { id:"consomme_diablotins", nom:"Consommé aux diablotins", page:56, source:"Consommé, petits choux fromagés", tags:["Diablotins"], prepBase:10, cookBase:10, dressBase:5,
+    ingredients:[{name:"Consommé de petite marmite",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Pâte à chou, Béchamel réduite, fromage",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1}],
+    steps:[{t:"Préparer les diablotins",d:"Appareil à chou, masquer de Béchamel réduite au fromage, gratiner. Servir à part."}], equip:["Four"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:150,prot:5,lip:8,glu:16}, co2:"0.8 kg", eau:"1.2 L", env:28 },
+  { id:"consomme_dominicaine", nom:"Consommé dominicaine", page:57, source:"Petite Marmite, pâtes d'Italie, petits pois", tags:["Dominicaine"], prepBase:5, cookBase:8, dressBase:5,
+    ingredients:[{name:"Pâtes d'Italie (petites)",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},{name:"Petits pois frais",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Cuire les pâtes et les petits pois dans le consommé."}], equip:["Casserole"], allerg:["Gluten"], nut:{kcal:100,prot:3,lip:1,glu:20}, co2:"0.6 kg", eau:"1.2 L", env:25 },
+  { id:"consomme_ecossaise", nom:"Consommé à l'écossaise", page:57, source:"Cous de mouton, orge perlé, brunoise", tags:["Écossaise"], prepBase:20, cookBase:90, dressBase:10,
+    ingredients:[{name:"Cous de mouton (pot-au-feu)",qtyRef:0.5,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.5},{name:"Orge perlé cuit, brunoise",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Pot-au-feu avec cous de mouton. Désosser, couper la viande en petits morceaux."},{t:"Servir",d:"Mettre viande, orge et brunoise dans la soupière, verser le bouillon."}], equip:["Marmite"], allerg:["Mouton","Gluten"], nut:{kcal:160,prot:11,lip:8,glu:15}, co2:"1.9 kg", eau:"3 L", env:52 },
+  { id:"consomme_flammarion", nom:"Consommé Flammarion", page:57, source:"Pâtes étoile, petits pois", tags:["Flammarion"], prepBase:5, cookBase:8, dressBase:5,
+    ingredients:[{name:"Pâtes d'Italie en étoile",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},{name:"Petits pois frais",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Cuire les pâtes et les petits pois dans le consommé."}], equip:["Casserole"], allerg:["Gluten"], nut:{kcal:100,prot:3,lip:1,glu:20}, co2:"0.6 kg", eau:"1.2 L", env:25 },
+  { id:"consomme_francillon", nom:"Consommé Francillon", page:57, source:"Petite Marmite, laitues braisées, moelle, tomate", tags:["Francillon"], prepBase:20, cookBase:20, dressBase:10,
+    ingredients:[{name:"Petites demi-laitues braisées",qtyRef:6,unit:"pièces",priceUnit:0.8,defaultPrice:0.8,defaultQty:6},{name:"Moelle pochée (rondelles)",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Coulis de tomate à la glace de viande",qtyRef:0.1,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Dresser",d:"Dresser les laitues sur un plat, sur chacune une rondelle de moelle, saupoudrer de fromage, couvrir de coulis tomaté."},{t:"Servir",d:"Servir le consommé à part, les laitues séparément."}], equip:["Four"], allerg:["Lait","Bœuf"], nut:{kcal:120,prot:5,lip:8,glu:8}, co2:"1.1 kg", eau:"1.8 L", env:35 },
+  { id:"consomme_helene", nom:"Consommé Hélène", page:57, source:"Consommé de poulet au suc de tomate, royale, profitroles", tags:["Hélène"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Consommé de poulet au suc de tomate",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Royale ordinaire (darioles)",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},{name:"Profitroles au parmesan",qtyRef:0.05,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.05}],
+    steps:[{t:"Garnir",d:"Ajouter les rondelles de royale et les profitroles."}], equip:["Casserole"], allerg:["Œufs","Gluten","Lait"], nut:{kcal:110,prot:4,lip:4,glu:14}, co2:"0.8 kg", eau:"1.5 L", env:30 },
+  { id:"consomme_isabella", nom:"Consommé Isabella", page:58, source:"Consommé de volaille, quenelles, petits pois, truffe", tags:["Isabella"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Quenelles de volaille à la crème",qtyRef:0.1,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.1},{name:"Petits pois à l'anglaise",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1},{name:"Julienne de truffe",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02}],
+    steps:[{t:"Garnir",d:"Réunir quenelles, petits pois, truffe, verser le consommé."}], equip:["Casserole"], allerg:["Volaille","Lait","Œufs"], nut:{kcal:100,prot:6,lip:5,glu:8}, co2:"0.9 kg", eau:"1.6 L", env:32 },
+  { id:"consomme_jeannette", nom:"Consommé Jeannette", page:58, source:"Petite Marmite, œufs pochés, petits pois, pâtes", tags:["Jeannette"], prepBase:15, cookBase:8, dressBase:5,
+    ingredients:[{name:"Petits œufs pochés",qtyRef:6,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:6},{name:"Petits pois",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1},{name:"Pâtes d'Italie",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06}],
+    steps:[{t:"Garnir",d:"Mettre les œufs pochés, petits pois et pâtes cuits dans la soupière, verser le consommé."}], equip:["Casserole","Pocheuse"], allerg:["Œufs","Gluten"], nut:{kcal:130,prot:7,lip:5,glu:14}, co2:"0.9 kg", eau:"1.6 L", env:32 },
+  { id:"consomme_julienne", nom:"Consommé Julienne", page:58, source:"Légumes en julienne, consommé", tags:["Julienne"], prepBase:20, cookBase:20, dressBase:5,
+    ingredients:[{name:"Carotte (125g), navet (100g), poireau, céleri, oignon, chou (70g)",qtyRef:0.4,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.4},{name:"Beurre, sucre, consommé",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2}],
+    steps:[{t:"Tailler",d:"Tailler les légumes en julienne (sauf chou)."},{t:"Étuver",d:"Les étuver au beurre avec sel et sucre, mouiller de consommé, ajouter le chou blanchi."},{t:"Finition",d:"Ajouter le reste du consommé, oseille, laitue, cerfeuil."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:70,prot:2,lip:3,glu:10}, co2:"0.7 kg", eau:"1.4 L", env:28 },
+  { id:"consomme_lorette", nom:"Consommé Lorette", page:58, source:"Petite Marmite, royale au perdreau, truffe, champignons", tags:["Lorette"], prepBase:20, cookBase:10, dressBase:5,
+    ingredients:[{name:"Royale à la purée de perdreau",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Julienne de truffe et champignons",qtyRef:0.05,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.05},{name:"Frontignan",qtyRef:0.03,unit:"L",priceUnit:12,defaultPrice:12,defaultQty:0.03}],
+    steps:[{t:"Préparer",d:"Réunir la royale, la julienne chauffée au Frontignan, verser le consommé."}], equip:["Casserole"], allerg:["Gibier","Œufs","Lait","Sulfites"], nut:{kcal:110,prot:6,lip:5,glu:9}, co2:"1.1 kg", eau:"1.8 L", env:36 },
+  { id:"consomme_madrilene", nom:"Consommé Madrilène", page:58, source:"Consommé de volaille, tomates (avec pelures)", tags:["Madrilène"], prepBase:15, cookBase:40, dressBase:5,
+    ingredients:[{name:"Consommé de volaille",qtyRef:2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:2},{name:"Tomates bien mûres (3-4)",qtyRef:0.4,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.4}],
+    steps:[{t:"Clarifier",d:"Ajouter les tomates hachées (avec pelures) à la clarification."},{t:"Servir",d:"Servir chaud ou froid, avec paillettes au parmesan."}], equip:["Casserole","Serviette"], allerg:["Volaille"], nut:{kcal:60,prot:3,lip:1,glu:8}, co2:"0.8 kg", eau:"1.3 L", env:28 }
+];
+
+// ========== FONCTIONS DYNAMIQUES (identiques aux modèles précédents) ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <tr><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Les potages clairs doivent être servis bouillants. Les royales se pochent au bain-marie. Les consommés peuvent être clarifiés ou servis nature.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Viandes et légumes frais. • Clarification soignée. • Température de service élevée. • Traçabilité des lots.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('itemSelect');
+  itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', (e) => loadItem(e.target.value));
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
