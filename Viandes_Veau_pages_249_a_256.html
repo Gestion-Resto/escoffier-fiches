@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Viandes – Veau – Auguste Escoffier (p.249-256) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Viandes · Veau · pages 249 à 256 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🐄 Veau (langue, longe, mou, noix, escalopes, pieds)</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+<div id="anchor-target" style="position:absolute;top:0;left:0;"></div>
+
+  <div class="footer">© gestionresto.fr – 21 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES VEAU pages 249-256 ==========
+const itemsData = [
+  { id:"langue_veau_braisee", nom:"Langue de veau braisée", page:250, source:"Braisée au vin blanc, garniture au choix", tags:["Langue","Braised"], prepBase:20, cookBase:90, dressBase:10,
+    ingredients:[{name:"Langues de veau",qtyRef:0.8,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.8},{name:"Débris de lard, oignons, carottes",qtyRef:0.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.2},{name:"Vin blanc",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},{name:"Bouillon",qtyRef:0.5,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.5}],
+    steps:[{t:"Blanchir",d:"Cuire les langues 15 min à l'eau bouillante, égoutter, rafraîchir."},{t:"Braiser",d:"Mettre dans une casserole avec débris de lard, oignons, carottes. Mouiller mi-hauteur vin blanc et bouillon, réduire complètement. Ajouter bouillon à hauteur, bouquet garni, cuire jusqu'aux 3/4."},{t:"Peler et finir",d:"Égoutter, enlever les peaux, remettre dans leur jus, réduire presque à glace. Dresser, passer le fonds."}], equip:["Casserole","Four"], allerg:["Sulfites"], nut:{kcal:260,prot:24,lip:17,glu:2}, co2:"2.4 kg", eau:"340 L", env:58 },
+  { id:"longe_veau_rotie", nom:"Longe de veau rôtie", page:250, source:"Rôtie avec rognon, légumes variés", tags:["Longe","Rôtie"], prepBase:15, cookBase:40, dressBase:10,
+    ingredients:[{name:"Longe de veau (avec rognon)",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2}],
+    steps:[{t:"Rôtir",d:"Rôtir la longe non désossée, avec le rognon non dégraissé."},{t:"Servir",d:"Accompagner de légumes au choix (concombres, épinards, laitues braisées, tomates farcies)."}], equip:["Four","Lèchefrite"], allerg:["Aucun"], nut:{kcal:300,prot:25,lip:22,glu:1}, co2:"2.9 kg", eau:"420 L", env:65 },
+  { id:"mou_veau_civet", nom:"Mou de veau en civet", page:250, source:"Civet (comme le lièvre)", tags:["Mou","Civet"], prepBase:20, cookBase:45, dressBase:5,
+    ingredients:[{name:"Mou de veau",qtyRef:0.8,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.8},{name:"Vin rouge, oignons, bouquet garni",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Battre le mou pour chasser l'air, détailler en morceaux de 50g, assaisonner."},{t:"Cuire",d:"Procéder comme pour un civet de lièvre (rissoler, flamber, mouiller au vin rouge, cuire longuement)."}], equip:["Cocotte"], allerg:["Sulfites"], nut:{kcal:210,prot:18,lip:12,glu:4}, co2:"1.9 kg", eau:"280 L", env:52 },
+  { id:"mou_veau_provencale", nom:"Mou de veau à la Provençale", page:250, source:"Tomates, vin blanc, pommes de terre", tags:["Mou","Provençale"], prepBase:20, cookBase:35, dressBase:5,
+    ingredients:[{name:"Mou de veau",qtyRef:0.8,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.8},{name:"Huile d'olive",qtyRef:0.08,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.08},{name:"Oignon haché",qtyRef:0.06,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.06},{name:"Vin blanc",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},{name:"Tomates pelées",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1}],
+    steps:[{t:"Préparer",d:"Détailler le mou en morceaux, cuire 25-30 min à l'eau salée. Égoutter, éponger, assaisonner, fariner."},{t:"Sauter",d:"Faire chauffer l'huile, blondir l'oignon, ajouter le mou, sauter. Mouiller avec vin blanc, tomates, ail, persil. Laisser mijoter 30 min."},{t:"Servir",d:"Accompagner de pommes de terre cuites à l'eau."}], equip:["Poêle","Casserole"], allerg:["Gluten","Sulfites"], nut:{kcal:230,prot:17,lip:12,glu:12}, co2:"2 kg", eau:"300 L", env:54 },
+  { id:"noix_veau_braisee", nom:"Noix de veau braisée", page:251, source:"Braisée, glacée, service à la cuillère", tags:["Noix","Braisée"], prepBase:20, cookBase:90, dressBase:10,
+    ingredients:[{name:"Noix de veau (1,2 kg)",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2},{name:"Débris et couennes de lard",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},{name:"Bouillon",qtyRef:0.5,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.5}],
+    steps:[{t:"Parer",d:"Parer la noix, la laisser la tétine."},{t:"Braiser",d:"Déposer dans une casserole avec débris de lard, oignons, carottes, bouquet garni. Mouiller avec bouillon, réduire, mouiller à mi-hauteur, cuire au four en arrosant souvent."},{t:"Glacer",d:"Retirer le couvercle, faire glacer la surface, dresser avec son jus passé."}], equip:["Casserole","Four"], allerg:["Aucun"], nut:{kcal:310,prot:26,lip:22,glu:2}, co2:"2.8 kg", eau:"400 L", env:64 },
+  { id:"noix_veau_surprise", nom:"Noix de veau en surprise", page:252, source:"Creusée, farce à la Béchamel et truffe", tags:["Noix","Surprise"], prepBase:30, cookBase:90, dressBase:15,
+    ingredients:[{name:"Noix de veau (non piquée)",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2},{name:"Lamelles de truffe",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},{name:"Sauce Béchamel à la crème",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Braiser",d:"Braiser la noix sans la piquer, la tenir un peu ferme. Laisser refroidir."},{t:"Creuser",d:"Trancher horizontalement aux 3/4, creuser une caisse (épaisseur 2 cm)."},{t:"Farcir",d:"Détailler la viande retirée en petites escalopes, ajouter truffe, lier à la Béchamel. Remplir la caisse, refermer."}], equip:["Four","Couteau"], allerg:["Gluten","Lait"], nut:{kcal:320,prot:24,lip:22,glu:4}, co2:"2.9 kg", eau:"410 L", env:66 },
+  { id:"noix_veau_froide_gelee", nom:"Noix de veau froide à la gelée", page:252, source:"Lardée, braisée avec pied de veau, gelée", tags:["Noix","Froide"], prepBase:25, cookBase:100, dressBase:30,
+    ingredients:[{name:"Noix de veau",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2},{name:"Lard et jambon (filets)",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Pied de veau",qtyRef:1,unit:"pièce",priceUnit:3,defaultPrice:3,defaultQty:1},{name:"Vin blanc",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2}],
+    steps:[{t:"Larder",d:"Larder la noix avec des filets de lard et jambon."},{t:"Braiser",d:"Braiser avec le pied de veau et vin blanc."},{t:"Geler",d:"Mettre la noix en terrine avec son fonds passé, laisser refroidir. Démouler au moment de servir, entourer de carottes et tartelettes d'asperges."}], equip:["Terraine","Four"], allerg:["Gélatine","Sulfites"], nut:{kcal:320,prot:28,lip:24,glu:2}, co2:"2.9 kg", eau:"430 L", env:68 },
+  { id:"escalopes_veau_anglaise", nom:"Escalopes de veau à l'Anglaise", page:253, source:"Panées, jambon, petits pois", tags:["Escalopes","Anglaise"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Escalopes de veau (100g/pièce)",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Farine, œuf, mie de pain",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Tranches de jambon",qtyRef:0.1,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.1}],
+    steps:[{t:"Paner",d:"Assaisonner, fariner, tremper dans œuf battu, puis mie de pain."},{t:"Cuire",d:"Cuire au beurre clarifié."},{t:"Dresser",d:"Dresser en turban en intercalant des tranches de jambon sautées. Servir avec petits pois à l'anglaise."}], equip:["Poêle"], allerg:["Gluten","Œufs","Lait","Porc"], nut:{kcal:380,prot:27,lip:26,glu:14}, co2:"2.6 kg", eau:"380 L", env:62 },
+  { id:"escalopes_veau_milanaise", nom:"Escalopes de veau Milanaise", page:253, source:"Parmesan, macaroni", tags:["Escalopes","Milanaise"], prepBase:15, cookBase:12, dressBase:8,
+    ingredients:[{name:"Escalopes de veau",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Farine, œuf, mie de pain mélangée de parmesan",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1},{name:"Macaroni à la Milanaise",qtyRef:0.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Paner",d:"Paner les escalopes avec la mie de pain au parmesan."},{t:"Cuire",d:"Cuire au beurre clarifié."},{t:"Dresser",d:"Dresser en turban, garnir le centre de macaroni à la milanaise."}], equip:["Poêle","Casserole"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:420,prot:25,lip:28,glu:28}, co2:"2.7 kg", eau:"390 L", env:64 },
+  { id:"escalopes_veau_sautees", nom:"Escalopes de veau sautées", page:253, source:"Sautées au beurre, glace de viande", tags:["Escalopes","Sautées"], prepBase:10, cookBase:8, dressBase:5,
+    ingredients:[{name:"Escalopes de veau (longe ou carré)",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04},{name:"Glace de viande",qtyRef:0.02,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.02}],
+    steps:[{t:"Assaisonner",d:"Assaisonner les escalopes, les passer dans la farine."},{t:"Sauter",d:"Les cuire au beurre sans le brûler, obtenir une belle couleur brune."},{t:"Sauce",d:"Déglacer avec bouillon et glace de viande, verser sur les escalopes."}], equip:["Poêle"], allerg:["Gluten","Lait"], nut:{kcal:360,prot:23,lip:28,glu:4}, co2:"2.6 kg", eau:"380 L", env:62 },
+  { id:"fricandeau", nom:"Fricandeau (veau piqué braisé)", page:254, source:"Noix de veau piquée, braisée", tags:["Fricandeau"], prepBase:20, cookBase:90, dressBase:10,
+    ingredients:[{name:"Sous-noix ou tranche de noix (4 cm épaisseur)",qtyRef:0.8,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.8},{name:"Lard pour piquer",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Piquer",d:"Battre la surface, piquer finement."},{t:"Braiser",d:"Braiser comme la noix de veau, cuire à fond."},{t:"Garnir",d:"Garnitures applicables à la noix de veau."}], equip:["Braisière"], allerg:["Aucun"], nut:{kcal:320,prot:27,lip:23,glu:1}, co2:"2.8 kg", eau:"410 L", env:66 },
+  { id:"fricandeau_froid", nom:"Fricandeau froid", page:254, source:"Braisé, gelée, salade", tags:["Fricandeau","Froid"], prepBase:20, cookBase:90, dressBase:30,
+    ingredients:[{name:"Fricandeau cuit",qtyRef:0.8,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.8},{name:"Fonds de braisage dégraissé",qtyRef:0.4,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.4}],
+    steps:[{t:"Cuire",d:"Cuire le fricandeau."},{t:"Mettre en plat",d:"Le déposer dans un plat en porcelaine, verser le fonds de braisage dégraissé."},{t:"Geler",d:"Laisser refroidir, la gelée se forme. Servir avec salade verte."}], equip:["Plat"], allerg:["Gélatine"], nut:{kcal:300,prot:25,lip:21,glu:1}, co2:"2.7 kg", eau:"390 L", env:62 },
+  { id:"grenadins", nom:"Grenadins de veau", page:254, source:"Escalopes épaisses piquées, braisées", tags:["Grenadins"], prepBase:20, cookBase:45, dressBase:10,
+    ingredients:[{name:"Escalopes épaisses (filet)",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Lard pour piquer",qtyRef:0.04,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.04}],
+    steps:[{t:"Piquer",d:"Piquer finement les escalopes."},{t:"Braiser",d:"Braiser comme le fricandeau, glacer au dernier moment."},{t:"Servir",d:"Garnitures applicables aux escalopes."}], equip:["Braisière"], allerg:["Aucun"], nut:{kcal:320,prot:26,lip:23,glu:1}, co2:"2.7 kg", eau:"390 L", env:64 },
+  { id:"noisettes_veau", nom:"Noisettes et mignonnettes de veau", page:255, source:"Filet sauté, garnitures variées", tags:["Noisettes","Sauté"], prepBase:10, cookBase:8, dressBase:5,
+    ingredients:[{name:"Noisettes de veau (filet, rondes)",qtyRef:0.5,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.5},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04}],
+    steps:[{t:"Sauter",d:"Sauter les noisettes au beurre."},{t:"Servir",d:"Garnitures comme pour escalopes (chicorée, petits pois, purée, etc.)."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:290,prot:22,lip:22,glu:1}, co2:"2.5 kg", eau:"360 L", env:60 },
+  { id:"pieds_veau_cendrillon", nom:"Pieds de veau Cendrillon", page:255, source:"Désossés, farcis, grillés", tags:["Pieds","Cendrillon"], prepBase:30, cookBase:20, dressBase:10,
+    ingredients:[{name:"Pieds de veau cuits",qtyRef:2,unit:"pièces",priceUnit:3.5,defaultPrice:3.5,defaultQty:2},{name:"Truffe hachée",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02},{name:"Chair à saucisse",qtyRef:0.2,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.2},{name:"Crépine",qtyRef:1,unit:"feuille",priceUnit:1,defaultPrice:1,defaultQty:1}],
+    steps:[{t:"Préparer",d:"Cuire les pieds, les détailler en petits dés, mélanger avec truffe et chair à saucisse."},{t:"Former",d:"Former des côtelettes de 60-70g, envelopper de crépine."},{t:"Griller",d:"Arroser de beurre fondu, saupoudrer de mie de pain, griller doucement. Servir avec purée de pommes de terre."}], equip:["Grill","Casserole"], allerg:["Porc","Gluten","Lait"], nut:{kcal:310,prot:20,lip:22,glu:6}, co2:"2.3 kg", eau:"340 L", env:58 },
+  { id:"pieds_veau_grilles", nom:"Pieds de veau grillés", page:255, source:"Moutarde, mie de pain, sauce piquante", tags:["Pieds","Grillés"], prepBase:10, cookBase:15, dressBase:5,
+    ingredients:[{name:"Pieds de veau cuits",qtyRef:2,unit:"pièces",priceUnit:3.5,defaultPrice:3.5,defaultQty:2},{name:"Moutarde",qtyRef:0.01,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.01},{name:"Beurre, mie de pain",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Égoutter les pieds, les saupoudrer légèrement de moutarde, arroser de beurre."},{t:"Paner",d:"Les passer dans la mie de pain."},{t:"Griller",d:"Griller à feu modéré. Servir avec sauce piquante ou Diable."}], equip:["Grill"], allerg:["Moutarde","Gluten","Lait"], nut:{kcal:280,prot:18,lip:20,glu:6}, co2:"2.2 kg", eau:"320 L", env:56 },
+  { id:"pieds_veau_provencale", nom:"Pieds de veau Provençale", page:255, source:"Tomates, vin blanc, pommes de terre", tags:["Pieds","Provençale"], prepBase:20, cookBase:35, dressBase:5,
+    ingredients:[{name:"Pieds de veau cuits (2)",qtyRef:2,unit:"pièces",priceUnit:3.5,defaultPrice:3.5,defaultQty:2},{name:"Huile d'olive",qtyRef:0.12,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.12},{name:"Vin blanc",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},{name:"Tomates pelées (1 kg)",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1}],
+    steps:[{t:"Détailler",d:"Détailler les pieds cuits en grosse julienne, les passer dans la farine."},{t:"Rissoler",d:"Chauffer l'huile, rissoler les pieds, mouiller de vin blanc, ajouter tomates, ail, persil. Mijoter 30-35 min."},{t:"Servir",d:"Accompagner de pommes de terre cuites à l'eau."}], equip:["Poêle"], allerg:["Gluten","Sulfites"], nut:{kcal:290,prot:19,lip:18,glu:14}, co2:"2.3 kg", eau:"340 L", env:58 },
+  { id:"pieds_veau_tyrolienne", nom:"Pieds de veau Tyrolienne", page:256, source:"Oignons, vinaigre, tomates", tags:["Pieds","Tyrolienne"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Pieds de veau cuits (2)",qtyRef:2,unit:"pièces",priceUnit:3.5,defaultPrice:3.5,defaultQty:2},{name:"Huile d'olive",qtyRef:0.1,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Oignon haché",qtyRef:0.1,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.1},{name:"Vinaigre",qtyRef:0.05,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.05},{name:"Tomates pelées",qtyRef:0.8,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.8}],
+    steps:[{t:"Rissoler",d:"Faire roussir l'oignon à l'huile, ajouter les pieds détaillés, rissoler."},{t:"Déglacer",d:"Mouiller de vinaigre, laisser réduire, ajouter tomates, ail, persil."},{t:"Mijoter",d:"Mijoter 30 min. Servir chaud ou froid en hors-d'œuvre."}], equip:["Poêle"], allerg:["Sulfites"], nut:{kcal:280,prot:18,lip:19,glu:12}, co2:"2.2 kg", eau:"330 L", env:56 },
+  { id:"pieds_veau_hors_oeuvre", nom:"Pieds de veau pour hors-d'œuvre", page:256, source:"Cuits, émincés, condimentés", tags:["Pieds","Hors-d'œuvre"], prepBase:15, cookBase:60, dressBase:10,
+    ingredients:[{name:"Pieds de veau",qtyRef:2,unit:"pièces",priceUnit:3.5,defaultPrice:3.5,defaultQty:2},{name:"Vinaigre, huile, herbes",qtyRef:0.1,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Cuire les pieds très cuits."},{t:"Émincer",d:"Les détailler en petites lanières."},{t:"Condimenter",d:"Assaisonner à volonté, servir froid."}], equip:["Casserole"], allerg:["Aucun"], nut:{kcal:240,prot:18,lip:17,glu:2}, co2:"2 kg", eau:"300 L", env:54 },
+  { id:"poitrine_veau_farcie", nom:"Poitrine de veau farcie", page:256, source:"Désossée, farce à la saucisse, braisée", tags:["Poitrine","Farcie"], prepBase:30, cookBase:210, dressBase:15,
+    ingredients:[{name:"Poitrine de veau (5 kg)",qtyRef:5,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:5},{name:"Chair à saucisse fine",qtyRef:1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:1},{name:"Mie de pain humectée",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2},{name:"Persil, estragon, œufs",qtyRef:0.05,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Désosser la poitrine, ouvrir en poche."},{t:"Farcir",d:"Mélanger la farce (chair à saucisse, mie, herbes, œufs). Farcir, recoudre."},{t:"Braiser",d:"Braiser doucement à court-mouillement, four modéré, 3h30 à 4h."}], equip:["Braisière","Four"], allerg:["Gluten","Œufs","Porc"], nut:{kcal:340,prot:24,lip:24,glu:6}, co2:"3.5 kg", eau:"500 L", env:72 }
+];
+
+// ========== FONCTIONS DYNAMIQUES (identiques au modèle) ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  document.getElementById('anchor-target').id = 'fiche-' + item.id;
+  if(history.replaceState) history.replaceState(null, '', '#fiche-' + item.id);
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th><tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Le veau se prête aux cuissons longues (braisage) comme aux cuissons rapides (sauté). Les pieds de veau et le mou demandent une cuisson soignée.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Veau frais de qualité. • Cuisson à cœur pour les abats. • Respect de la chaîne du froid. • Traçabilité des lots.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('itemSelect');
+  itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', (e) => loadItem(e.target.value));
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>

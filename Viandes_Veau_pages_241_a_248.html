@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Viandes – Veau – Auguste Escoffier (p.241-248) | gestionresto.fr</title>
+  <style>
+    /* --- Styles rigoureusement identiques au modèle validé --- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.5rem 1.75rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Viandes · Veau · pages 241 à 248 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🐄 Veau (abats, côtes, épaule, foie)</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+<div id="anchor-target" style="position:absolute;top:0;left:0;"></div>
+
+  <div class="footer">© gestionresto.fr – 24 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES EXCLUSIVES – VEAU (pages 241-248) issues du scan ==========
+const itemsData = [
+  { id:"amourettes_tosca_timbale", nom:"Timbale d'amourettes Tosca", page:241, source:"Amourettes, queues d'écrevisses, truffe, coquillettes", tags:["Amourettes","Tosca","Timbale"], prepBase:25, cookBase:20, dressBase:10,
+    ingredients:[{name:"Amourettes pochées (tronçons)",qtyRef:0.4,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.4},{name:"Queues d'écrevisses (24)",qtyRef:0.15,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.15},{name:"Truffe lamelles",qtyRef:0.1,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.1},{name:"Coquillettes (macaroni)",qtyRef:0.15,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.15},{name:"Beurre, parmesan, Béchamel",qtyRef:0.1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.1}],
+    steps:[{t:"Préparer le ragoût",d:"Cuire les amourettes avec beurre, queues d'écrevisses et truffes. Enrober de sauce Béchamel à la crème."},{t:"Cuire les coquillettes",d:"Pocher les coquillettes à l'eau salée, les lier avec beurre, parmesan et Béchamel."},{t:"Dresser en timbale",d:"Alterner couches de coquillettes et ragoût, terminer par le ragoût."}], equip:["Casserole","Timbale"], allerg:["Crustacés","Gluten","Lait"], nut:{kcal:340,prot:18,lip:20,glu:28}, co2:"2.2 kg", eau:"330 L", env:58 },
+  { id:"cervelle_beatrice", nom:"Cervelle Béatrice", page:242, source:"Cervelle, foie gras truffé, panée, pointes d'asperges", tags:["Cervelle","Béatrice"], prepBase:25, cookBase:12, dressBase:10,
+    ingredients:[{name:"Cervelle pochée",qtyRef:0.3,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.3},{name:"Parfait de foie gras truffé",qtyRef:0.1,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.1},{name:"Sauce Béchamel",qtyRef:0.08,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.08},{name:"Farine, œuf, mie de pain",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},{name:"Pointes d'asperges",qtyRef:0.15,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.15}],
+    steps:[{t:"Préparer l'appareil",d:"Détailler la cervelle en petits dés, mélanger avec le foie gras et la Béchamel."},{t:"Former les palets",d:"Former des boules, les aplatir en palets (1,5 cm), les paner (farine, œuf, mie de pain)."},{t:"Cuire",d:"Les colorer au beurre clarifié des deux côtés. Dresser en couronne, garnir le centre de pointes d'asperges au beurre."}], equip:["Poêle","Planche"], allerg:["Gluten","Œufs","Lait","Foie gras"], nut:{kcal:380,prot:16,lip:30,glu:18}, co2:"2.5 kg", eau:"350 L", env:64 },
+  { id:"cervelle_beurre_noir", nom:"Cervelle au beurre noir (ou noisette)", page:242, source:"Cervelle pochée, beurre noir, persil, vinaigre", tags:["Cervelle","Beurre noir"], prepBase:10, cookBase:15, dressBase:5,
+    ingredients:[{name:"Cervelle de veau",qtyRef:0.4,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.4},{name:"Beurre",qtyRef:0.08,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.08},{name:"Vinaigre",qtyRef:0.02,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.02}],
+    steps:[{t:"Cuire la cervelle",d:"Pocher la cervelle au court-bouillon vinaigré, l'égoutter, l'escaloper."},{t:"Préparer le beurre noir",d:"Faire chauffer le beurre jusqu'à noisette, y jeter du persil."},{t:"Dresser",d:"Dresser les escalopes, verser le beurre noir, ajouter un filet de vinaigre."}], equip:["Casserole","Poêle"], allerg:["Lait","Sulfites"], nut:{kcal:290,prot:18,lip:23,glu:2}, co2:"1.5 kg", eau:"230 L", env:50 },
+  { id:"cervelle_mireille", nom:"Cervelle Mireille", page:242, source:"Escalopes colorées, palets de semoule, truffe, gratin", tags:["Cervelle","Mireille"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Cervelle pochée",qtyRef:0.4,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.4},{name:"Farine",qtyRef:0.02,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.02},{name:"Palets de semoule",qtyRef:0.3,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.3},{name:"Truffe (lamelles)",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},{name:"Sauce Béchamel, fromage râpé",qtyRef:0.15,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.15}],
+    steps:[{t:"Préparer les escalopes",d:"Escaloper la cervelle, passer dans la farine, colorer au beurre."},{t:"Monter",d:"Dresser les escalopes sur des palets de semoule colorés. Déposer une lame de truffe sur chaque."},{t:"Gratiner",d:"Masquer de Béchamel, saupoudrer de fromage, arroser de beurre, glacer à la salamandre. Garnir de pointes d'asperges."}], equip:["Poêle","Salamandre"], allerg:["Gluten","Lait"], nut:{kcal:320,prot:17,lip:18,glu:22}, co2:"2 kg", eau:"300 L", env:56 },
+  { id:"vol_au_vent_cervelle_oeufs", nom:"Vol-au-vent de cervelle aux œufs", page:242, source:"Cervelle, œufs durs, truffe, sauce Béchamel", tags:["Vol-au-vent","Cervelle"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Cervelles pochées (1-2)",qtyRef:0.4,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.4},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04},{name:"Œufs durs",qtyRef:6,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:6},{name:"Lamelles de truffe",qtyRef:0.03,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.03},{name:"Sauce Béchamel à la crème",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Escaloper les cervelles, les déposer dans un sautoir avec beurre. Ajouter les œufs durs en rondelles et les truffes."},{t:"Lier",d:"Enrober de sauce Béchamel à la crème."},{t:"Garnir",d:"Garnir une croûte de vol-au-vent chaude. Servir aussitôt."}], equip:["Sautoir","Four"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:360,prot:20,lip:24,glu:18}, co2:"2.2 kg", eau:"320 L", env:58 },
+  { id:"carre_veau_rot", nom:"Carré de veau rôti", page:243, source:"Rôti, jus déglacé, garniture au choix", tags:["Carré","Veau"], prepBase:15, cookBase:40, dressBase:10,
+    ingredients:[{name:"Carré de veau (1,2 kg)",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2},{name:"Beurre ou graisse",qtyRef:0.05,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.05},{name:"Jus de veau (débris)",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Rôtir",d:"Rôtir le carré de veau au four, en l'arrosant."},{t:"Déglacer",d:"Déglacer avec un jus préparé avec des débris de veau."},{t:"Servir",d:"Ne pas dégraisser complètement le jus. Accompagner de garniture au choix (légumes, pâtes)."}], equip:["Four","Lèchefrite"], allerg:["Aucun"], nut:{kcal:320,prot:24,lip:24,glu:1}, co2:"3 kg", eau:"450 L", env:68 },
+  { id:"coeur_veau_bourgeoise", nom:"Cœur de veau à la bourgeoise", page:243, source:"Coloré, braisé avec oignons, carottes, vin", tags:["Cœur","Bourgeoise"], prepBase:15, cookBase:90, dressBase:10,
+    ingredients:[{name:"Cœur de veau",qtyRef:0.6,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.6},{name:"Graisse de veau",qtyRef:0.03,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.03},{name:"Vin blanc ou rouge",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2},{name:"Petits oignons (12), carottes (24)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Bouquet garni, bouillon",qtyRef:0.5,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.5}],
+    steps:[{t:"Colorer",d:"Faire colorer le cœur dans la graisse, assaisonner."},{t:"Braiser",d:"Mouiller de vin, ajouter oignons, carottes, bouquet garni, bouillon. Cuire à couvert 1h30."},{t:"Servir",d:"Dresser avec la garniture."}], equip:["Cocotte","Four"], allerg:["Sulfites"], nut:{kcal:280,prot:22,lip:18,glu:8}, co2:"2.4 kg", eau:"360 L", env:60 },
+  { id:"cote_veau_bordelaise", nom:"Côte de veau Bordelaise", page:244, source:"Sautée, oignons glacés, dés de pommes de terre, artichauts", tags:["Côte","Bordelaise"], prepBase:15, cookBase:15, dressBase:5,
+    ingredients:[{name:"Côte de veau (200g)",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Beurre",qtyRef:0.03,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.03},{name:"Vin blanc",qtyRef:0.05,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.05},{name:"Glace de viande",qtyRef:0.01,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.01},{name:"Petits oignons glacés, pommes de terre en dés, fonds d'artichauts",qtyRef:0.2,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.2}],
+    steps:[{t:"Sauter",d:"Sauter la côte de veau au beurre."},{t:"Déglacer",d:"Déglacer avec vin blanc, glace de viande, bouillon."},{t:"Garnir",d:"Entourer d'oignons glacés, dés de pommes de terre, artichauts sautés. Verser le jus."}], equip:["Poêle"], allerg:["Sulfites","Lait"], nut:{kcal:450,prot:26,lip:34,glu:12}, co2:"2.9 kg", eau:"420 L", env:66 },
+  { id:"cote_veau_cocotte_paysanne", nom:"Côte de veau en cocotte à la paysanne", page:244, source:"Cocotte, légumes frais (oignons, carottes, pommes de terre, petits pois)", tags:["Côte","Paysanne"], prepBase:20, cookBase:25, dressBase:5,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Petits oignons, carottes nouvelles, pommes de terre",qtyRef:0.3,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3},{name:"Petits pois",qtyRef:0.1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.1},{name:"Beurre, bouquet garni",qtyRef:0.03,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.03}],
+    steps:[{t:"Sauter",d:"Sauter la côte de veau, la déposer en cocotte."},{t:"Cuire les légumes",d:"Cuire les légumes avec un peu d'eau, beurre et bouquet garni."},{t:"Réunir",d:"Verser le tout dans la cocotte avec le déglaçage."}], equip:["Cocotte","Casserole"], allerg:["Lait"], nut:{kcal:420,prot:24,lip:28,glu:22}, co2:"2.8 kg", eau:"400 L", env:64 },
+  { id:"cote_veau_froide", nom:"Côte de veau froide", page:244, source:"Braisée, gelée, salade", tags:["Côte","Froide"], prepBase:15, cookBase:60, dressBase:30,
+    ingredients:[{name:"Côte de veau",qtyRef:0.6,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.6},{name:"Fonds de braisage",qtyRef:0.5,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.5}],
+    steps:[{t:"Braiser",d:"Braiser la ou les côtes comme la noix de veau."},{t:"Refroidir",d:"Laisser refroidir dans le fonds de braisage dégraissé."},{t:"Servir",d:"Le fonds prend en gelée. Accompagner d'une salade."}], equip:["Braisière","Plat creux"], allerg:["Gélatine"], nut:{kcal:310,prot:23,lip:23,glu:2}, co2:"2.7 kg", eau:"390 L", env:62 },
+  { id:"cote_veau_marquise", nom:"Côte de veau Marquise", page:244, source:"Madère, truffe, foie gras, crème, pointes d'asperges", tags:["Côte","Marquise"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Madère",qtyRef:0.02,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.02},{name:"Truffe (julienne)",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02},{name:"Glace de viande, crème fraîche",qtyRef:0.05,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.05},{name:"Parfait de foie gras",qtyRef:0.02,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.02}],
+    steps:[{t:"Sauter",d:"Sauter la côte."},{t:"Sauce",d:"Déglacer au madère, ajouter truffe, glace, crème, puis passer au tamis avec le foie gras."},{t:"Servir",d:"Napper la côte, accompagner de pointes d'asperges."}], equip:["Poêle","Tamis"], allerg:["Lait","Sulfites","Foie gras"], nut:{kcal:480,prot:25,lip:38,glu:5}, co2:"3.1 kg", eau:"450 L", env:70 },
+  { id:"cote_veau_milanaise", nom:"Côte de veau Milanaise", page:245, source:"Panée, macaroni au parmesan, truffe, langue, sauce tomate", tags:["Côte","Milanaise"], prepBase:20, cookBase:15, dressBase:10,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Farine, œuf, mie de pain",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},{name:"Macaroni",qtyRef:0.15,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.15},{name:"Parmesan, beurre",qtyRef:0.05,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.05},{name:"Truffe, champignon, langue (julienne)",qtyRef:0.05,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.05},{name:"Sauce tomate",qtyRef:0.05,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Paner",d:"Paner la côte, la cuire au beurre."},{t:"Préparer le macaroni",d:"Cuire le macaroni, le lier au beurre et parmesan, y ajouter la julienne."},{t:"Dresser",d:"Dresser la côte entourée de macaroni, saucer d'un cordon de sauce tomate."}], equip:["Poêle","Casserole"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:490,prot:26,lip:30,glu:32}, co2:"3 kg", eau:"440 L", env:68 },
+  { id:"cote_veau_pannee", nom:"Côte de veau panée", page:245, source:"Panée, beurre noisette, glace de viande", tags:["Côte","Panée"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Farine, œuf, mie de pain",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},{name:"Glace de viande",qtyRef:0.01,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.01},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04}],
+    steps:[{t:"Paner",d:"Saler légèrement, passer dans farine, œuf, mie de pain."},{t:"Cuire",d:"Cuire doucement au beurre clarifié."},{t:"Sauce",d:"Fondre la glace de viande avec bouillon, monter au beurre, napper la côte."}], equip:["Poêle"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:430,prot:25,lip:32,glu:14}, co2:"2.8 kg", eau:"410 L", env:65 },
+  { id:"cote_veau_pojarski", nom:"Côte de veau Pojarski", page:245, source:"Chair hachée avec beurre et crème, reformée, panée", tags:["Côte","Pojarski"], prepBase:25, cookBase:12, dressBase:8,
+    ingredients:[{name:"Chair de côte de veau",qtyRef:0.3,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.3},{name:"Beurre",qtyRef:0.075,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.075},{name:"Mie de pain imbibée de crème",qtyRef:0.075,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.075},{name:"Œuf, mie de pain pour panure",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Hacher",d:"Détacher la chair de l'os, la hacher avec beurre et mie de pain à la crème."},{t:"Reformer",d:"Reformer la côte sur l'os, paner à l'œuf et mie de pain."},{t:"Cuire",d:"Cuire au beurre. Servir avec garniture de légumes ou pâtes."}], equip:["Hachoir","Poêle"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:420,prot:22,lip:34,glu:10}, co2:"2.7 kg", eau:"390 L", env:63 },
+  { id:"cote_veau_sautee", nom:"Côte de veau sautée", page:245, source:"Sautée au beurre, jus déglaçé, garniture libre", tags:["Côte","Sautée"], prepBase:10, cookBase:12, dressBase:5,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Beurre",qtyRef:0.03,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.03},{name:"Farine",qtyRef:0.01,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.01}],
+    steps:[{t:"Fariner",d:"Assaisonner, passer dans la farine."},{t:"Sauter",d:"Colorer au beurre, puis cuire à petit feu."},{t:"Déglacer",d:"Déglacer avec bouillon ou eau, servir avec le jus. Accompagnements variés."}], equip:["Poêle"], allerg:["Gluten","Lait"], nut:{kcal:390,prot:24,lip:31,glu:4}, co2:"2.7 kg", eau:"390 L", env:63 },
+  { id:"cote_veau_truffes", nom:"Côte de veau aux truffes", page:246, source:"Madère, truffe, glace de viande", tags:["Côte","Truffes"], prepBase:15, cookBase:12, dressBase:5,
+    ingredients:[{name:"Côte de veau",qtyRef:0.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.2},{name:"Beurre",qtyRef:0.03,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.03},{name:"Madère",qtyRef:0.02,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.02},{name:"Truffe (lamelles)",qtyRef:0.02,unit:"kg",priceUnit:300,defaultPrice:300,defaultQty:0.02},{name:"Glace de viande",qtyRef:0.01,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.01}],
+    steps:[{t:"Sauter",d:"Sauter la côte au beurre."},{t:"Déglacer",d:"Déglacer au madère et bouillon, ajouter truffe et glace de viande."},{t:"Monter",d:"Monter au beurre, napper la côte."}], equip:["Poêle"], allerg:["Sulfites","Lait"], nut:{kcal:450,prot:25,lip:34,glu:3}, co2:"2.9 kg", eau:"420 L", env:67 },
+  { id:"epaule_veau_farcie", nom:"Épaule de veau farcie", page:246, source:"Désossée, farce (chair à saucisses, mie, œufs), braisée", tags:["Épaule","Farcie"], prepBase:30, cookBase:120, dressBase:15,
+    ingredients:[{name:"Épaule de veau désossée",qtyRef:1.2,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:1.2},{name:"Chair à saucisses fine",qtyRef:0.3,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.3},{name:"Mie de pain trempée bouillon",qtyRef:0.15,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.15},{name:"Œufs",qtyRef:2,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:2},{name:"Légumes pour braisage",qtyRef:0.3,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.3}],
+    steps:[{t:"Farcir",d:"Battre l'épaule, assaisonner, garnir de farce, rouler et ficeler."},{t:"Braiser",d:"Braiser sur lit de légumes selon procédé ordinaire."},{t:"Servir",d:"Accompagner de purée de légumes ou farinage, et du jus de braisage."}], equip:["Braisière","Four"], allerg:["Gluten","Œufs","Lait","Porc"], nut:{kcal:340,prot:26,lip:22,glu:8}, co2:"3.1 kg", eau:"460 L", env:68 },
+  { id:"filet_veau_cocotte", nom:"Filet de veau en cocotte au jus", page:246, source:"Cuit au beurre, arrosé d'eau pour faire un jus", tags:["Filet","Veau"], prepBase:10, cookBase:20, dressBase:5,
+    ingredients:[{name:"Filet mignon de veau",qtyRef:0.5,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.5},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04}],
+    steps:[{t:"Cuire",d:"Cuire le filet au beurre. Quand il colore, ajouter une cuillerée d'eau, renouveler pour obtenir un jus."},{t:"Dresser",d:"Dresser en cocotte avec son jus. Option : ajouter truffes, champignons, sauce chasseur."}], equip:["Cocotte","Poêle"], allerg:["Lait"], nut:{kcal:310,prot:24,lip:23,glu:1}, co2:"2.6 kg", eau:"380 L", env:62 },
+  { id:"foie_veau_anglaise", nom:"Foie de veau à l'Anglaise", page:247, source:"Tranches panées, bacon grillé", tags:["Foie","Anglaise"], prepBase:10, cookBase:8, dressBase:5,
+    ingredients:[{name:"Foie de veau (tranches 100g)",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Farine",qtyRef:0.02,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.02},{name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.04},{name:"Bacon (lard anglais)",qtyRef:0.12,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.12}],
+    steps:[{t:"Préparer le foie",d:"Assaisonner, passer dans la farine, sauter au beurre ou griller."},{t:"Griller le bacon",d:"Faire rissoler les tranches de bacon."},{t:"Dresser",d:"Alterner tranches de foie et de bacon, arroser de la graisse du bacon."}], equip:["Poêle","Salamandre"], allerg:["Gluten","Lait","Porc"], nut:{kcal:380,prot:28,lip:28,glu:6}, co2:"2.5 kg", eau:"360 L", env:60 },
+  { id:"foie_veau_bordelaise", nom:"Foie de veau sauté à la Bordelaise", page:247, source:"Cèpes sautés, sauce tomate", tags:["Foie","Bordelaise"], prepBase:15, cookBase:10, dressBase:5,
+    ingredients:[{name:"Foie de veau (tranches)",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Cèpes sautés à la Bordelaise",qtyRef:0.2,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.2},{name:"Sauce tomate relevée",qtyRef:0.15,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.15}],
+    steps:[{t:"Sauter le foie",d:"Assaisonner, fariner, sauter au beurre."},{t:"Dresser",d:"Dresser en couronne, garnir le centre de cèpes sautés."},{t:"Saucer",d:"Arroser les tranches de sauce tomate."}], equip:["Poêle"], allerg:["Gluten","Lait"], nut:{kcal:340,prot:24,lip:18,glu:12}, co2:"2.3 kg", eau:"340 L", env:58 },
+  { id:"foie_veau_lyonnaise", nom:"Foie de veau sauté Lyonnaise", page:247, source:"Oignons émincés, vinaigre, glace de viande", tags:["Foie","Lyonnaise"], prepBase:10, cookBase:8, dressBase:5,
+    ingredients:[{name:"Foie de veau",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},{name:"Oignons émincés",qtyRef:0.15,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.15},{name:"Glace de viande",qtyRef:0.01,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.01},{name:"Vinaigre",qtyRef:0.01,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.01}],
+    steps:[{t:"Sauter le foie",d:"Le faire sauter."},{t:"Préparer les oignons",d:"Cuire les oignons au beurre, ajouter glace de viande."},{t:"Dresser",d:"Dresser le foie en couronne, garnir le centre d'oignons, arroser d'un filet de vinaigre chaud."}], equip:["Poêle"], allerg:["Lait","Sulfites"], nut:{kcal:360,prot:25,lip:25,glu:8}, co2:"2.4 kg", eau:"350 L", env:59 },
+  { id:"foie_veau_brochettes", nom:"Brochettes de foie de veau", page:248, source:"Carrés de foie, lard, champignons, grillées", tags:["Foie","Brochettes"], prepBase:15, cookBase:6, dressBase:5,
+    ingredients:[{name:"Foie de veau (carrés 2-3 cm)",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Lard de poitrine (tranches minces)",qtyRef:0.12,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.12},{name:"Champignons (lamelles sautées)",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Chapelure",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02}],
+    steps:[{t:"Préparer",d:"Assaisonner les carrés de foie, les sauter vivement pour les saisir."},{t:"Monter les brochettes",d:"Enfiler alternativement foie, lard, champignons."},{t:"Griller",d:"Saupoudrer légèrement de chapelure, griller. Servir avec sauce Diable ou Piquante."}], equip:["Brochettes","Grill"], allerg:["Gluten","Porc"], nut:{kcal:350,prot:25,lip:24,glu:4}, co2:"2.6 kg", eau:"380 L", env:62 },
+  { id:"foie_veau_milanaise", nom:"Foie de veau à la Milanaise", page:248, source:"Pané, macaroni ou rizotto", tags:["Foie","Milanaise"], prepBase:15, cookBase:10, dressBase:8,
+    ingredients:[{name:"Foie de veau (tranches)",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Farine, œuf, mie de pain",qtyRef:0.08,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.08},{name:"Macaroni ou rizotto",qtyRef:0.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Paner",d:"Passer le foie dans farine, œuf, mie de pain."},{t:"Cuire",d:"Cuire au beurre."},{t:"Dresser",d:"Dresser en couronne, garnir le centre de macaroni (ou rizotto) au parmesan."}], equip:["Poêle","Casserole"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:420,prot:25,lip:26,glu:26}, co2:"2.7 kg", eau:"390 L", env:63 },
+  { id:"pain_foie_veau", nom:"Pain de foie de veau", page:248, source:"Foie pilé, mie, crème, œufs, cuit au bain-marie", tags:["Pain","Foie"], prepBase:25, cookBase:35, dressBase:10,
+    ingredients:[{name:"Foie de veau",qtyRef:0.5,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.5},{name:"Mie de pain (trempée lait)",qtyRef:0.125,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.125},{name:"Oignon haché fondu au beurre",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02},{name:"Œufs entiers (3) + jaunes (3)",qtyRef:6,unit:"pièces",priceUnit:0.25,defaultPrice:0.25,defaultQty:6},{name:"Crème fraîche",qtyRef:0.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.2}],
+    steps:[{t:"Piler",d:"Piler le foie, passer au tamis, ajouter la mie, oignon, œufs, crème, assaisonner."},{t:"Cuire",d:"Verser dans un moule beurré, pocher doucement au bain-marie."},{t:"Servir",d:"Démouler, saucer d'un bon jus de veau réduit à la sauce tomate."}], equip:["Tamis","Moule à charlotte","Bain-marie"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:310,prot:22,lip:20,glu:12}, co2:"2.3 kg", eau:"340 L", env:58 },
+  { id:"fraise_veau_lyonnaise", nom:"Fraise de veau Lyonnaise", page:248, source:"Fraises de veau cuites, émincées, sauté à la lyonnaise", tags:["Fraise","Lyonnaise"], prepBase:20, cookBase:15, dressBase:5,
+    ingredients:[{name:"Fraise de veau (cuite au blanc)",qtyRef:0.6,unit:"kg",priceUnit:10,defaultPrice:10,defaultQty:0.6},{name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:9.5,defaultPrice:9.5,defaultQty:0.05},{name:"Oignons émincés",qtyRef:0.15,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.15},{name:"Vinaigre",qtyRef:0.01,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.01}],
+    steps:[{t:"Préparer",d:"Bien dégorger la fraise, la pocher au blanc, la refroidir, l'émincer."},{t:"Sauter",d:"La sauter au beurre avec les oignons émincés."},{t:"Finition",d:"Assaisonner, ajouter un filet de vinaigre, persil."}], equip:["Poêle","Casserole"], allerg:["Lait","Sulfites"], nut:{kcal:280,prot:22,lip:18,glu:6}, co2:"2.2 kg", eau:"330 L", env:56 }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 12, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  totalCostSpan.innerText = total.toFixed(2)+' €';
+  costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 12; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 12; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 12; coeffVente = 3.5;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  document.getElementById('anchor-target').id = 'fiche-' + item.id;
+  if(history.replaceState) history.replaceState(null, '', '#fiche-' + item.id);
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = item.equip.map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = item.allerg.map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Lorsque l’auto est coché, préparation et montage évoluent avec le nombre de couverts (base 12). La cuisson reste manuelle.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">12</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="12" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">12</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Le veau demande une cuisson soignée pour rester tendre et juteux. Les abats (cervelle, foie) se préparent avec délicatesse. Servir chaud avec des garnitures adaptées.</p></div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Veau de qualité, frais. • Cuisson à cœur pour les abats. • Respect des températures de conservation. • Traçabilité des lots.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const select = document.getElementById('itemSelect');
+  itemsData.forEach(item => { const opt = document.createElement('option'); opt.value = item.id; opt.textContent = `${item.nom} (p. ${item.page})`; select.appendChild(opt); });
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', (e) => loadItem(e.target.value));
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
