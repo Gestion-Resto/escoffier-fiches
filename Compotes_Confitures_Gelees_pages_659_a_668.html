@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Compotes, Confitures & Gelées – Auguste Escoffier (p.659-668) | gestionresto.fr</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: teal-bg; color: teal-txt; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Compotes, Confitures & Gelées · pages 659 à 668 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🍎 Compotes, confitures, gelées & conserves artisanales</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 23 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES COMPOTES, CONFITURES & GELÉES PAGES 659-668 ==========
+const itemsData = [
+  // COMPOTES
+  { id:"compote_abricots", nom:"Compote d'abricots", page:659, source:"Abricots, sucre, eau, amandes, kirsch", tags:["Compote","Abricots"], prepBase:15, cookBase:15, dressBase:10,
+    ingredients:[{name:"Abricots (mi-mûrs)",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre",qtyRef:0.3,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.3},{name:"Eau",qtyRef:0.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.5},{name:"Amandes des noyaux",qtyRef:0.02,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.02},{name:"Kirsch",qtyRef:0.05,unit:"L",priceUnit:25,defaultPrice:25,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Partager les abricots en deux, les tremper vivement à l'eau bouillante, les égoutter et les peler."},{t:"Cuire",d:"Cuire dans un sirop léger (sucre+eau)."},{t:"Dresser",d:"Monder les amandes, les macérer au kirsch. Dresser les abricots avec une demi-amande sur chaque moitié, arroser du sirop et de la liqueur."}], equip:["Casserole","Compotier"], allerg:["Fruits à coque","Sulfites"], nut:{kcal:180,prot:1,lip:2,glu:44}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"compote_ananas", nom:"Compote d'ananas", page:659, source:"Ananas, sucre, vanille", tags:["Compote","Ananas"], prepBase:15, cookBase:15, dressBase:5,
+    ingredients:[{name:"Ananas frais (ou conserve)",qtyRef:1,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:1},{name:"Sucre",qtyRef:0.25,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.25},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Peler l'ananas, le détailler en tranches, retirer le cœur dur."},{t:"Cuire",d:"Cuire les tranches dans un sirop vanillé (sucre+eau+vanille)."},{t:"Dresser",d:"Dresser en turban sur compotier, arroser du sirop de cuisson."}], equip:["Casserole","Compotier"], allerg:[], nut:{kcal:150,prot:0.5,lip:0.2,glu:38}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"compote_bananes", nom:"Compote de bananes", page:659, source:"Bananes, sucre, kirsch ou rhum", tags:["Compote","Bananes"], prepBase:5, cookBase:5, dressBase:5,
+    ingredients:[{name:"Bananes",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1},{name:"Sucre",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2},{name:"Kirsch ou rhum",qtyRef:0.05,unit:"L",priceUnit:20,defaultPrice:20,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Peler les bananes, les cuire 4-5 min dans un sirop au kirsch ou rhum."},{t:"Dresser",d:"Dresser en coupe, arroser du sirop."}], equip:["Casserole","Coupe"], allerg:["Sulfites"], nut:{kcal:190,prot:1,lip:0.5,glu:48}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"compote_cerises", nom:"Compote de cerises", page:659, source:"Cerises, sucre", tags:["Compote","Cerises"], prepBase:10, cookBase:8, dressBase:30,
+    ingredients:[{name:"Cerises dénoyautées",qtyRef:1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Sucre",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2}],
+    steps:[{t:"Cuire",d:"Mettre les cerises dans un poêlon avec le sucre, couvrir, donner 5-6 min d'ébullition."},{t:"Refroidir",d:"Verser en terrine, couvrir, laisser refroidir."}], equip:["Poêlon","Terrine"], allerg:[], nut:{kcal:180,prot:1,lip:0.3,glu:44}, co2:"1.0 kg", eau:"140 L", env:30, nota:"Variante au vin de Bordeaux : ajouter 300g sucre et 3 dl de vin rouge par kg." },
+  { id:"compote_fraises", nom:"Compote de fraises (méthode sans cuisson)", page:660, source:"Fraises, sirop vanillé 28°", tags:["Compote","Fraises","Cru"], prepBase:15, cookBase:0, dressBase:15,
+    ingredients:[{name:"Belles fraises",qtyRef:0.5,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.5},{name:"Sirop à 28° vanillé refroidi",qtyRef:0.3,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Équeuter les fraises, les plonger rapidement à grande eau froide si nécessaire."},{t:"Macérer",d:"Les mettre en terrine, couvrir de sirop tiède (28°). Couvrir et laisser refroidir."}], equip:["Terrine"], allerg:[], nut:{kcal:140,prot:1,lip:0.2,glu:36}, co2:"0.9 kg", eau:"130 L", env:28, nota:"Ne pas cuire les fraises pour conserver leur parfum." },
+  { id:"compote_framboises", nom:"Compote de framboises", page:660, source:"Framboises, sirop au jus de framboises", tags:["Compote","Framboises"], prepBase:10, cookBase:0, dressBase:15,
+    ingredients:[{name:"Grosses framboises fraîches",qtyRef:0.5,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.5},{name:"Sirop au jus de framboises tiède",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Éplucher les framboises."},{t:"Macérer",d:"Les déposer en terrine, couvrir de sirop tiède, couvrir, laisser refroidir."}], equip:["Terrine"], allerg:[], nut:{kcal:160,prot:1,lip:0.3,glu:40}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"compote_mirabelles", nom:"Compote de mirabelles", page:660, source:"Mirabelles, sucre, vanille", tags:["Compote","Mirabelles"], prepBase:10, cookBase:15, dressBase:10,
+    ingredients:[{name:"Mirabelles (de Metz)",qtyRef:1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Sucre",qtyRef:0.25,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.25},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Dénoyauter",d:"Retirer les noyaux des mirabelles."},{t:"Cuire",d:"Les cuire 10-12 min dans un sirop à 18° vanillé."},{t:"Dresser",d:"Dresser avec le sirop."}], equip:["Casserole"], allerg:[], nut:{kcal:190,prot:1,lip:0.3,glu:48}, co2:"1.1 kg", eau:"150 L", env:34, nota:"" },
+  { id:"compote_nectarines", nom:"Compote de nectarines ou brugnons", page:660, source:"Nectarines, sucre, vanille", tags:["Compote","Nectarines"], prepBase:10, cookBase:12, dressBase:10,
+    ingredients:[{name:"Nectarines mûres à point",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre",qtyRef:0.25,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.25},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Peler",d:"Plonger les nectarines 2s à l'eau bouillante puis à l'eau glacée, peler."},{t:"Cuire",d:"Les cuire entières dans un sirop à 18° vanillé."}], equip:["Casserole"], allerg:[], nut:{kcal:170,prot:1,lip:0.2,glu:42}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"compote_peches", nom:"Compote de pêches", page:660, source:"Pêches, sucre, vanille", tags:["Compote","Pêches"], prepBase:10, cookBase:12, dressBase:10,
+    ingredients:[{name:"Pêches",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre",qtyRef:0.25,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.25},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Peler",d:"Peler les pêches après trempage eau bouillante puis glacée."},{t:"Cuire",d:"Les cuire entières ou par moitiés dans un sirop à 18° vanillé."}], equip:["Casserole"], allerg:[], nut:{kcal:160,prot:1,lip:0.2,glu:40}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"compote_poires_sirop", nom:"Compote de poires (sirop vanillé)", page:660, source:"Poires fondantes, sucre, vanille", tags:["Compote","Poires"], prepBase:15, cookBase:20, dressBase:10,
+    ingredients:[{name:"Poires fondantes",qtyRef:1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:1},{name:"Sucre",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Tourner",d:"Tourner les poires, les cuire dans un sirop léger à 12° vanillé."},{t:"Variante",d:"Poires à chair ferme : cuire au vin rouge avec sucre, zeste citron, cannelle."}], equip:["Casserole"], allerg:[], nut:{kcal:150,prot:0.5,lip:0.2,glu:38}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"compote_pommes", nom:"Compote de pommes", page:661, source:"Pommes Calville ou Reinette, sucre, vanille, citron", tags:["Compote","Pommes"], prepBase:15, cookBase:20, dressBase:10,
+    ingredients:[{name:"Pommes (Calville/Reinette)",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1},{name:"Sucre",qtyRef:0.2,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.2},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Citron (pour citronner)",qtyRef:0.5,unit:"unit",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Vider les pommes au tube, les tourner, les citronner et les mettre à l'eau fraîche."},{t:"Pocher",d:"Les pocher dans un sirop à 12° vanillé, surveiller la cuisson."}], equip:["Tube à pommes","Casserole"], allerg:[], nut:{kcal:140,prot:0.5,lip:0.2,glu:36}, co2:"0.9 kg", eau:"130 L", env:28, nota:"" },
+  { id:"compote_pruneaux", nom:"Compote de pruneaux", page:661, source:"Pruneaux, vin rouge, eau, sucre, cannelle, citron", tags:["Compote","Pruneaux"], prepBase:15, cookBase:30, dressBase:30,
+    ingredients:[{name:"Pruneaux",qtyRef:0.5,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.5},{name:"Vin rouge",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5},{name:"Eau",qtyRef:0.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.5},{name:"Sucre",qtyRef:0.125,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.125},{name:"Cannelle, zeste citron",qtyRef:0.02,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.02}],
+    steps:[{t:"Tremper",d:"Tremper les pruneaux à l'avance."},{t:"Cuire",d:"Les cuire à petit feu dans moitié vin rouge et eau avec sucre, cannelle, zeste de citron."}], equip:["Casserole"], allerg:["Sulfites"], nut:{kcal:240,prot:1,lip:0.3,glu:58}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"compote_reines_claude", nom:"Compote de Reines-Claude", page:661, source:"Reines-Claude, sucre, vanille", tags:["Compote","Reines-Claude"], prepBase:10, cookBase:12, dressBase:10,
+    ingredients:[{name:"Reines-Claude (un peu fermes)",qtyRef:1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Sucre",qtyRef:0.25,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.25},{name:"Vanille",qtyRef:0.5,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Dénoyauter",d:"Dénoyauter les prunes."},{t:"Pocher",d:"Les pocher sans bouillir dans un sirop à 18° vanillé."},{t:"Dresser",d:"Dresser en coupe."}], equip:["Casserole","Coupe"], allerg:[], nut:{kcal:190,prot:1,lip:0.3,glu:48}, co2:"1.1 kg", eau:"150 L", env:34, nota:"" },
+  { id:"compote_rhubarbe", nom:"Compote de rhubarbe", page:661, source:"Rhubarbe, sucre (sirop 28°)", tags:["Compote","Rhubarbe"], prepBase:10, cookBase:10, dressBase:15,
+    ingredients:[{name:"Rhubarbe (pétioles)",qtyRef:0.5,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.5},{name:"Sirop à 28°",qtyRef:0.3,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.3}],
+    steps:[{t:"Détailler",d:"Détailler les pétioles en tronçons de 6-7 cm, les peler."},{t:"Pocher",d:"Les ranger dans une bassine, verser le sirop à mi-hauteur, couvrir et pocher à petit feu sans remuer pour garder les tronçons entiers."}], equip:["Bassine à confiture"], allerg:[], nut:{kcal:110,prot:0.5,lip:0.1,glu:28}, co2:"0.8 kg", eau:"110 L", env:26, nota:"" },
+  // CONFITURES
+  { id:"confiture_abricots", nom:"Confiture d'abricots", page:662, source:"Abricots, sucre, eau, amandes", tags:["Confiture","Abricots"], prepBase:20, cookBase:25, dressBase:30,
+    ingredients:[{name:"Abricots bien mûrs",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre (375g pour 500g fruits)",qtyRef:0.75,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.75},{name:"Eau",qtyRef:0.15,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.15}],
+    steps:[{t:"Préparer",d:"Partager les abricots en deux, casser les noyaux, monder les amandes."},{t:"Cuire",d:"Dissoudre le sucre avec l'eau, faire bouillir, écumer. Ajouter les fruits, cuire à feu pas trop vif en remuant. Dès la nappe, ajouter les amandes, mettre en pots."}], equip:["Bassine à confiture","Pots"], allerg:["Fruits à coque"], nut:{kcal:250,prot:1,lip:1,glu:64}, co2:"1.2 kg", eau:"170 L", env:36, nota:"Proportions : 375g sucre pour 500g fruits." },
+  { id:"confiture_cerises", nom:"Confiture de cerises", page:663, source:"Cerises, sucre, jus de groseille", tags:["Confiture","Cerises"], prepBase:15, cookBase:20, dressBase:30,
+    ingredients:[{name:"Cerises dénoyautées",qtyRef:1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Sucre",qtyRef:0.75,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.75},{name:"Jus de groseille",qtyRef:0.5,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Dénoyauter les cerises."},{t:"Cuire",d:"Dissoudre le sucre avec un peu d'eau, faire bouillir 5 min, écumer. Ajouter cerises et jus de groseille. Cuire à feu vif jusqu'à la nappe, écumer soigneusement."}], equip:["Bassine","Pots"], allerg:[], nut:{kcal:280,prot:1,lip:0.3,glu:70}, co2:"1.3 kg", eau:"190 L", env:40, nota:"" },
+  { id:"confiture_fraises", nom:"Confiture de fraises (méthode Escoffier)", page:663, source:"Fraises, sucre", tags:["Confiture","Fraises"], prepBase:20, cookBase:15, dressBase:30,
+    ingredients:[{name:"Fraises mûres à point",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre (375g pour 500g fruits)",qtyRef:0.75,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.75},{name:"Eau",qtyRef:0.1,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Éplucher les fraises, les passer à grande eau froide, égoutter."},{t:"Cuire sirop",d:"Cuire le sucre avec eau au boulet. Jeter les fraises, tenir sur le côté du feu 7-8 min."},{t:"Égoutter",d:"Égoutter les fraises sur tamis, continuer la cuisson du sirop jusqu'à la nappe. Remettre les fraises 5 min, mettre en pots lentement."}], equip:["Bassine","Tamis","Pots"], allerg:[], nut:{kcal:240,prot:0.5,lip:0.2,glu:60}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"confiture_orange", nom:"Confiture d'orange (méthode classique)", page:664, source:"Oranges, sucre, jus de pomme, zestes", tags:["Confiture","Orange"], prepBase:40, cookBase:30, dressBase:30,
+    ingredients:[{name:"Oranges (belles, peau épaisse)",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1},{name:"Sucre (même poids que purée)",qtyRef:0.5,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.5},{name:"Jus de pomme",qtyRef:0.15,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.15}],
+    steps:[{t:"Préparer",d:"Piquer les oranges, les blanchir 30 min à l'eau, puis les rafraîchir et les laisser tremper 12-20h à l'eau courante."},{t:"Émincer",d:"Égoutter, couper en petits quartiers, retirer pépins et filaments, passer au gros tamis."},{t:"Cuire",d:"Dissoudre le sucre, faire bouillir 5 min, ajouter purée d'orange et jus de pomme. Cuire jusqu'à la nappe en écumant."}], equip:["Bassine","Pots"], allerg:[], nut:{kcal:250,prot:1,lip:0.2,glu:64}, co2:"1.2 kg", eau:"170 L", env:38, nota:"Ajouter facultativement une julienne d'écorce confite ou quelques oranges amères." },
+  { id:"confiture_prunes", nom:"Confiture de prunes (Mirabelles)", page:665, source:"Mirabelles de Metz, sucre", tags:["Confiture","Prunes","Mirabelles"], prepBase:15, cookBase:20, dressBase:30,
+    ingredients:[{name:"Mirabelles (belles dorées)",qtyRef:1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:1},{name:"Sucre",qtyRef:0.75,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.75}],
+    steps:[{t:"Préparer",d:"Dénoyauter les mirabelles."},{t:"Cuire",d:"Procéder comme pour confiture d'abricots : dissoudre sucre, ajouter fruits, cuire jusqu'à la nappe."}], equip:["Bassine"], allerg:[], nut:{kcal:280,prot:1,lip:0.3,glu:70}, co2:"1.3 kg", eau:"190 L", env:40, nota:"" },
+  { id:"confiture_tomates_vertes", nom:"Confiture de tomates vertes (à la ménagère)", page:665, source:"Tomates vertes, sucre, zeste citron, cannelle, vin blanc", tags:["Confiture","Tomates vertes"], prepBase:20, cookBase:30, dressBase:30,
+    ingredients:[{name:"Tomates vertes",qtyRef:1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:1},{name:"Sucre",qtyRef:0.75,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.75},{name:"Zeste de citron",qtyRef:1,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:1},{name:"Cannelle",qtyRef:0.02,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.02},{name:"Vin blanc (facult.)",qtyRef:0.25,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.25}],
+    steps:[{t:"Préparer",d:"Laver, couper les tomates en tranches."},{t:"Cuire",d:"Mettre en marmite en terre avec sucre, zeste, cannelle (et vin). Enfourner à four doux jusqu'à cuisson complète, la confiture prise à la nappe."}], equip:["Marmite en terre","Four"], allerg:["Sulfites"], nut:{kcal:220,prot:1,lip:0.2,glu:56}, co2:"1.2 kg", eau:"170 L", env:36, nota:"Méthode ancienne au four à pain après cuisson du pain." },
+  // GELÉES
+  { id:"gelee_cassis", nom:"Gelée de cassis", page:666, source:"Cassis, sucre, eau, jus groseilles blanches (fac.)", tags:["Gelée","Cassis"], prepBase:20, cookBase:20, dressBase:30,
+    ingredients:[{name:"Cassis bien mûrs égrappés",qtyRef:1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:1},{name:"Sucre (850g par litre de jus)",qtyRef:0.85,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.85},{name:"Jus de groseilles blanches (fac.)",qtyRef:0.2,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.2}],
+    steps:[{t:"Extraire le jus",d:"Mettre les cassis avec 1/2 verre d'eau, chauffer pour faire éclater les peaux. Passer au tamis."},{t:"Cuire",d:"Cuire le sucre au boulet avec un peu d'eau, écumer. Ajouter le jus de cassis (et groseilles). Cuire à feu vif jusqu'à la nappe, écumer."}], equip:["Bassine","Tamis","Pots"], allerg:[], nut:{kcal:250,prot:0.5,lip:0.1,glu:64}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"gelee_coings", nom:"Gelée de coings", page:667, source:"Coings, sucre", tags:["Gelée","Coings"], prepBase:25, cookBase:40, dressBase:30,
+    ingredients:[{name:"Coings bien mûrs",qtyRef:1,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:1},{name:"Sucre (800g par litre de jus)",qtyRef:0.8,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.8}],
+    steps:[{t:"Préparer",d:"Peler, épépiner les coings, les couper en tranches. Les jeter à l'eau froide."},{t:"Cuire",d:"Les cuire dans une bassine avec 1L d'eau par 500g fruits, sans remuer. Égoutter sur tamis."},{t:"Gelée",d:"Remettre le jus en bassine avec le sucre, cuire à feu vif jusqu'à la nappe, écumer. Passer à la mousseline pour la limpidité."}], equip:["Bassine","Mousseline","Pots"], allerg:[], nut:{kcal:240,prot:0.3,lip:0.1,glu:62}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"gelee_groseilles", nom:"Gelée de groseilles (chaude)", page:667, source:"Groseilles rouges (2/3), blanches (1/3), sucre, framboises (fac.)", tags:["Gelée","Groseilles"], prepBase:20, cookBase:15, dressBase:30,
+    ingredients:[{name:"Groseilles (2/3 rouges, 1/3 blanches)",qtyRef:1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:1},{name:"Sucre (1kg par kg fruits égrappés)",qtyRef:1,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:1},{name:"Framboises (fac.)",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Égrapper",d:"Égrapper les groseilles à la fourchette."},{t:"Cuire",d:"Dissoudre le sucre avec un peu d'eau, cuire au petit boulet, écumer. Jeter les groseilles, tenir sur le côté du feu 7-8 min, puis cuire à feu vif jusqu'à la nappe. Passer sur tamis."}], equip:["Bassine","Tamis","Pots"], allerg:[], nut:{kcal:260,prot:0.5,lip:0.1,glu:66}, co2:"1.3 kg", eau:"180 L", env:38, nota:"Variante : gelée à froid (broyer, passer, ajouter glace de sucre, laisser dissoudre 2-3h, puis exposer au soleil)." },
+  { id:"gelee_oranges", nom:"Gelée d'oranges", page:667, source:"Oranges, sucre, jus de pomme", tags:["Gelée","Oranges"], prepBase:20, cookBase:15, dressBase:30,
+    ingredients:[{name:"Belles oranges (150g pièce)",qtyRef:12,unit:"unit",priceUnit:0.6,defaultPrice:0.6,defaultQty:12},{name:"Jus de pomme",qtyRef:0.2,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.2},{name:"Sucre",qtyRef:0.5,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.5},{name:"Sucre d'orange râpé",qtyRef:0.01,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.01}],
+    steps:[{t:"Jus",d:"Presser les oranges à fond, filtrer le jus."},{t:"Cuire",d:"Dissoudre le sucre avec quelques gouttes d'eau, ajouter jus d'oranges et jus de pomme. Cuire jusqu'à la nappe. Laisser refroidir 10 min, ajouter le sucre d'orange, mettre en pots."}], equip:["Bassine","Pots"], allerg:[], nut:{kcal:240,prot:1,lip:0.2,glu:60}, co2:"1.2 kg", eau:"170 L", env:36, nota:"Ajouter facultativement une julienne d'écorce confite." },
+  { id:"gelee_pommes", nom:"Gelée de pommes", page:668, source:"Pommes Reinette, sucre, vanille", tags:["Gelée","Pommes"], prepBase:20, cookBase:25, dressBase:30,
+    ingredients:[{name:"Pommes Reinette",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1},{name:"Sucre (900g par litre de jus)",qtyRef:0.9,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.9},{name:"Eau",qtyRef:0.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:0.5},{name:"Vanille",qtyRef:0.25,unit:"gousse",priceUnit:2,defaultPrice:2,defaultQty:0.25}],
+    steps:[{t:"Cuire",d:"Diviser les pommes en quartiers, cuire avec l'eau (5dl pour 500g fruits) sans trop cuire. Passer le jus sans presser."},{t:"Gelée",d:"Mettre le jus en bassine avec le sucre et la vanille. Cuire jusqu'à la nappe, passer à la mousseline."}], equip:["Bassine","Mousseline","Pots"], allerg:[], nut:{kcal:230,prot:0.3,lip:0.1,glu:58}, co2:"1.1 kg", eau:"160 L", env:32, nota:"La pulpe restante sert à faire une bonne marmelade." }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 6, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2)+' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 6; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 6; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = (item.equip||["Ustensiles classiques"]).map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = (item.allerg||[]).map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  const notaText = item.nota ? `<p style="font-size:12px; margin-top:8px; font-style:italic; background:var(--bg2); padding:6px; border-radius:6px;">📜 NOTA — ${escapeHtml(item.nota)}</p>` : '';
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Mise en pots / repos</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation)</span></div>
+    <div class="info-time">✔️ Base portions : 6 couverts. Les ingrédients s'adaptent automatiquement.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">6</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">La cuisson des confitures se reconnaît à la "nappe" : la confiture se détache lentement de l'écumoire en larges gouttes espacées. Les pots doivent être remplis lentement pour une répartition homogène des fruits.</p>${notaText}</div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Stérilisation parfaite des pots. • Utilisation de fruits sains et mûrs à point. • Surveiller la nappe pour éviter la cristallisation ou la fermentation. • Conservation au sec.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; if(portionLabel) portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('itemSelect');
+  for (let i = 0; i < itemsData.length; i++) {
+    const item = itemsData[i];
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.nom} (p. ${item.page})`;
+    select.appendChild(option);
+  }
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', function(e) { loadItem(e.target.value); });
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
