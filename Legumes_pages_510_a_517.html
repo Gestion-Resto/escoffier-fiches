@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Légumes & Pâtes – Auguste Escoffier (p.510-517) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Légumes & Pâtes alimentaires · pages 510 à 517 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🥬 Légumes & légumes secs</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 24 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES LÉGUMES PAGES 510-517 AVEC NOTA ==========
+const itemsData = [
+  { id:"crosnes_creme", nom:"Crosnes à la crème", page:511, source:"Cuits à l'eau, étuvés au beurre, crème et Béchamel", tags:["Crosnes","Crème"], prepBase:15, cookBase:12, dressBase:3,
+    ingredients:[{name:"Crosnes frais (500g)",qtyRef:0.5,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.5},{name:"Beurre (60g), crème fraîche (2dl)",qtyRef:0.26,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.26},{name:"Sel, muscade, sauce Béchamel (facultatif)",qtyRef:0.05,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Peler les crosnes avec du gros sel dans un torchon, puis les plonger à l'eau froide, blanchir et égoutter."},{t:"Cuire",d:"Cuire à l'eau salée, bien égoutter, étuver au beurre quelques instants."},{t:"Saucer",d:"Mouiller de crème bouillante, sel, muscade. Laisser bouillir. Ajouter facultativement de la Béchamel."}], equip:["Casserole","Torchon"], allerg:["Lait","Gluten"], nut:{kcal:160,prot:2,lip:14,glu:8}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"crosnes_sautes", nom:"Crosnes sautés au beurre persil", page:511, source:"Cuits à l'eau, sautés au beurre, persil", tags:["Crosnes","Sautés"], prepBase:10, cookBase:10, dressBase:2,
+    ingredients:[{name:"Crosnes (500g)",qtyRef:0.5,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.5},{name:"Beurre (80g), persil haché",qtyRef:0.08,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.08}],
+    steps:[{t:"Cuire",d:"Cuire les crosnes à l'eau salée, bien égoutter."},{t:"Sauter",d:"Les faire sauter au beurre à la poêle, assaisonner sel, poivre."},{t:"Persil",d:"Saupoudrer de persil haché."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:170,prot:2,lip:16,glu:6}, co2:"1.1 kg", eau:"150 L", env:36, nota:"" },
+  { id:"epinards_creme", nom:"Épinards à la crème", page:511, source:"Hachés, desséchés au beurre, crème, muscade, sucre", tags:["Épinards","Crème"], prepBase:15, cookBase:12, dressBase:3,
+    ingredients:[{name:"Épinards (1 kg)",qtyRef:1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:1},{name:"Beurre (120g), crème fraîche (2,5dl)",qtyRef:0.37,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.37},{name:"Sel, poivre, muscade, sucre",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Blanchir",d:"Blanchir rapidement les épinards à grande eau salée bouillante, rafraîchir, presser fortement. Hacher ou passer au tamis."},{t:"Dessécher",d:"Mettre dans un sautoir avec le beurre, dessécher à feu vif en remuant."},{t:"Crème",d:"Ajouter la crème, sel, muscade, sucre. Mijoter 7-8 min. Dresser, arroser de crème bouillante."}], equip:["Sautoir"], allerg:["Lait"], nut:{kcal:180,prot:4,lip:16,glu:4}, co2:"1.2 kg", eau:"180 L", env:36, nota:"" },
+  { id:"epinards_gratin", nom:"Épinards au gratin", page:511, source:"Hachés, fromage, Béchamel, gratinés", tags:["Épinards","Gratin"], prepBase:20, cookBase:15, dressBase:5,
+    ingredients:[{name:"Épinards (1 kg)",qtyRef:1,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:1},{name:"Beurre (120g), fromage râpé (3 cs), sauce Béchamel (1dl)",qtyRef:0.25,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Chapelure, jambon en dés (facultatif)",qtyRef:0.1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Hacher les épinards blanchis et pressés, les dessécher au beurre. Assaisonner, ajouter fromage et beurre."},{t:"Dresser",d:"Dresser dans un plat à gratin, couvrir d'une fine couche de Béchamel."},{t:"Gratiner",d:"Saupoudrer fromage et chapelure, arroser beurre fondu, gratiner au four. Variante: ajouter dés de jambon."}], equip:["Four","Sautoir"], allerg:["Lait","Gluten","Porc"], nut:{kcal:220,prot:8,lip:18,glu:6}, co2:"1.6 kg", eau:"240 L", env:44, nota:"" },
+  { id:"subrics_epinards", nom:"Subrics d'Épinards", page:512, source:"Pâte à crêpes aux épinards, frits", tags:["Épinards","Subrics"], prepBase:20, cookBase:10, dressBase:5,
+    ingredients:[{name:"Épinards hachés desséchés (400g)",qtyRef:0.4,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.4},{name:"Appareil à crêpes (400g)",qtyRef:0.4,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.4},{name:"Huile d'olive ou beurre clarifié",qtyRef:0.1,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Mélanger",d:"Mélanger par parties égales les épinards hachés et desséchés avec l'appareil à crêpes un peu serré."},{t:"Cuire",d:"Chauffer l'huile ou beurre dans une poêle. Prendre la composition à la cuiller, faire tomber dans la matière grasse, aplatir légèrement."},{t:"Retourner",d:"Colorer d'un côté, retourner pour colorer l'autre. Dresser. Se mangent nature comme des beignets."}], equip:["Poêle"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:240,prot:5,lip:16,glu:18}, co2:"1.3 kg", eau:"190 L", env:40, nota:"Subrics et crêpes constituent une excellente garniture pour les relevés de bœuf et de veau." },
+  { id:"souffle_epinards", nom:"Soufflé aux Épinards", page:512, source:"Comme soufflé à la chicorée, base d'épinards", tags:["Épinards","Soufflé"], prepBase:20, cookBase:20, dressBase:3,
+    ingredients:[{name:"Purée d'épinards (300g)",qtyRef:0.3,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.3},{name:"Beurre (80g), farine (80g), lait (3dl)",qtyRef:0.46,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.46},{name:"Œufs (6), sel, muscade",qtyRef:6,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:6}],
+    steps:[{t:"Base",d:"Préparer une panade avec beurre, farine, lait. Ajouter la purée d'épinards."},{t:"Appareil",d:"Hors du feu, incorporer les jaunes un à un. Assaisonner. Incorporer les blancs en neige."},{t:"Cuire",d:"Cuire en soufflé 20 min à 180°C. Servir aussitôt."}], equip:["Four","Moule à soufflé"], allerg:["Gluten","Lait","Œufs"], nut:{kcal:220,prot:8,lip:15,glu:14}, co2:"1.3 kg", eau:"190 L", env:38, nota:"Ces variétés de soufflés peuvent être servis comme légumes ou accompagnement de viandes rôties et braisées." },
+  { id:"souffle_epinards_anchois", nom:"Soufflé d'Épinards aux anchois", page:512, source:"Ajout de filets d'anchois", tags:["Épinards","Anchois"], prepBase:20, cookBase:20, dressBase:3,
+    ingredients:[{name:"Purée d'épinards (300g)",qtyRef:0.3,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.3},{name:"Filets d'anchois dessalés (50g)",qtyRef:0.05,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.05},{name:"Appareil à soufflé (œufs, beurre, farine, lait)",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Ajouter à la composition d'épinards les filets d'anchois coupés en losanges."},{t:"Cuire",d:"Cuire comme un soufflé ordinaire."}], equip:["Four","Moule"], allerg:["Poisson","Gluten","Lait","Œufs"], nut:{kcal:230,prot:9,lip:16,glu:14}, co2:"1.4 kg", eau:"200 L", env:40, nota:"" },
+  { id:"dolmas", nom:"Feuilles de vigne farcies (Dolmas)", page:513, source:"Feuilles blanchies, farce au mouton et riz, cuisson au bouillon", tags:["Dolmas","Turc"], prepBase:35, cookBase:35, dressBase:10,
+    ingredients:[{name:"Feuilles de vigne (30-40), blanchies",qtyRef:0.2,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.2},{name:"Viande de mouton hachée (500g), graisse de queue (100g)",qtyRef:0.6,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.6},{name:"Oignon, persil, riz cru (100g), sel, poivre, piment",qtyRef:0.15,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.15},{name:"Bouillon de mouton, jaunes d'œufs (2), citron",qtyRef:0.5,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5}],
+    steps:[{t:"Farce",d:"Mélanger viande, graisse, oignon, persil, riz cru, épices. Tailler des boules de la grosseur d'une noix."},{t:"Envelopper",d:"Envelopper chaque boule dans une feuille de vigne blanche, former des paquets ronds."},{t:"Cuire",d:"Ranger en couches serrées dans une casserole, mouiller de bouillon à hauteur, poser une assiette dessus. Cuire lentement, réduire le fonds des 2/3, lier avec jaunes d'œufs et jus de citron."}], equip:["Casserole"], allerg:["Mouton","Œufs","Sulfites"], nut:{kcal:320,prot:16,lip:22,glu:14}, co2:"2.5 kg", eau:"370 L", env:62, nota:"En réalité, les Dolmas ne sont que nos petits choux farcis, sauf la variation des feuilles employées en Turquie." },
+  { id:"fèves_anglaises", nom:"Fèves à l'Anglaise", page:514, source:"Fèves tendres cuites entières, beurre à part", tags:["Fèves","Anglaise"], prepBase:10, cookBase:10, dressBase:2,
+    ingredients:[{name:"Jeunes fèves (1 kg)",qtyRef:1,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:1},{name:"Sel, beurre frais",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Enlever la partie noire au-dessus de la tête, cuire à l'eau salée."},{t:"Dresser",d:"Dresser sous serviette comme des pommes de terre en robe de chambre. Servir beurre frais à part."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:120,prot:7,lip:3,glu:18}, co2:"1.0 kg", eau:"140 L", env:30, nota:"" },
+  { id:"fèves_creme", nom:"Fèves à la crème", page:514, source:"Fèves écossées, cuites, liées à la crème", tags:["Fèves","Crème"], prepBase:15, cookBase:12, dressBase:3,
+    ingredients:[{name:"Fèves écossées (500g)",qtyRef:0.5,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.5},{name:"Beurre (30g), crème fraîche (1,5dl)",qtyRef:0.18,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.18},{name:"Sel, sucre, muscade",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Écosser",d:"Débarrasser les fèves de leur pellicule, cuire à l'eau salée."},{t:"Lier",d:"Égoutter, ajouter beurre et crème fraîche. Donner quelques minutes d'ébullition. Ajouter sucre et muscade."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:180,prot:6,lip:12,glu:16}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"fèves_provencale", nom:"Fèves à la Provençale", page:514, source:"Lard, laitue, oignon, huile d'olive, braisées", tags:["Fèves","Provençale"], prepBase:20, cookBase:25, dressBase:5,
+    ingredients:[{name:"Fèves (1 litre, écossées)",qtyRef:0.6,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.6},{name:"Lard maigre de poitrine (150-200g), laitues (2 cœurs)",qtyRef:0.3,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.3},{name:"Huile d'olive (3 cs), oignon haché (2 cs), sel, poivre, muscade",qtyRef:0.1,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Ciseler les cœurs de laitue. Couper le lard en dés."},{t:"Suer",d:"Dans poêlon, huile, oignon, lard. Étuyer sans roussir. Ajouter fèves et laitue, étuver ensemble."},{t:"Cuire",d:"Assaisonner, ajouter eau chaude à couvert. Cuire à petit feu. Lier avec un peu de farine si besoin."}], equip:["Poêlon en terre"], allerg:["Porc","Gluten"], nut:{kcal:260,prot:10,lip:18,glu:18}, co2:"1.9 kg", eau:"280 L", env:48, nota:"" },
+  { id:"gombos_orientale", nom:"Gombos à l'Orientale", page:515, source:"Tomates, oignon, curry, cuisson lente", tags:["Gombos","Orientale"], prepBase:15, cookBase:30, dressBase:3,
+    ingredients:[{name:"Gombos (500g)",qtyRef:0.5,unit:"kg",priceUnit:9,defaultPrice:9,defaultQty:0.5},{name:"Tomates mûres (4-5), oignon (2 cs), huile d'olive",qtyRef:0.4,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.4},{name:"Ail, persil, sel, poivre, curry (1 cc facultatif)",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02}],
+    steps:[{t:"Blanchir",d:"Rogner les extrémités, blanchir légèrement les gombos à l'eau salée, égoutter."},{t:"Sauce",d:"Blondir l'oignon à l'huile, ajouter tomates hachées, ail, persil, sel, poivre, curry. Cuire."},{t:"Cuire",d:"Ajouter les gombos. Couvrir, cuire à petit feu 25-30 min. Servir avec riz à l'Indienne."}], equip:["Casserole"], allerg:[], nut:{kcal:140,prot:3,lip:8,glu:14}, co2:"1.1 kg", eau:"160 L", env:36, nota:"" },
+  { id:"haricots_blancs_americaine", nom:"Haricots blancs à l'Américaine", page:516, source:"Cuits avec bacon, liés à la sauce tomate", tags:["Haricots blancs","Américaine"], prepBase:10, cookBase:90, dressBase:5,
+    ingredients:[{name:"Haricots blancs secs (250g)",qtyRef:0.25,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Bacon (morceau), sauce tomate (3dl)",qtyRef:0.35,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.35},{name:"Oignon piqué (clous de girofle), carotte, ail",qtyRef:0.1,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Mettre les haricots à l'eau tiède. Au premier bouillon, égoutter. Remouiller eau tiède, ajouter oignon piqué, carotte, ail, lard. Cuire à très petit feu. Saler presque à la fin."},{t:"Lier",d:"Égoutter, couper le lard en dés, lier le tout avec sauce tomate."}], equip:["Marmite en terre"], allerg:["Porc","Sulfites"], nut:{kcal:200,prot:8,lip:7,glu:28}, co2:"1.5 kg", eau:"220 L", env:42, nota:"On ne doit saler les haricots que lorsqu'ils sont presque cuits." },
+  { id:"haricots_blancs_bretonne", nom:"Haricots blancs à la Bretonne", page:516, source:"Sauce tomate réduite, oignon blondi, persil", tags:["Haricots blancs","Bretonne"], prepBase:10, cookBase:15, dressBase:5,
+    ingredients:[{name:"Haricots blancs cuits (500g)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Sauce tomate réduite (2dl), oignon haché (2 cs), beurre",qtyRef:0.25,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Persil haché",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Préparer",d:"Faire blondir l'oignon au beurre."},{t:"Lier",d:"Égoutter les haricots, les lier avec la sauce tomate réduite, ajouter l'oignon et le persil."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:160,prot:7,lip:4,glu:26}, co2:"1.2 kg", eau:"180 L", env:38, nota:"" },
+  { id:"haricots_blancs_creme", nom:"Haricots blancs à la crème", page:516, source:"Haricots cuits liés à la crème fraîche", tags:["Haricots blancs","Crème"], prepBase:5, cookBase:8, dressBase:2,
+    ingredients:[{name:"Haricots blancs cuits (500g)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Crème fraîche bouillante (2,5dl)",qtyRef:0.25,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25}],
+    steps:[{t:"Égoutter",d:"Bien égoutter les haricots chauds."},{t:"Lier",d:"Les mettre en casserole, mouiller de crème bouillante, assaisonner légèrement. Donner quelques minutes d'ébullition."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:190,prot:7,lip:12,glu:18}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"haricots_blancs_lyonnaise", nom:"Haricots blancs à la Lyonnaise", page:516, source:"Haricots au beurre, oignon blondi, persil", tags:["Haricots blancs","Lyonnaise"], prepBase:8, cookBase:10, dressBase:2,
+    ingredients:[{name:"Haricots blancs cuits (500g)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Oignon émincé (1), beurre (80g)",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},{name:"Persil haché",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Préparer",d:"Faire blondir l'oignon émincé au beurre."},{t:"Lier",d:"Mélanger les haricots cuits et égouttés avec l'oignon, ajouter persil."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:180,prot:7,lip:10,glu:20}, co2:"1.1 kg", eau:"160 L", env:36, nota:"" },
+  { id:"haricots_blancs_gratin", nom:"Haricots blancs au gratin à la Ménagère", page:517, source:"Jus de rôti de mouton, chapelure, gratinés", tags:["Haricots blancs","Gratin"], prepBase:10, cookBase:12, dressBase:5,
+    ingredients:[{name:"Haricots blancs cuits (500g)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Jus de rôti de mouton (2dl)",qtyRef:0.2,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.2},{name:"Chapelure (50g)",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Lier",d:"Lier les haricots égouttés avec le jus de rôti de mouton un peu gras."},{t:"Gratiner",d:"Verser dans un plat à gratin, saupoudrer de chapelure, gratiner."}], equip:["Four"], allerg:["Gluten","Mouton"], nut:{kcal:210,prot:8,lip:10,glu:22}, co2:"1.5 kg", eau:"220 L", env:44, nota:"" },
+  { id:"puree_haricots_blancs", nom:"Purée de Haricots blancs", page:517, source:"Haricots cuits, tamisés, beurre, crème", tags:["Haricots blancs","Purée"], prepBase:10, cookBase:10, dressBase:3,
+    ingredients:[{name:"Haricots blancs cuits (500g)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Beurre fin (75g), crème bouillante (0,5dl)",qtyRef:0.13,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.13}],
+    steps:[{t:"Tamis",d:"Bien égoutter les haricots chauds, les passer au tamis fin."},{t:"Lier",d:"Mettre la purée en casserole, bien chauffer, ajouter beurre et crème (ou lait)."}], equip:["Tamis","Casserole"], allerg:["Lait"], nut:{kcal:190,prot:7,lip:12,glu:20}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"haricots_rouges", nom:"Haricots rouges cuisinés", page:517, source:"Cuisson avec vin rouge, lard, liés au beurre manié", tags:["Haricots rouges","Rouges"], prepBase:12, cookBase:90, dressBase:5,
+    ingredients:[{name:"Haricots rouges secs (250g)",qtyRef:0.25,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.25},{name:"Vin rouge (1/4 de litre), lard de poitrine (150-200g)",qtyRef:0.4,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.4},{name:"Bouquet garni, beurre manié (30g)",qtyRef:0.03,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.03}],
+    steps:[{t:"Cuire",d:"Cuire les haricots comme les blancs, ajouter vin rouge, lard, bouquet garni. Retirer le lard aussitôt cuit."},{t:"Lier",d:"Lier les haricots au beurre manié, ajouter le lard coupé en dés et rissolé au beurre."}], equip:["Marmite"], allerg:["Porc","Sulfites"], nut:{kcal:230,prot:8,lip:9,glu:28}, co2:"1.6 kg", eau:"240 L", env:46, nota:"" },
+  { id:"haricots_verts_fins", nom:"Haricots verts fins", page:517, source:"Cuits à l'eau salée, liés au beurre frais", tags:["Haricots verts","Beurre"], prepBase:10, cookBase:8, dressBase:3,
+    ingredients:[{name:"Haricots verts fins (500g)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Beurre frais (100g), sel",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Cuire",d:"Cuire les haricots à grande eau salée, les tenir un peu fermes. Égoutter, ne pas rafraîchir."},{t:"Lier",d:"Les mettre aussitôt en casserole avec le beurre en parcelles, assaisonner, sauter pour enrober."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:140,prot:2,lip:12,glu:6}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"feves_avril", nom:"Petites fèves d'avril (comme petits pois)", page:514, source:"Fèves très petites, cuites sans peler, accommodées comme petits pois", tags:["Fèves","Petits pois"], prepBase:10, cookBase:10, dressBase:3,
+    ingredients:[{name:"Très petites fèves (500g)",qtyRef:0.5,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.5},{name:"Beurre (80g), sel, sucre, laitue (facultatif)",qtyRef:0.08,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.08}],
+    steps:[{t:"Cuire",d:"Cuire les fèves sans enlever la peau à l'eau salée."},{t:"Lier",d:"Les accommoder comme les petits pois au beurre, à la paysanne, aux laitues."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:130,prot:6,lip:7,glu:14}, co2:"0.9 kg", eau:"130 L", env:32, nota:"Au mois d'avril, lorsque les premières fèves sont très petites, on les cuit sans enlever la peau et on les accommode comme les petits pois." },
+  { id:"crosnes_suprême", nom:"Crosnes sauce Suprême", page:511, source:"Crosnes blanchis, étuvés, sauce Suprême", tags:["Crosnes","Suprême"], prepBase:15, cookBase:12, dressBase:3,
+    ingredients:[{name:"Crosnes (500g)",qtyRef:0.5,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.5},{name:"Beurre (50g), sauce Suprême (3dl)",qtyRef:0.35,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.35}],
+    steps:[{t:"Préparer",d:"Peler, blanchir, étuver les crosnes au beurre."},{t:"Saucer",d:"Les enrober de sauce Suprême, servir en légumier."}], equip:["Casserole"], allerg:["Lait","Gluten","Œufs"], nut:{kcal:170,prot:3,lip:14,glu:7}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"epinards_anglais", nom:"Épinards à l'Anglaise", page:511, source:"Fleurs cuites à l'eau, beurre à part", tags:["Épinards","Anglaise"], prepBase:8, cookBase:6, dressBase:2,
+    ingredients:[{name:"Épinards en feuilles (800g)",qtyRef:0.8,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.8},{name:"Beurre très fin (80g)",qtyRef:0.08,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.08}],
+    steps:[{t:"Cuire",d:"Cuire les épinards en feuilles à l'eau bouillante salée, bien égoutter sans rafraîchir ni presser."},{t:"Servir",d:"Dresser en légumier, servir des ronds de beurre très fin à part."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:100,prot:3,lip:8,glu:2}, co2:"0.8 kg", eau:"120 L", env:28, nota:"" }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 6, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2)+' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 6; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 6; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = (item.equip||["Ustensiles classiques"]).map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = (item.allerg||[]).map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  const notaText = item.nota ? `<p style="font-size:12px; margin-top:8px; font-style:italic; background:var(--bg2); padding:6px; border-radius:6px;">📜 NOTA — ${escapeHtml(item.nota)}</p>` : '';
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Base portions : 6 couverts. Les ingrédients s'adaptent automatiquement.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">6</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Les légumes doivent être préparés au dernier moment. Les épinards se blanchissent rapidement. Les haricots secs ne se salent qu'en fin de cuisson.</p>${notaText}</div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Légumes très frais. • Cuisson al dente. • Respect des températures pour les liaisons.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; if(portionLabel) portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('itemSelect');
+  for (let i = 0; i < itemsData.length; i++) {
+    const item = itemsData[i];
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.nom} (p. ${item.page})`;
+    select.appendChild(option);
+  }
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', function(e) { loadItem(e.target.value); });
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Légumes & Pâtes – Auguste Escoffier (p.502-509) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Légumes & Pâtes alimentaires · pages 502 à 509 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🥬 Chou, choux-fleurs, concombres</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 21 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES LÉGUMES PAGES 502-509 AVEC NOTA ==========
+const itemsData = [
+  { id:"chou_rouge_flamande", nom:"Chou rouge à la Flamande", page:501, source:"Julienne braisée, pommes, vinaigre, vin rouge", tags:["Chou rouge","Flamande"], prepBase:20, cookBase:50, dressBase:5,
+    ingredients:[{name:"Beau chou rouge (1,2 kg)",qtyRef:1.2,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1.2},{name:"Pommes de reinette (3-4), cassonade (1 cs)",qtyRef:0.5,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Vinaigre, vin rouge (1 verre facultatif), beurre",qtyRef:0.2,unit:"L",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.2},{name:"Sel, poivre, muscade",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Préparer",d:"Partager le chou en quartiers, retirer côtes et trognon, détailler en fine julienne."},{t:"Assaisonner",d:"Assaisonner sel, poivre, muscade, asperger de vinaigre."},{t:"Braiser",d:"Mettre en cocotte beurrée, ajouter vin facultatif. Cuire à four doux. Aux 3/4 de cuisson, ajouter pommes en quartiers et cassonade. Cuire très lentement sans mouillement."}], equip:["Cocotte","Four"], allerg:[], nut:{kcal:140,prot:2,lip:4,glu:22}, co2:"1.3 kg", eau:"190 L", env:40, nota:"Les Limousins cuisent avec le chou des marrons épluchés à cru et fragmentés." },
+  { id:"chou_rouge_marine", nom:"Chou rouge mariné (hors-d'œuvre)", page:502, source:"Julienne macérée, marinée au vinaigre et vin", tags:["Chou rouge","Mariné"], prepBase:15, cookBase:0, dressBase:5,
+    ingredients:[{name:"Chou rouge (1)",qtyRef:1,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:1},{name:"Sel fin (macération), ail (2-3 gousses), laurier, poivre en grains",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05},{name:"Vinaigre, vin rouge (moitié-moitié)",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Julienne",d:"Détailler le chou en fine julienne."},{t:"Macérer",d:"Saupoudrer de sel, laisser macérer 5-6h en remuant souvent."},{t:"Mariner",d:"Égoutter, mettre en pot avec ail, laurier, poivre. Couvrir du mélange vinaigre+vin bouilli et refroidi. Laisser mariner 24h."}], equip:["Terrine","Pot"], allerg:["Sulfites"], nut:{kcal:80,prot:1,lip:1,glu:12}, co2:"0.9 kg", eau:"130 L", env:30, nota:"Ce chou mariné est un excellent accompagnement pour l'œuf bouilli." },
+  { id:"chou_anglais", nom:"Chou à l'Anglaise", page:502, source:"Quartiers cuits à l'eau, pressés, découpés", tags:["Chou vert","Anglaise"], prepBase:10, cookBase:25, dressBase:5,
+    ingredients:[{name:"Chou vert pommé (1)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Sel gros",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}],
+    steps:[{t:"Cuire",d:"Partager le chou en quartiers, retirer trognon et grosses côtes. Cuire à grande eau salée."},{t:"Presser",d:"Égoutter, presser fortement entre deux assiettes plates pour extraire l'eau."},{t:"Découper",d:"Découper en carrés ou losanges. Servir d'accompagnement aux rôtis de bœuf, mouton."}], equip:["Casserole"], allerg:[], nut:{kcal:50,prot:2,lip:1,glu:8}, co2:"0.6 kg", eau:"90 L", env:22, nota:"" },
+  { id:"chou_braise", nom:"Chou braisé", page:502, source:"Blanchi, braisé au bouillon avec bardes", tags:["Chou","Braisé"], prepBase:15, cookBase:105, dressBase:5,
+    ingredients:[{name:"Chou vert (1)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Bardes de lard, carotte, oignon clouté, bouquet garni",qtyRef:0.2,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.2},{name:"Bouillon non dégraissé",qtyRef:0.5,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.5}],
+    steps:[{t:"Blanchir",d:"Partager en quartiers, retirer trognon et feuilles dures. Laver, blanchir, rafraîchir, égoutter."},{t:"Braiser",d:"Assaisonner sel, poivre, muscade. Mettre en casserole tapissée de bardes avec carotte, oignon, bouquet garni. Mouiller de bouillon, couvrir de bardes. Braiser à couvert au four très doux 1h30-2h."}], equip:["Casserole","Four"], allerg:["Porc"], nut:{kcal:90,prot:3,lip:5,glu:8}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"chou_farci_sou_fassum", nom:"Chou farci (Sou Fassum Provençal)", page:503, source:"Feuilles de chou farcies cuites au pot-au-feu", tags:["Chou","Farci"], prepBase:35, cookBase:120, dressBase:10,
+    ingredients:[{name:"Chou (1 moyen), feuilles (4 rangées)",qtyRef:1.2,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:1.2},{name:"Lard maigre de poitrine (250g), riz blanchi (150-200g)",qtyRef:0.4,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.4},{name:"Œufs (2), fromage râpé (3 cs), oignon, ail, persil",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1}],
+    steps:[{t:"Préparer feuilles",d:"Retirer les 4 rangées de feuilles après les premières dures. Laver, blanchir, rafraîchir, égoutter. Ranger sur filet."},{t:"Farce",d:"Échauder les feuilles intérieures, presser, hacher. Mélanger avec lard en dés, riz, œufs, fromage, ail, oignon, persil. Assaisonner."},{t:"Ficeler et cuire",d:"Garnir le centre des feuilles, fermer le filet. Plonger dans un pot-au-feu de mouton. Cuire avec les viandes."}], equip:["Filet","Marmite"], allerg:["Porc","Œufs","Lait","Gluten"], nut:{kcal:280,prot:12,lip:18,glu:18}, co2:"2.2 kg", eau:"330 L", env:54, nota:"On ajoute quelquefois 200g de chair à saucisses et des petits pois frais. Le Sou Fassum était le plat consacré au déjeuner du dimanche en Provence." },
+  { id:"chou_farci_garnitures", nom:"Chou farci pour garnitures", page:503, source:"Petits choux farcis, braisés au bouillon", tags:["Chou","Farci"], prepBase:30, cookBase:35, dressBase:10,
+    ingredients:[{name:"Chou moyen (effeuillé)",qtyRef:1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:1},{name:"Lard de poitrine (250g), chair à saucisses (250g), riz pilaw",qtyRef:0.5,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.5},{name:"Beurre ou saindoux, oignon, bouillon, bardes",qtyRef:0.2,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.2}],
+    steps:[{t:"Préparer",d:"Effeuiller complètement le chou, cuire les feuilles à l'eau salée, rafraîchir."},{t:"Farce",d:"Blondir oignon, ajouter lard et chair à saucisses, rissoler. Mêler chou haché, étuver. Ajouter riz pilaw."},{t:"Farcir et braiser",d:"Étaler les grandes feuilles, mettre 3 cs de farce, fermer en boules. Ranger dans plat beurré avec carotte, oignon. Bardes, mouiller de bouillon, braiser 30-35 min au four."}], equip:["Sautoir","Four"], allerg:["Porc","Gluten"], nut:{kcal:290,prot:14,lip:22,glu:16}, co2:"2.4 kg", eau:"360 L", env:58, nota:"Une excellente façon est de lier le riz avec de la purée de foie gras truffée." },
+  { id:"chou_petits_restos", nom:"Chou à la façon des petits restaurants", page:504, source:"Chou cuit, haché, lardons, oignon", tags:["Chou","Restaurant"], prepBase:15, cookBase:25, dressBase:3,
+    ingredients:[{name:"Chou cuit à l'anglaise (1 kg)",qtyRef:1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:1},{name:"Lard de poitrine en dés (250g), oignon haché (2 cs), beurre (2 cs)",qtyRef:0.3,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.3}],
+    steps:[{t:"Cuire",d:"Cuire le chou à l'anglaise, presser, hacher."},{t:"Sauter",d:"Dans sautoir, beurre, lardons, oignon. Quand oignon blondit, ajouter chou haché. Assaisonner, étuver 15-20 min en remuant."}], equip:["Sautoir"], allerg:["Porc"], nut:{kcal:220,prot:6,lip:18,glu:10}, co2:"1.6 kg", eau:"230 L", env:44, nota:"" },
+  { id:"choufleur_anglais", nom:"Chou-fleur à l'Anglaise", page:504, source:"Divisé en bouquets, cuit à l'eau salée, dressé en forme", tags:["Chou-fleur","Anglaise"], prepBase:12, cookBase:12, dressBase:5,
+    ingredients:[{name:"Chou-fleur (1)",qtyRef:0.8,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.8},{name:"Beurre fondu ou sauce Hollandaise (à part)",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Diviser",d:"Diviser le chou-fleur en petits bouquets, conserver les feuilles tendres."},{t:"Cuire",d:"Cuire bouquets et feuilles à l'eau salée 7-8 min (première eau). Égoutter, remettre en casserole avec eau bouillante, beurre, terminer cuisson."},{t:"Dresser",d:"Dresser les bouquets en bol pour reformer la tête, démouler sur plat entouré de feuilles en rosace. Servir avec beurre fondu ou sauce Hollandaise."}], equip:["Casserole","Bol"], allerg:["Lait","Œufs"], nut:{kcal:70,prot:3,lip:4,glu:6}, co2:"0.8 kg", eau:"120 L", env:28, nota:"La meilleure méthode est de diviser en petits bouquets. La deuxième eau peut servir pour une soupe de légumes." },
+  { id:"choufleur_fritot", nom:"Fritot de Chou-fleur", page:505, source:"Bouquets marinés, pâte à frire, frits", tags:["Chou-fleur","Fritot"], prepBase:20, cookBase:8, dressBase:5,
+    ingredients:[{name:"Bouquets de chou-fleur cuits (400g)",qtyRef:0.4,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.4},{name:"Huile d'olive, jus de citron, persil haché",qtyRef:0.05,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.05},{name:"Pâte à frire, huile de friture, persil frit",qtyRef:0.3,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Mariner",d:"Bouquets égouttés, assaisonner, saupoudrer persil, mariner 20 min avec huile et citron."},{t:"Friret",d:"Tremper en pâte à frire, frire au moment."},{t:"Dresser",d:"Dresser sur serviette avec persil frit. Servir sauce Tomate à part."}], equip:["Friteuse"], allerg:["Gluten","Œufs"], nut:{kcal:260,prot:4,lip:18,glu:18}, co2:"1.4 kg", eau:"200 L", env:40, nota:"" },
+  { id:"choufleur_gratin", nom:"Chou-fleur au gratin", page:505, source:"Bouquets étuvés, sauce Béchamel, fromage, gratiné", tags:["Chou-fleur","Gratin"], prepBase:20, cookBase:20, dressBase:5,
+    ingredients:[{name:"Chou-fleur (1), bouquets cuits",qtyRef:0.8,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.8},{name:"Beurre, sel, poivre, sauce Béchamel (4dl)",qtyRef:0.4,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.4},{name:"Fromage râpé (80g), chapelure, beurre fondu",qtyRef:0.1,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Étuver",d:"Bouquets cuits et égouttés, les sauter au beurre sans rissoler pour évaporer l'eau. Assaisonner."},{t:"Mouler",d:"Mouler dans un bol avec quelques cs de Béchamel."},{t:"Gratiner",d:"Démouler sur plat masqué de Béchamel, recouvrir de sauce, saupoudrer fromage et chapelure, arroser beurre, gratiner."}], equip:["Four","Bol"], allerg:["Lait","Gluten"], nut:{kcal:180,prot:6,lip:12,glu:12}, co2:"1.3 kg", eau:"190 L", env:38, nota:"" },
+  { id:"choufleur_milanaise", nom:"Chou-fleur Milanaise", page:505, source:"Bouquets étuvés, fromage, beurre noisette", tags:["Chou-fleur","Milanaise"], prepBase:15, cookBase:12, dressBase:5,
+    ingredients:[{name:"Chou-fleur (1), bouquets cuits",qtyRef:0.8,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.8},{name:"Beurre, fromage râpé (80g), beurre noisette",qtyRef:0.15,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.15}],
+    steps:[{t:"Étuver",d:"Étuver les bouquets au beurre."},{t:"Dresser",d:"Dresser en bol, démouler sur plat beurré saupoudré de fromage. Saupoudrer la surface de fromage."},{t:"Finition",d:"Tenir à l'entrée du four, arroser de beurre noisette au moment de servir."}], equip:["Four"], allerg:["Lait"], nut:{kcal:170,prot:5,lip:13,glu:8}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"choufleur_polonaise", nom:"Chou-fleur Polonaise", page:506, source:"Chou-fleur, jaunes d'œufs durs, persil, mie de pain frite", tags:["Chou-fleur","Polonaise"], prepBase:15, cookBase:12, dressBase:5,
+    ingredients:[{name:"Chou-fleur (1), bouquets cuits",qtyRef:0.8,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.8},{name:"Jaunes d'œufs durs (4), persil haché",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08},{name:"Beurre (100g), mie de pain (2 cs)",qtyRef:0.12,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.12}],
+    steps:[{t:"Préparer",d:"Préparer le chou-fleur comme pour Milanaise sans fromage."},{t:"Mélange",d:"Mélanger jaunes d'œufs durs passés et persil haché."},{t:"Beurre noisette",d:"Faire frire la mie de pain dans le beurre noisette. Saupoudrer le chou-fleur du mélange œuf-persil, arroser de beurre noisette aux croûtons."}], equip:["Poêle"], allerg:["Œufs","Lait","Gluten"], nut:{kcal:240,prot:6,lip:20,glu:10}, co2:"1.3 kg", eau:"190 L", env:40, nota:"" },
+  { id:"puree_choufleur", nom:"Purée de Chou-fleur", page:506, source:"Bouquets cuits, tamisés, purée de pommes de terre", tags:["Purée","Chou-fleur"], prepBase:15, cookBase:15, dressBase:3,
+    ingredients:[{name:"Chou-fleur (600g)",qtyRef:0.6,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.6},{name:"Beurre (80g), purée de pommes de terre (150g)",qtyRef:0.23,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.23}],
+    steps:[{t:"Cuire",d:"Cuire le chou-fleur en bouquets, égoutter, étuver au beurre."},{t:"Tamis",d:"Passer au tamis fin."},{t:"Lier",d:"Incorporer 1/4 de son volume de purée de pommes de terre à la crème (tenir ferme). Finir avec beurre."}], equip:["Tamis","Casserole"], allerg:["Lait"], nut:{kcal:120,prot:3,lip:9,glu:8}, co2:"0.9 kg", eau:"130 L", env:32, nota:"" },
+  { id:"choux_bruxelles_anglais", nom:"Choux de Bruxelles à l'Anglaise", page:506, source:"Cuits à l'eau, beurre frais assaisonné", tags:["Choux de Bruxelles","Anglaise"], prepBase:10, cookBase:8, dressBase:2,
+    ingredients:[{name:"Choux de Bruxelles (500g)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Beurre très frais (100g), sel, poivre",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Nettoyer",d:"Nettoyer, laver les choux."},{t:"Cuire",d:"Cuire à l'eau salée al dente, bien égoutter."},{t:"Servir",d:"Dresser en légumier chaud, ajouter le beurre assaisonné, couvrir, servir aussitôt."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:150,prot:4,lip:13,glu:6}, co2:"1.0 kg", eau:"140 L", env:34, nota:"" },
+  { id:"choux_bruxelles_beurre", nom:"Choux de Bruxelles au beurre", page:506, source:"Cuits, sauté au beurre", tags:["Choux de Bruxelles","Beurre"], prepBase:10, cookBase:10, dressBase:2,
+    ingredients:[{name:"Choux de Bruxelles (500g)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Beurre (150g), sel, poivre",qtyRef:0.15,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.15}],
+    steps:[{t:"Cuire",d:"Cuire à l'anglaise, bien égoutter."},{t:"Sauter",d:"Mettre en casserole avec le beurre, assaisonner, sauter quelques minutes pour envelopper."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:240,prot:4,lip:23,glu:6}, co2:"1.2 kg", eau:"170 L", env:38, nota:"" },
+  { id:"choux_bruxelles_sautes", nom:"Choux de Bruxelles sautés", page:506, source:"Cuits, sautés au beurre jusqu'à rissolage, persil", tags:["Choux de Bruxelles","Sautés"], prepBase:10, cookBase:12, dressBase:2,
+    ingredients:[{name:"Choux de Bruxelles (500g)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Beurre (80g), persil haché",qtyRef:0.08,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.08}],
+    steps:[{t:"Cuire",d:"Cuire à l'eau salée, bien égoutter."},{t:"Sauter",d:"Mettre dans poêle avec beurre chaud, sauter jusqu'à légère coloration."},{t:"Parsemer",d:"Dresser, saupoudrer de persil haché."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:150,prot:4,lip:13,glu:6}, co2:"1.0 kg", eau:"140 L", env:34, nota:"On peut préparer les choux de Bruxelles au gratin, à la Milanaise, à la Polonaise, comme pour les choux-fleurs." },
+  { id:"puree_choux_bruxelles_flamande", nom:"Purée de Choux de Bruxelles à la Flamande", page:507, source:"Choux étuvés, tamisés, purée de pommes de terre", tags:["Purée","Flamande"], prepBase:15, cookBase:15, dressBase:3,
+    ingredients:[{name:"Choux de Bruxelles (500g)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Beurre (80g), purée de pommes de terre crémeuse (150g)",qtyRef:0.23,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.23}],
+    steps:[{t:"Cuire",d:"Cuire les choux à l'eau salée, égoutter sans rafraîchir, étuver au beurre 5-6 min."},{t:"Tamis",d:"Passer au tamis."},{t:"Lier",d:"Ajouter 1/3 de purée de pommes de terre, beurre fin au moment."}], equip:["Tamis","Casserole"], allerg:["Lait"], nut:{kcal:130,prot:3,lip:10,glu:8}, co2:"1.0 kg", eau:"140 L", env:34, nota:"" },
+  { id:"concombres_creme", nom:"Concombres à la crème", page:507, source:"Façonnés, blanchis, étuvés, crème et Béchamel", tags:["Concombres","Crème"], prepBase:15, cookBase:15, dressBase:3,
+    ingredients:[{name:"Concombres (2)",qtyRef:0.6,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.6},{name:"Beurre (60g), crème fraîche (2dl), sauce Béchamel (3 cs)",qtyRef:0.3,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.3}],
+    steps:[{t:"Façonner",d:"Peler, façonner en olives ou bâtonnets. Blanchir quelques minutes, égoutter."},{t:"Étuver",d:"Étuver au beurre jusqu'à évaporation complète (ils sont alors cuits)."},{t:"Lier",d:"Mouiller de crème bouillante, 2 min ébullition, ajouter Béchamel. Servir. Variante: paprika ou curry."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:130,prot:2,lip:11,glu:5}, co2:"1.0 kg", eau:"150 L", env:34, nota:"" },
+  { id:"concombres_farcis_rondelles", nom:"Concombres farcis (rondelles)", page:508, source:"Rondelles vidées, farce de volaille, pochées", tags:["Concombres","Farcis"], prepBase:25, cookBase:20, dressBase:5,
+    ingredients:[{name:"Concombres (2)",qtyRef:0.6,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.6},{name:"Farce crue de volaille à la crème (250g)",qtyRef:0.25,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.25},{name:"Beurre, sel, poivre, glace de viande (facultatif)",qtyRef:0.05,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Couper en rondelles de 3 cm, peler, vider les graines, blanchir, égoutter."},{t:"Cuire",d:"Ranger dans sautoir beurré, assaisonner, cuire complètement."},{t:"Farcir",d:"Remplir le vide de farce crue. Remettre au four 15 min avant de servir pour pocher. Accompagnement de volaille braisée, glace de viande."}], equip:["Sautoir","Four"], allerg:["Volaille","Lait","Gluten"], nut:{kcal:180,prot:8,lip:14,glu:4}, co2:"1.5 kg", eau:"220 L", env:42, nota:"Peuvent servir de garniture ou entrées avec escalope de ris de veau, sauce Suprême, truffes, gratin Mornay." },
+  { id:"concombres_farcis_longueur", nom:"Concombres farcis (longueur)", page:508, source:"Fendus, farcis, braisés au fonds de veau", tags:["Concombres","Farcis"], prepBase:25, cookBase:40, dressBase:10,
+    ingredients:[{name:"Concombres (2)",qtyRef:0.6,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.6},{name:"Farce de volaille à la frangipane (300g), truffe, champignons, langue",qtyRef:0.3,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.3},{name:"Bardes de lard, mousseline, fonds de veau, sauce demi-glace",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Peler, fendre en deux, vider. Blanchir, égoutter sans rafraîchir."},{t:"Farcir",d:"Garnir chaque moitié de farce, rapporter l'autre moitié. Envelopper de bardes et mousseline, ficeler."},{t:"Braiser",d:"Braiser sur lit de légumes avec fonds de veau. Cuire. Déballer, couper en tronçons, napper de sauce demi-glace réduite."}], equip:["Braisière","Four"], allerg:["Porc","Volaille","Gluten","Lait"], nut:{kcal:200,prot:10,lip:15,glu:6}, co2:"1.8 kg", eau:"260 L", env:46, nota:"Variantes: gratiner avec fromage et sauce tomate, ou masquer de sauce Italienne, sauce Suprême aux truffes, ou Béchamel à la crème gratinée." },
+  { id:"tian_courgettes", nom:"Tian de Courgettes à la Provençale", page:509, source:"Courgettes émincées, riz, fromage, gratiné", tags:["Courgettes","Tian","Provençale"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Courgettes (800g)",qtyRef:0.8,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.8},{name:"Riz (100g), eau (2dl), fromage râpé (4 cs), persil",qtyRef:0.15,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.15},{name:"Huile d'olive, ail, sel, poivre, muscade, pain trempé",qtyRef:0.1,unit:"L",priceUnit:6,defaultPrice:6,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Peler les courgettes, émincer. Assaisonner sel, poivre, muscade. Cuire doucement à la poêle à l'huile d'olive avec ail."},{t:"Riz",d:"Cuire le riz à l'eau salée 18 min (2dl eau pour 100g)."},{t:"Assembler",d:"Mélanger courgettes cuites, riz, fromage, persil. Verser dans le Tian. Couvrir de pain trempé et pressé, haché. Cuire au four."}], equip:["Tian (terrine)","Four"], allerg:["Lait","Gluten"], nut:{kcal:180,prot:4,lip:10,glu:18}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 6, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2)+' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 6; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 6; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = (item.equip||["Ustensiles classiques"]).map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = (item.allerg||[]).map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  const notaText = item.nota ? `<p style="font-size:12px; margin-top:8px; font-style:italic; background:var(--bg2); padding:6px; border-radius:6px;">📜 NOTA — ${escapeHtml(item.nota)}</p>` : '';
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Base portions : 6 couverts. Les ingrédients s'adaptent automatiquement.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">6</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Les choux doivent être cuits al dente. Les braisés se font à très douce chaleur. Les choux-fleurs se divisent en bouquets pour éviter les chenilles.</p>${notaText}</div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Laver soigneusement les choux. • Respect des temps de cuisson. • Traçabilité des viandes pour farces.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; if(portionLabel) portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('itemSelect');
+  for (let i = 0; i < itemsData.length; i++) {
+    const item = itemsData[i];
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.nom} (p. ${item.page})`;
+    select.appendChild(option);
+  }
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', function(e) { loadItem(e.target.value); });
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
