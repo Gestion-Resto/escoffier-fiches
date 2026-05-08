@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rôtis (Gibiers) – Auguste Escoffier (p.473-477) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Rôtis de gibier · pages 473 à 477 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🔥 Rôtis de gibier</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 27 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES RÔTIS DE GIBIER PAGES 473-477 ==========
+const itemsData = [
+  { id:"becasse_rotie", nom:"Bécasse rôtie", page:474, source:"Conservée plume, vide gésier, troussée, bardée", tags:["Bécasse","Rôti"], prepBase:10, cookBase:16, dressBase:5,
+    ingredients:[{name:"Bécasse (1 pièce, 400g)",qtyRef:0.4,unit:"kg",priceUnit:28,defaultPrice:28,defaultQty:0.4},{name:"Bardes de lard, beurre",qtyRef:0.05,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.05},{name:"Cognac (2 cs), jus",qtyRef:0.05,unit:"L",priceUnit:10,defaultPrice:10,defaultQty:0.05},{name:"Pain de mie (croûton)",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Conserver quelques jours avec plumes. Ne pas vider, enlever seulement le gésier. Trousser en traversant avec le bec à l'endroit des cuisses. Barder."},{t:"Rôtir",d:"Rôtir à feu assez vif, 15-18 min."},{t:"Dresser",d:"Sur croûton de pain frit au beurre. Déglacer la cuisson au cognac + 2 cs de jus."}], equip:["Four","Broche"], allerg:["Gibier","Porc","Sulfites"], nut:{kcal:320,prot:28,lip:22,glu:2}, co2:"2.8 kg", eau:"420 L", env:65, nota:"La bécasse doit être conservée quelques jours avec ses plumes et être faisandée à point. Elle ne se plume qu'au moment de l'employer." },
+  { id:"becassine_rotie", nom:"Bécassine rôtie", page:474, source:"Comme bécasse, croûton + farce à gratin", tags:["Bécassine","Rôti"], prepBase:8, cookBase:8, dressBase:5,
+    ingredients:[{name:"Bécassine (6 pièces)",qtyRef:0.3,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.3},{name:"Bardes, beurre, farce à gratin gibier",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Comme la bécasse. Barder."},{t:"Rôtir",d:"8-9 min à feu vif."},{t:"Dresser",d:"Croûton frit au beurre recouvert d'une légère couche de farce à gratin pour gibier."}], equip:["Four"], allerg:["Gibier","Porc","Gluten","Lait"], nut:{kcal:310,prot:26,lip:21,glu:2}, co2:"2.5 kg", eau:"380 L", env:62, nota:"" },
+  { id:"bec_figues", nom:"Bec-Figues et Béguinettes", page:474, source:"Embrochés par six, cuisson rapide", tags:["Bec-Figues","Rôti"], prepBase:5, cookBase:7, dressBase:3,
+    ingredients:[{name:"Bec-Figues ou Béguinettes (12 pièces)",qtyRef:0.2,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.2},{name:"Beurre, sel",qtyRef:0.03,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.03}],
+    steps:[{t:"Embrocher",d:"Embrocher par six."},{t:"Rôtir",d:"Cuire à feu vif 7-8 min."}], equip:["Broche"], allerg:[], nut:{kcal:280,prot:24,lip:20,glu:0}, co2:"2.0 kg", eau:"300 L", env:58, nota:"" },
+  { id:"cailles_rotie", nom:"Cailles rôties", page:474, source:"Feuille de vigne beurrée, barde, croûton farce à gratin", tags:["Cailles","Rôti"], prepBase:10, cookBase:11, dressBase:5,
+    ingredients:[{name:"Cailles (6 pièces, 900g)",qtyRef:0.9,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.9},{name:"Feuilles de vigne (6), bardes, farce à gratin",qtyRef:0.15,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.15},{name:"Croûtons, beurre",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Choisir des cailles blanches et grasses. Envelopper d'une feuille de vigne beurrée, puis d'une mince barde."},{t:"Rôtir",d:"Feu assez vif 10-12 min."},{t:"Dresser",d:"Sur petits croûtons frits au beurre, masqués de farce à gratin. Entourer de cresson et demi-citrons. Jus très court à part."}], equip:["Four","Broche"], allerg:["Gibier","Porc","Gluten","Lait"], nut:{kcal:340,prot:28,lip:24,glu:4}, co2:"3.0 kg", eau:"450 L", env:66, nota:"" },
+  { id:"canard_sauvage", nom:"Canard sauvage rôti", page:474, source:"Non bardé, feu vif, saignant", tags:["Canard","Sauvage"], prepBase:8, cookBase:20, dressBase:5,
+    ingredients:[{name:"Canard sauvage (1 pièce, 1kg)",qtyRef:1,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:1},{name:"Beurre, sel, poivre",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Préparer",d:"Ne pas barder."},{t:"Rôtir",d:"Feu très vif, 20 min, pour l'obtenir saignant."},{t:"Dresser",d:"Cresson et citrons."}], equip:["Four","Broche"], allerg:[], nut:{kcal:290,prot:24,lip:22,glu:0}, co2:"3.2 kg", eau:"480 L", env:64, nota:"" },
+  { id:"canard_sauvage_anglaise", nom:"Canard sauvage à l'Anglaise", page:474, source:"Rôti, apple-sauce ou cranberries-sauce", tags:["Canard","Anglaise"], prepBase:8, cookBase:20, dressBase:5,
+    ingredients:[{name:"Canard sauvage (1kg)",qtyRef:1,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:1},{name:"Apple-sauce ou cranberries-sauce",qtyRef:0.2,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.2}],
+    steps:[{t:"Rôtir",d:"Comme canard sauvage classique."},{t:"Accompagner",d:"Servir à part une apple-sauce ou cranberries-sauce."}], equip:["Four"], allerg:["Sulfites"], nut:{kcal:300,prot:24,lip:22,glu:8}, co2:"3.3 kg", eau:"490 L", env:65, nota:"" },
+  { id:"canard_bigarrade", nom:"Canard sauvage à la Bigarrade", page:475, source:"Entourage d'oranges, sauce bigarrade", tags:["Canard","Bigarrade"], prepBase:12, cookBase:20, dressBase:10,
+    ingredients:[{name:"Canard sauvage (1kg)",qtyRef:1,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:1},{name:"Oranges (2), sauce bigarrade",qtyRef:0.3,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.3}],
+    steps:[{t:"Rôtir",d:"Rôtir comme précédent."},{t:"Dresser",d:"Entourer de quartiers d'oranges parés à vif. Servir sauce bigarrade à part."}], equip:["Four"], allerg:["Sulfites"], nut:{kcal:310,prot:23,lip:21,glu:6}, co2:"3.4 kg", eau:"500 L", env:66, nota:"" },
+  { id:"pilet", nom:"Pilet rôti", page:475, source:"Feu vif, 15-17 min", tags:["Pilet","Canard"], prepBase:5, cookBase:16, dressBase:3,
+    ingredients:[{name:"Pilet (1 pièce, 700g)",qtyRef:0.7,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:0.7}],
+    steps:[{t:"Rôtir",d:"Feu vif, 15-17 min."}], equip:["Four"], allerg:[], nut:{kcal:280,prot:25,lip:20,glu:0}, co2:"2.9 kg", eau:"430 L", env:63, nota:"Le temps de cuisson peut varier de quelques minutes selon que l'oiseau est plus ou moins gras." },
+  { id:"sarcelle", nom:"Sarcelle rôtie", page:475, source:"Comme canard sauvage, 12-17 min", tags:["Sarcelle","Canard"], prepBase:5, cookBase:14, dressBase:3,
+    ingredients:[{name:"Sarcelle (1 pièce, 400g)",qtyRef:0.4,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.4}],
+    steps:[{t:"Rôtir",d:"Comme canard sauvage, 12-17 min."}], equip:["Four"], allerg:[], nut:{kcal:290,prot:26,lip:21,glu:0}, co2:"2.6 kg", eau:"390 L", env:62, nota:"" },
+  { id:"coq_bruyere", nom:"Coq de Bruyère, Gelinotte, Grouse", page:475, source:"Frais, bardés, tenus rosés", tags:["Gibier","Rôti"], prepBase:8, cookBase:16, dressBase:5,
+    ingredients:[{name:"Coq de bruyère ou gélinotte (1 pièce, 600g)",qtyRef:0.6,unit:"kg",priceUnit:22,defaultPrice:22,defaultQty:0.6},{name:"Bardes, beurre",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08}],
+    steps:[{t:"Préparer",d:"Brider, barder."},{t:"Rôtir",d:"Feu vif 15-18 min. Tenir rosé."},{t:"Servir",d:"À l'anglaise : bread-sauce, bread-crumb, pommes chips. On ne sert généralement que les poitrines."}], equip:["Four"], allerg:["Porc","Lait","Gluten"], nut:{kcal:300,prot:27,lip:21,glu:1}, co2:"3.0 kg", eau:"450 L", env:64, nota:"Le Coq de Bruyère très jeune possède une certaine saveur. La Gelinotte et la Grouse doivent être employées très fraîches." },
+  { id:"faisan_rotie", nom:"Faisan rôti", page:475, source:"Bardé, farci de panne de porc truffée ou nature", tags:["Faisan","Rôti"], prepBase:15, cookBase:27, dressBase:5,
+    ingredients:[{name:"Faisan (1 pièce, 1kg)",qtyRef:1,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:1},{name:"Panne de porc fraîche (100g), truffes (option)",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1},{name:"Bardes, sel, poivre",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Farcir",d:"Farcir de panne de porc pilée (+ pelures de truffes si possible). Assaisonner."},{t:"Barder",d:"Barder (ne pas piquer)."},{t:"Rôtir",d:"25-30 min selon grosseur. Jus un peu gras à part."}], equip:["Four","Broche"], allerg:["Porc"], nut:{kcal:340,prot:30,lip:24,glu:0}, co2:"3.4 kg", eau:"510 L", env:68, nota:"La chair de faisan étant un peu sèche, la panne en fondant pénètre les chairs et les rend plus savoureuses. Cette méthode s'applique également au perdreau." },
+  { id:"faisan_truffe", nom:"Faisan truffé", page:476, source:"Panne 400g, truffes 200g, bardé, four modéré", tags:["Faisan","Truffé"], prepBase:25, cookBase:40, dressBase:5,
+    ingredients:[{name:"Faisan (1,2kg)",qtyRef:1.2,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:1.2},{name:"Panne fraîche (400g)",qtyRef:0.4,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.4},{name:"Truffes (200g), cognac",qtyRef:0.2,unit:"kg",priceUnit:200,defaultPrice:200,defaultQty:0.2},{name:"Bardes",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Truffer",d:"Comme pour la poularde truffée. Mélanger panne et truffes."},{t:"Barder",d:"Barder la pièce."},{t:"Rôtir",d:"Four chaleur modérée, 40 min en moyenne. Sauce Périgueux légère à part."}], equip:["Four"], allerg:["Porc","Sulfites"], nut:{kcal:420,prot:30,lip:33,glu:2}, co2:"4.0 kg", eau:"600 L", env:74, nota:"" },
+  { id:"grives_rotie", nom:"Grives rôties", page:476, source:"Bardées, grain de genièvre, feu vif 8-10 min", tags:["Grives","Rôti"], prepBase:8, cookBase:9, dressBase:5,
+    ingredients:[{name:"Grives (12 pièces)",qtyRef:0.8,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:0.8},{name:"Bardes, baies de genièvre (12)",qtyRef:0.02,unit:"kg",priceUnit:25,defaultPrice:25,defaultQty:0.02},{name:"Croûtons, beurre",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1}],
+    steps:[{t:"Préparer",d:"Retirer le gésier, barder, introduire un grain de genièvre dans chaque grive."},{t:"Rôtir",d:"Feu vif 8-10 min."},{t:"Dresser",d:"Sur croûtons frits au beurre, jus de déglaçage à part."}], equip:["Four"], allerg:["Porc","Gluten","Lait"], nut:{kcal:360,prot:24,lip:30,glu:3}, co2:"3.0 kg", eau:"450 L", env:68, nota:"" },
+  { id:"rable_lievre", nom:"Râble de Lièvre rôti", page:476, source:"Dénervé, piqué ou bardé, 20 min", tags:["Lièvre","Râble"], prepBase:12, cookBase:20, dressBase:5,
+    ingredients:[{name:"Râble de lièvre (500g)",qtyRef:0.5,unit:"kg",priceUnit:20,defaultPrice:20,defaultQty:0.5},{name:"Lard (pour piquer) ou bardes",qtyRef:0.08,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.08}],
+    steps:[{t:"Préparer",d:"Bien dénerver, finement piquer ou barder."},{t:"Rôtir",d:"Four, environ 20 min."},{t:"Accompagner",d:"Sauce poivrade légère. En Angleterre : gelée de groseilles, marmelade de pommes peu sucrée, pruneaux ou poires au vin rouge."}], equip:["Four"], allerg:["Porc"], nut:{kcal:290,prot:28,lip:19,glu:0}, co2:"3.5 kg", eau:"520 L", env:66, nota:"" },
+  { id:"mauviettes", nom:"Mauviettes rôties", page:476, source:"Bardées, embrochées, cuisson rapide", tags:["Mauviettes","Rôti"], prepBase:6, cookBase:7, dressBase:4,
+    ingredients:[{name:"Mauviettes (12 pièces)",qtyRef:0.3,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.3},{name:"Bardes, beurre",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08},{name:"Croûtons",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08}],
+    steps:[{t:"Préparer",d:"Envelopper chaque mauviette d'une mince barde. Les embrocher par trois."},{t:"Cuire",d:"Au beurre en casserole plate 7-8 min."},{t:"Dresser",d:"Sur croûtons frits au beurre. Jus de déglaçage à part. Cresson facultatif."}], equip:["Four","Casserole"], allerg:["Porc","Lait","Gluten"], nut:{kcal:330,prot:25,lip:25,glu:3}, co2:"2.7 kg", eau:"400 L", env:64, nota:"" },
+  { id:"merles_corse", nom:"Merles de Corse rôtis", page:476, source:"Comme les grives", tags:["Merles","Rôti"], prepBase:8, cookBase:9, dressBase:5,
+    ingredients:[{name:"Merles de Corse (6 pièces)",qtyRef:0.4,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.4},{name:"Bardes, beurre",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06}],
+    steps:[{t:"Traiter",d:"Se traitent comme les grives."}], equip:["Four"], allerg:["Porc","Lait"], nut:{kcal:320,prot:24,lip:25,glu:0}, co2:"2.9 kg", eau:"430 L", env:65, nota:"" },
+  { id:"ortolans", nom:"Ortolans (méthode classique)", page:476, source:"Feuille de vigne, plaque humectée, 4-5 min", tags:["Ortolans","Rôti"], prepBase:6, cookBase:4, dressBase:3,
+    ingredients:[{name:"Ortolans (12 pièces)",qtyRef:0.36,unit:"kg",priceUnit:45,defaultPrice:45,defaultQty:0.36},{name:"Feuilles de vigne (12)",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02}],
+    steps:[{t:"Envelopper",d:"Envelopper chaque ortolan d'une bande de feuille de vigne."},{t:"Cuire",d:"Ranger dans une plaque humectée d'eau salée, saisir à four vif 4-5 min. L'évaporation empêche la fonte de la graisse : ni barde, ni beurre, ni jus."}], equip:["Four","Plaque"], allerg:[], nut:{kcal:380,prot:28,lip:30,glu:0}, co2:"2.4 kg", eau:"360 L", env:62, nota:"Le peu d'eau ajoutée provoque une évaporation qui empêche de fondre la graisse des ortolans." },
+  { id:"ortolans_ananas", nom:"Ortolans au suc d'Ananas « Fantaisie »", page:477, source:"Beurre, four chaud, suc d'ananas", tags:["Ortolans","Ananas"], prepBase:5, cookBase:3, dressBase:2,
+    ingredients:[{name:"Ortolans (10 pièces)",qtyRef:0.3,unit:"kg",priceUnit:45,defaultPrice:45,defaultQty:0.3},{name:"Beurre frais (2 cs), suc d'ananas",qtyRef:0.1,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:0.1}],
+    steps:[{t:"Chauffer",d:"Chauffer le beurre dans une petite casserole en argent."},{t:"Rôtir",d:"Rouler les ortolans dans le beurre, saler légèrement, passer 3 min au four très chaud."},{t:"Arroser",d:"Sortir du four, arroser de suc d'ananas, couvrir et servir immédiatement."}], equip:["Casserole en argent","Four"], allerg:["Lait"], nut:{kcal:390,prot:27,lip:29,glu:6}, co2:"2.5 kg", eau:"370 L", env:63, nota:"" },
+  { id:"ortolans_vauclusienne", nom:"Ortolans à la Vauclusienne", page:477, source:"Truffes, glace de volaille, Frontignan", tags:["Ortolans","Vauclusienne"], prepBase:10, cookBase:5, dressBase:3,
+    ingredients:[{name:"Ortolans (10 pièces)",qtyRef:0.3,unit:"kg",priceUnit:45,defaultPrice:45,defaultQty:0.3},{name:"Truffes crues (100g), beurre, glace de volaille (2 cs)",qtyRef:0.12,unit:"kg",priceUnit:30,defaultPrice:30,defaultQty:0.12},{name:"Vieux Frontignan (3 cs)",qtyRef:0.05,unit:"L",priceUnit:15,defaultPrice:15,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Cuire les ortolans comme précédemment (2 min 30)."},{t:"Truffes",d:"Les couvrir de truffes en lamelles assaisonnées, chauffées avec beurre, glace de volaille et Frontignan."},{t:"Fermer",d:"Fermer la casserole hermétiquement, donner 1 min de cuisson. Servir avec toasts de pain grillé."}], equip:["Casserole","Four"], allerg:["Lait","Sulfites"], nut:{kcal:410,prot:28,lip:32,glu:4}, co2:"2.9 kg", eau:"430 L", env:68, nota:"" },
+  { id:"perdreau_rotie", nom:"Perdreau rôti", page:477, source:"Feuille de vigne beurrée, barde, croûton farce à gratin", tags:["Perdreau","Rôti"], prepBase:10, cookBase:19, dressBase:5,
+    ingredients:[{name:"Perdreau (1 pièce, 400g)",qtyRef:0.4,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.4},{name:"Feuille de vigne, barde, farce à gratin",qtyRef:0.08,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.08},{name:"Croûton, beurre",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Assaisonner",d:"Assaisonner intérieur et extérieur de sel."},{t:"Envelopper",d:"Envelopper d'une feuille de vigne beurrée puis d'une barde mince."},{t:"Rôtir",d:"Four chaleur moyenne 18-20 min (broche 25 min). Dresser sur croûton frit beurre + farce à gratin. Entourer de cresson. Jus un peu gras et corsé à part."}], equip:["Four","Broche"], allerg:["Porc","Lait","Gluten"], nut:{kcal:300,prot:26,lip:21,glu:3}, co2:"2.9 kg", eau:"440 L", env:64, nota:"" },
+  { id:"perdreau_truffe", nom:"Perdreau truffé", page:477, source:"Panne 100g, truffes 80g, broche", tags:["Perdreau","Truffé"], prepBase:20, cookBase:32, dressBase:5,
+    ingredients:[{name:"Perdreau (500g)",qtyRef:0.5,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:0.5},{name:"Panne fraîche (100g), truffes (80g)",qtyRef:0.18,unit:"kg",priceUnit:50,defaultPrice:50,defaultQty:0.18},{name:"Cognac, barde",qtyRef:0.03,unit:"L",priceUnit:10,defaultPrice:10,defaultQty:0.03}],
+    steps:[{t:"Préparer farce",d:"Passer la panne au tamis. Truffes en quartiers, assaisonner sel, poivre, cognac."},{t:"Farcir",d:"Farcir le perdreau, l'envelopper d'une barde très mince."},{t:"Rôtir",d:"Cuire à la broche de préférence, 30-35 min."}], equip:["Broche","Four"], allerg:["Porc","Sulfites"], nut:{kcal:370,prot:27,lip:28,glu:2}, co2:"3.2 kg", eau:"480 L", env:70, nota:"" },
+  { id:"pluviers_vanneaux", nom:"Pluviers et Vanneaux rôtis", page:477, source:"Vidés, bardés à volonté, saignants, 12-14 min", tags:["Pluviers","Vanneaux"], prepBase:8, cookBase:13, dressBase:4,
+    ingredients:[{name:"Pluviers ou vanneaux (4 pièces, 600g)",qtyRef:0.6,unit:"kg",priceUnit:16,defaultPrice:16,defaultQty:0.6},{name:"Bardes (facultatif)",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Vider",d:"Vider les oiseaux, les barder à volonté."},{t:"Cuire",d:"À la broche ou casserole, les tenir légèrement saignants. 12-14 min."},{t:"Servir",d:"Aussitôt cuits, avec un jus court et corsé."}], equip:["Broche","Casserole"], allerg:["Porc"], nut:{kcal:280,prot:24,lip:19,glu:0}, co2:"2.7 kg", eau:"400 L", env:62, nota:"" },
+  { id:"chevaliers", nom:"Chevaliers rôtis", page:475, source:"Comme vanneaux, vidés entièrement", tags:["Chevaliers","Rôti"], prepBase:6, cookBase:12, dressBase:3,
+    ingredients:[{name:"Chevaliers (4 pièces, 500g)",qtyRef:0.5,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.5},{name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Vider",d:"Vider entièrement."},{t:"Cuire",d:"Se traitent comme les vanneaux."}], equip:["Broche"], allerg:["Lait"], nut:{kcal:280,prot:25,lip:19,glu:0}, co2:"2.6 kg", eau:"390 L", env:63, nota:"" },
+  { id:"ortolans_consomme", nom:"Ortolans pochés au consommé (Leblanc)", page:476, source:"Pochés dans consommé corsé, en terrine", tags:["Ortolans","Poché"], prepBase:5, cookBase:6, dressBase:5,
+    ingredients:[{name:"Ortolans (12)",qtyRef:0.36,unit:"kg",priceUnit:45,defaultPrice:45,defaultQty:0.36},{name:"Consommé très corsé",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Pocher",d:"Pocher les ortolans dans un consommé très corsé."},{t:"Dresser",d:"Dresser en terrine ou casserole d'argent avec un peu de consommé de pochage."}], equip:["Casserole"], allerg:[], nut:{kcal:370,prot:27,lip:28,glu:2}, co2:"2.5 kg", eau:"370 L", env:62, nota:"Recette du chef Leblanc, chef de cuisine du vieux baron de Rothschild sous le second Empire." }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 6, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2)+' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 6; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 6; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = (item.equip||["Ustensiles classiques"]).map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = (item.allerg||[]).map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  const notaText = item.nota ? `<p style="font-size:12px; margin-top:8px; font-style:italic; background:var(--bg2); padding:6px; border-radius:6px;">📜 NOTA — ${escapeHtml(item.nota)}</p>` : '';
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Base portions : 6 couverts. Les ingrédients s'adaptent automatiquement.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">6</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Rôtir à feu vif pour les gibiers, les tenir rosés. Servir sur croûtons frits, cresson, citrons. Jus court et corsé à part.</p>${notaText}</div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Gibier frais ou faisandé contrôlé. • Cuisson à cœur. • Chaîne du froid respectée.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; if(portionLabel) portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('itemSelect');
+  for (let i = 0; i < itemsData.length; i++) {
+    const item = itemsData[i];
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.nom} (p. ${item.page})`;
+    select.appendChild(option);
+  }
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', function(e) { loadItem(e.target.value); });
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
