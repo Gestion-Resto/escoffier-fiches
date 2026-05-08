@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Légumes & Pâtes – Auguste Escoffier (p.534-541) | gestionresto.fr</title>
+  <style>
+    /* Styles identiques au modèle validé */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0efe9;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1a1a18; --text2: #6b6b67; --text3: #9a9a94;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --blue-bg: #E6F1FB; --blue-txt: #0C447C;
+      --amber-bg: #FAEEDA; --amber-txt: #633806;
+      --coral-bg: #FAECE7; --coral-txt: #712B13;
+      --gray-bg: #F1EFE8; --gray-txt: #444441;
+      --red-bg: #FCEBEB; --red-txt: #A32D2D;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1a; --bg2: #262624; --bg3: #2e2e2b;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0efe8; --text2: #9a9a92; --text3: #6a6a64;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+        --blue-bg: #042C53; --blue-txt: #B5D4F4;
+        --amber-bg: #412402; --amber-txt: #FAC775;
+        --coral-bg: #4A1B0C; --coral-txt: #F0997B;
+        --gray-bg: #2C2C2A; --gray-txt: #D3D1C7;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .site-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.4rem 1.75rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.2px; }
+    .site-header p { font-size: 12px; color: var(--text2); font-family: system-ui, sans-serif; }
+    .category-badge { display: inline-block; padding: 4px 14px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #E1F5EE; color: #085041; font-family: sans-serif; }
+    .nav-select { margin-bottom: 2rem; text-align: center; }
+    select { padding: 0.6rem 1rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; max-width: 90%; }
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1rem 1.5rem; margin-bottom: 1rem; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 28px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 13px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 2px 8px; border-radius: 30px; display: inline-block; }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 6px; font-family: sans-serif; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-blue { background: var(--blue-bg); color: var(--blue-txt); }
+    .tag-amber { background: var(--amber-bg); color: var(--amber-txt); }
+    .tag-gray { background: var(--gray-bg); color: var(--gray-txt); }
+    .tag-red { background: var(--red-bg); color: var(--red-txt); }
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .time-grid { display: grid; grid-template-columns: 100px 1fr auto; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; }
+    .check-row { margin-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); flex-wrap: wrap; }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; }
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 6px; }
+    .rl { color: var(--text2); } .rv { font-weight: 600; }
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 80px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #1D9E75; }
+    .ni.a { background: #E1F5EE; border-color: #9FE1CB; font-weight: 600; }
+    .ni.qty { background: #FAEEDA; border-color: #FAC775; font-weight: 600; }
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: var(--text); color: var(--bg); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; }
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); font-size: 12px; font-weight: 600; cursor: pointer; font-family: sans-serif; transition: opacity 0.15s; margin-bottom: 1rem; }
+    .btn-print:hover { opacity: 0.8; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+    @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 22px; } }
+    @media print { .btn-print, .site-header, .footer, .nav-select { display: none !important; } .fiche { display: block; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="site-header">
+    <div>
+      <h1>Auguste Escoffier — Ma Cuisine (1948)</h1>
+      <p>Fiches techniques – Légumes & Pâtes alimentaires · pages 534 à 541 · gestionresto.fr</p>
+    </div>
+    <div><span class="category-badge">🥔 Pommes de terre & riz</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation : </label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr – 24 fiches techniques · Données modifiables · Sauvegarde automatique locale</div>
+</div>
+
+<script>
+// ========== DONNÉES LÉGUMES PAGES 534-541 AVEC NOTA ==========
+const itemsData = [
+  { id:"pommes_maitre_hotel", nom:"Pommes de terre à la Maître-d'Hôtel", page:535, source:"Rondelles cuites, bouillon, beurre, persil", tags:["Pommes de terre","Maître d'hôtel"], prepBase:10, cookBase:15, dressBase:3,
+    ingredients:[{name:"Pommes de terre de Hollande (1kg)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Beurre (100g), bouillon blanc (3dl), persil haché",qtyRef:0.15,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.15}],
+    steps:[{t:"Cuire",d:"Cuire les pommes de terre à l'eau salée, les peler aussitôt, couper en rondelles."},{t:"Réduire",d:"Les couvrir de bouillon blanc bouillant, assaisonner, réduire complètement le bouillon."},{t:"Beurrer",d:"Beurrer fortement, dresser en légumier, saupoudrer de persil haché."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:180,prot:2,lip:10,glu:20}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"pommes_menagere", nom:"Pommes de terre Ménagère", page:535, source:"Écrasées, ciboule, lait, palets farinés", tags:["Pommes de terre","Ménagère"], prepBase:15, cookBase:15, dressBase:8,
+    ingredients:[{name:"Pommes de terre (1kg net)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Beurre ou huile (100g), ciboule (3 cs), lait (1dl), farine",qtyRef:0.2,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.2},{name:"Œuf (facultatif)",qtyRef:1,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:1}],
+    steps:[{t:"Cuire",d:"Cuire les pommes de terre à l'eau salée, égoutter, écraser à la fourchette."},{t:"Assaisonner",d:"Ajouter ciboule hachée, lait bouillant, sel, poivre. Mélanger."},{t:"Former",d:"Former des boules, aplatir en palets, passer à la farine, colorer au beurre/huile/saindoux."}], equip:["Poêle"], allerg:["Lait","Gluten","Œufs"], nut:{kcal:210,prot:3,lip:12,glu:24}, co2:"1.1 kg", eau:"160 L", env:34, nota:"On peut ajouter un œuf battu avec le lait." },
+  { id:"pommes_mireille", nom:"Pommes de terre Mireille", page:535, source:"Rondelles pdt + artichauts, truffes, glace de viande", tags:["Pommes de terre","Mireille"], prepBase:20, cookBase:10, dressBase:5,
+    ingredients:[{name:"Petites pommes de terre (500g), fonds d'artichauts crus (300g)",qtyRef:0.8,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.8},{name:"Truffes (100g), beurre (80g), glace de viande (3 cs)",qtyRef:0.2,unit:"L",priceUnit:15,defaultPrice:15,defaultQty:0.2},{name:"Persil, beurre frais (1 cs)",qtyRef:0.02,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.02}],
+    steps:[{t:"Émincer",d:"Émincer finement pommes de terre et artichauts."},{t:"Cuire",d:"Étaler en couche mince dans une sauteuse fortement beurrée, cuire vivement au four 8-10 min."},{t:"Truffes",d:"Ajouter les truffes en lamelles, mélanger. Arroser de glace de viande fondue + beurre + persil."}], equip:["Sautoir","Four"], allerg:["Lait","Sulfites"], nut:{kcal:190,prot:3,lip:12,glu:18}, co2:"1.4 kg", eau:"200 L", env:40, nota:"" },
+  { id:"pommes_mireille_creme", nom:"Pommes Mireille à la crème", page:535, source:"Même préparation, crème, fromage, gratinées", tags:["Pommes de terre","Crème"], prepBase:20, cookBase:10, dressBase:6,
+    ingredients:[{name:"Pommes de terre (500g), artichauts (300g), truffes (100g)",qtyRef:0.9,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.9},{name:"Crème fraîche (2dl), fromage râpé (80g), beurre",qtyRef:0.28,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.28}],
+    steps:[{t:"Cuire",d:"Préparer et cuire comme Mireille."},{t:"Crème",d:"Ajouter les truffes, mélanger. Dresser dans plats à œufs, arroser de crème bouillante à hauteur."},{t:"Gratiner",d:"Saupoudrer de fromage râpé, mettre au four 4-5 min."}], equip:["Four","Plats à œufs"], allerg:["Lait"], nut:{kcal:240,prot:4,lip:16,glu:18}, co2:"1.5 kg", eau:"220 L", env:42, nota:"" },
+  { id:"pommes_mirette", nom:"Pommes de terre Mirette", page:536, source:"Dés blanchis, truffes, glace de viande, tomate, estragon", tags:["Pommes de terre","Mirette"], prepBase:20, cookBase:12, dressBase:5,
+    ingredients:[{name:"Pommes de terre (500g)",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Truffes (3 cs hachées), glace de viande (4 cs), sauce tomate (2 cs)",qtyRef:0.15,unit:"L",priceUnit:8,defaultPrice:8,defaultQty:0.15},{name:"Estragon, beurre, fromage râpé",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05}],
+    steps:[{t:"Dés",d:"Tailler les pommes en dés de 3mm, blanchir 2 min, égoutter."},{t:"Cuire",d:"Les cuire au beurre pour les rendre moelleuses."},{t:"Assembler",d:"Ajouter truffes, glace de viande, sauce tomate, estragon. Dresser en plats à œufs, fromage, beurre, four quelques minutes."}], equip:["Four","Plats à œufs"], allerg:["Lait","Sulfites"], nut:{kcal:180,prot:2,lip:10,glu:20}, co2:"1.2 kg", eau:"170 L", env:36, nota:"" },
+  { id:"pommes_nana", nom:"Pommes de terre Nana", page:536, source:"Rondelles en darioles, sauce Château", tags:["Pommes de terre","Nana"], prepBase:20, cookBase:20, dressBase:5,
+    ingredients:[{name:"Pommes de terre (800g)",qtyRef:0.8,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.8},{name:"Beurre (150g), glace de viande (1dl), beurre frais, citron",qtyRef:0.2,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.2}],
+    steps:[{t:"Moules",d:"Beurrer des moules à darioles, garnir de minces rondelles de pommes de terre assaisonnées, montées l'une sur l'autre."},{t:"Cuire",d:"Ranger dans une plaque, cuire à four chaud 18-20 min."},{t:"Napper",d:"Démouler au moment, napper de sauce Château (glace de viande fondue + beurre + citron)."}], equip:["Moules à darioles","Four"], allerg:["Lait"], nut:{kcal:220,prot:2,lip:14,glu:22}, co2:"1.1 kg", eau:"150 L", env:34, nota:"" },
+  { id:"pommes_ninon", nom:"Pommes de terre Ninon", page:536, source:"Pulpe au four, foie gras truffé, œufs, crème, darioles", tags:["Pommes de terre","Ninon"], prepBase:25, cookBase:20, dressBase:8,
+    ingredients:[{name:"Grosses pommes de terre (12)",qtyRef:1.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1.5},{name:"Foie gras truffé (200g), crème fraîche (1dl), jaunes d'œufs (3)",qtyRef:0.35,unit:"L",priceUnit:20,defaultPrice:20,defaultQty:0.35}],
+    steps:[{t:"Cuire",d:"Cuire les pommes de terre au four, les vider, rissoler la pulpe au beurre."},{t:"Mélanger",d:"Incorporer foie gras truffé, jaunes d'œufs, crème, sel, poivre."},{t:"Garnir",d:"Garnir des moules à darioles beurrés, cuire 5 min à four vif. Démouler, napper de sauce Château."}], equip:["Four","Moules à darioles"], allerg:["Lait","Œufs","Foie gras"], nut:{kcal:310,prot:6,lip:22,glu:24}, co2:"1.9 kg", eau:"280 L", env:48, nota:"" },
+  { id:"pommes_noisette", nom:"Pommes de terre Noisette", page:536, source:"Boules cuites au beurre", tags:["Pommes de terre","Noisette"], prepBase:12, cookBase:12, dressBase:2,
+    ingredients:[{name:"Pommes de terre (500g)",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Beurre (100g), sel",qtyRef:0.1,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.1}],
+    steps:[{t:"Boules",d:"Lever des boules de la grosseur d'une noisette à la cuillère à légumes."},{t:"Cuire",d:"Les cuire doucement au beurre, assaisonner légèrement. Doivent être moelleuses et blond doré."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:200,prot:2,lip:14,glu:16}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"pommes_parisienne", nom:"Pommes de terre Parisienne", page:536, source:"Noisette roulées dans glace de viande", tags:["Pommes de terre","Parisienne"], prepBase:12, cookBase:12, dressBase:3,
+    ingredients:[{name:"Pommes de terre Noisette (500g)",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Beurre (100g), glace de viande (2 cs)",qtyRef:0.12,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.12}],
+    steps:[{t:"Préparer",d:"Préparer des pommes Noisette."},{t:"Glacer",d:"Après cuisson, les rouler dans de la glace de viande fondue et beurrée."}], equip:["Poêle"], allerg:["Lait"], nut:{kcal:210,prot:2,lip:14,glu:16}, co2:"1.1 kg", eau:"150 L", env:34, nota:"" },
+  { id:"pommes_persillees", nom:"Pommes de terre persillées", page:537, source:"Pommes à l'anglaise, beurre fondu, persil", tags:["Pommes de terre","Persillées"], prepBase:10, cookBase:15, dressBase:3,
+    ingredients:[{name:"Pommes de terre (800g)",qtyRef:0.8,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.8},{name:"Beurre (100g), persil haché",qtyRef:0.1,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.1},{name:"Mie de pain frite (facultatif)",qtyRef:0.05,unit:"kg",priceUnit:1,defaultPrice:1,defaultQty:0.05}],
+    steps:[{t:"Cuire",d:"Cuire les pommes à l'anglaise, bien égoutter."},{t:"Rouler",d:"Les rouler dans du beurre fondu additionné de persil haché."}], equip:["Casserole"], allerg:["Lait","Gluten"], nut:{kcal:190,prot:2,lip:12,glu:20}, co2:"1.0 kg", eau:"140 L", env:32, nota:"On peut ajouter de la mie de pain frite au beurre." },
+  { id:"pommes_rosine", nom:"Pommes de terre Rosine", page:537, source:"Appareil croquettes, raisins, palets panés", tags:["Pommes de terre","Rosine"], prepBase:25, cookBase:12, dressBase:8,
+    ingredients:[{name:"Appareil croquettes (500g purée)",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Raisins de Smyrne (125g), farine, œuf, mie de pain",qtyRef:0.2,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.2}],
+    steps:[{t:"Mélanger",d:"Mêler à l'appareil à croquettes le quart de son volume de raisins de Smyrne."},{t:"Former",d:"Diviser en boules d'œuf, aplatir en palets, passer farine, œuf, mie de pain."},{t:"Cuire",d:"Colorer au beurre à la poêle des deux côtés."}], equip:["Poêle"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:280,prot:4,lip:14,glu:36}, co2:"1.3 kg", eau:"180 L", env:38, nota:"" },
+  { id:"pommes_savoyarde", nom:"Pommes de terre à la Savoyarde", page:537, source:"Gratin dauphinois au bouillon blanc", tags:["Pommes de terre","Savoyarde"], prepBase:15, cookBase:40, dressBase:5,
+    ingredients:[{name:"Pommes de terre (1kg)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Bouillon blanc (0,75L), fromage râpé (100g), beurre",qtyRef:0.85,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.85}],
+    steps:[{t:"Émincer",d:"Émincer finement les pommes de terre."},{t:"Assembler",d:"Mélanger avec bouillon blanc, sel, poivre, muscade. Verser dans plat beurré, saupoudrer fromage."},{t:"Cuire",d:"Cuire au four moyen 35-40 min."}], equip:["Four"], allerg:["Lait","Sulfites"], nut:{kcal:220,prot:5,lip:10,glu:28}, co2:"1.3 kg", eau:"190 L", env:38, nota:"" },
+  { id:"pommes_voisin", nom:"Pommes de terre Voisin", page:537, source:"Pommes Anna au fromage entre les couches", tags:["Pommes de terre","Voisin"], prepBase:20, cookBase:30, dressBase:5,
+    ingredients:[{name:"Pommes de terre (1kg)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Beurre (150g), fromage râpé (150g)",qtyRef:0.3,unit:"kg",priceUnit:6,defaultPrice:6,defaultQty:0.3}],
+    steps:[{t:"Préparer",d:"Comme les pommes Anna, mais on sème entre chaque lit de rondelles une légère couche de fromage râpé."},{t:"Cuire",d:"Cuire de même au four."}], equip:["Moule à Anna","Four"], allerg:["Lait"], nut:{kcal:260,prot:5,lip:18,glu:20}, co2:"1.3 kg", eau:"180 L", env:38, nota:"" },
+  { id:"puree_pdt", nom:"Purée de pommes de terre", page:537, source:"Pommes cuites, tamis, beurre, lait bouillant", tags:["Purée","Pommes de terre"], prepBase:15, cookBase:20, dressBase:5,
+    ingredients:[{name:"Pommes de terre de Hollande (1kg)",qtyRef:1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:1},{name:"Beurre fin (150-200g), lait bouillant (2,5dl)",qtyRef:0.45,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.45}],
+    steps:[{t:"Cuire",d:"Peler, couper en quartiers, cuire vivement à l'eau salée jusqu'à ce que la pulpe cède sous les doigts."},{t:"Sécher",d:"Égoutter, sécher à l'entrée du four quelques minutes, passer au tamis."},{t:"Travailler",d:"Travailler vigoureusement avec le beurre, puis ajouter petit à petit le lait bouillant. Chauffer sans bouillir."}], equip:["Tamis","Casserole"], allerg:["Lait"], nut:{kcal:240,prot:3,lip:16,glu:22}, co2:"1.2 kg", eau:"170 L", env:36, nota:"Les pommes de terre pour une purée ne doivent être que juste cuites." },
+  { id:"quenelles_pdt", nom:"Quenelles de pommes de terre", page:537, source:"Appareil croquettes + pâte à chou, pocher, gratiner", tags:["Quenelles","Pommes de terre"], prepBase:25, cookBase:15, dressBase:10,
+    ingredients:[{name:"Appareil croquettes (500g)",qtyRef:0.5,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.5},{name:"Pâte à chou (150g), fromage râpé (100g), beurre",qtyRef:0.25,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.25}],
+    steps:[{t:"Mélanger",d:"Mélanger l'appareil à croquettes avec 1/3 de son volume de pâte à chou."},{t:"Pocher",d:"Mouler les quenelles à la cuillère, pocher à l'eau salée, égoutter."},{t:"Gratiner",d:"Dresser sur plat beurré saupoudré de fromage, saupoudrer also, arroser beurre, gratiner. Finir avec beurre noisette ou mie de pain frite."}], equip:["Casserole","Four"], allerg:["Gluten","Œufs","Lait"], nut:{kcal:260,prot:5,lip:15,glu:28}, co2:"1.4 kg", eau:"200 L", env:40, nota:"" },
+  { id:"souffle_pdt", nom:"Soufflé de pommes de terre", page:538, source:"Purée à la crème, jaunes, blancs en neige", tags:["Soufflé","Pommes de terre"], prepBase:20, cookBase:20, dressBase:3,
+    ingredients:[{name:"Purée de pommes de terre à la crème (0,5L, un peu ferme)",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5},{name:"Jaunes d'œufs (4), blancs d'œufs (4)",qtyRef:4,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:4}],
+    steps:[{t:"Préparer",d:"Préparer une purée de pommes de terre à la crème un peu ferme."},{t:"Appareil",d:"Ajouter 4 jaunes d'œufs, puis 4 blancs montés en neige très ferme."},{t:"Cuire",d:"Dresser en timbale à soufflé beurrée, cuire comme un soufflé ordinaire."}], equip:["Four","Timbale à soufflé"], allerg:["Lait","Œufs"], nut:{kcal:190,prot:5,lip:12,glu:15}, co2:"1.1 kg", eau:"160 L", env:34, nota:"" },
+  { id:"riz_hors_oeuvre", nom:"Riz pour Hors-d'œuvre et Salades", page:538, source:"Riz lavé, cuit à l'eau salée, rafraîchi", tags:["Riz","Salade"], prepBase:5, cookBase:20, dressBase:5,
+    ingredients:[{name:"Riz (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Eau (2L), sel (20g)",qtyRef:2,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:2}],
+    steps:[{t:"Laver",d:"Laver le riz."},{t:"Cuire",d:"Cuire vivement 20 min dans l'eau salée. Égoutter, rafraîchir, égoutter à nouveau."}], equip:["Casserole","Passoire"], allerg:[], nut:{kcal:140,prot:3,lip:1,glu:30}, co2:"0.8 kg", eau:"120 L", env:28, nota:"Conserver l'eau de cuisson (contenant de la fécule) pour une soupe de légumes." },
+  { id:"riz_anglais", nom:"Riz à l'Anglaise", page:538, source:"Cuit à l'eau, beurre fondu, petits pois", tags:["Riz","Anglaise"], prepBase:5, cookBase:20, dressBase:3,
+    ingredients:[{name:"Riz (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Beurre fondu (80g), petits pois cuits (facultatif)",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08}],
+    steps:[{t:"Cuire",d:"Cuire le riz à l'Indienne (eau salée, 18 min), égoutter, sécher sur serviette chaude."},{t:"Servir",d:"Dresser en légumier, arroser de beurre fondu. Peut être additionné de 1/3 de petits pois."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:170,prot:3,lip:8,glu:22}, co2:"0.9 kg", eau:"130 L", env:30, nota:"" },
+  { id:"riz_beurre", nom:"Riz au beurre", page:538, source:"Cuisson absorption, eau, beurre", tags:["Riz","Beurre"], prepBase:5, cookBase:20, dressBase:2,
+    ingredients:[{name:"Riz (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Beurre (75g), eau chaude (0,5L), sel (7g)",qtyRef:0.75,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:0.75}],
+    steps:[{t:"Suer",d:"Mettre le riz en casserole avec la moitié du beurre, le sel."},{t:"Cuire",d:"Mouiller d'eau chaude, couvrir, cuire à feu doux 18-20 min. Le liquide doit être absorbé."},{t:"Finir",d:"Retirer du feu, incorporer le reste du beurre."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:200,prot:3,lip:9,glu:26}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"riz_pilaw", nom:"Riz Pilaw", page:539, source:"Riz étuvé au beurre, mouillé bouillon, cuit", tags:["Riz","Pilaw"], prepBase:5, cookBase:20, dressBase:2,
+    ingredients:[{name:"Riz (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Beurre (50g), bouillon blanc (0,5L), sel",qtyRef:0.55,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.55}],
+    steps:[{t:"Étuver",d:"Faire étuver le riz au beurre sans coloration."},{t:"Mouiller",d:"Mouiller de bouillon bouillant, couvrir, cuire à feu doux 18-20 min."}], equip:["Casserole"], allerg:["Lait","Sulfites"], nut:{kcal:180,prot:3,lip:7,glu:26}, co2:"0.9 kg", eau:"130 L", env:30, nota:"" },
+  { id:"riz_gras_francaise", nom:"Riz au gras à la Française", page:539, source:"Riz blanchi, chou, lard, oignon, fromage", tags:["Riz","Gras"], prepBase:15, cookBase:25, dressBase:3,
+    ingredients:[{name:"Riz (250g), lard de poitrine (200g), chou (1/2)",qtyRef:0.5,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.5},{name:"Saindoux (30g), oignon (1), eau (5dl), fromage râpé (2 cs)",qtyRef:0.6,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.6}],
+    steps:[{t:"Préparer",d:"Chou blanchi 12 min, égoutter. Lard en dés."},{t:"Suer",d:"Chauffer saindoux, blondir oignon et lard, ajouter chou, étuver 10-12 min."},{t:"Cuire",d:"Ajouter riz, eau, sel, poivre. Couvrir, cuire 25 min. Hors feu, ajouter fromage."}], equip:["Cocotte"], allerg:["Porc","Lait"], nut:{kcal:290,prot:8,lip:16,glu:28}, co2:"1.7 kg", eau:"250 L", env:44, nota:"" },
+  { id:"riz_indienne", nom:"Riz à l'Indienne", page:540, source:"Riz cuit 18 min à l'eau salée, séché", tags:["Riz","Indienne"], prepBase:5, cookBase:18, dressBase:5,
+    ingredients:[{name:"Riz (250g)",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},{name:"Eau (1,5L), sel (12g)",qtyRef:1.5,unit:"L",priceUnit:0,defaultPrice:0,defaultQty:1.5}],
+    steps:[{t:"Cuire",d:"Cuire le riz 18 min dans l'eau salée."},{t:"Égoutter",d:"Égoutter, mettre sur serviette chaude, sécher à l'étuve. Dresser en légumier."}], equip:["Casserole"], allerg:[], nut:{kcal:130,prot:3,lip:1,glu:28}, co2:"0.8 kg", eau:"120 L", env:28, nota:"On peut cuire le riz à l'Indienne par la vapeur." },
+  { id:"riz_milanaise", nom:"Riz à la Milanaise", page:540, source:"Riz pilaw, safran, parmesan", tags:["Riz","Milanaise"], prepBase:5, cookBase:18, dressBase:5,
+    ingredients:[{name:"Riz (250g), beurre (50g), safran (1 pincée)",qtyRef:0.25,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.25},{name:"Parmesan frais râpé (3-4 cs), eau ou bouillon (5dl)",qtyRef:0.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:0.5}],
+    steps:[{t:"Préparer",d:"Suivre la méthode du riz pilaw, ajouter une pincée de safran pendant la cuisson."},{t:"Cuire",d:"Couvrir, cuire 18 min."},{t:"Finir",d:"Retirer du feu, incorporer le beurre en parcelles et le parmesan."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:190,prot:5,lip:8,glu:26}, co2:"1.0 kg", eau:"140 L", env:32, nota:"" },
+  { id:"riz_piemontaise", nom:"Riz à la Piémontaise", page:540, source:"Riz cultivé en Piémont, beurre, parmesan", tags:["Riz","Piémontaise"], prepBase:5, cookBase:18, dressBase:5,
+    ingredients:[{name:"Riz Piémont (300g), beurre (150g), parmesan (4 cs)",qtyRef:0.45,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.45},{name:"Oignon (1), eau (6dl), sel",qtyRef:0.6,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.6}],
+    steps:[{t:"Suer",d:"Faire légèrement blondir l'oignon dans 50g de beurre."},{t:"Cuire",d:"Ajouter le riz, le laisser nacrer, mouiller d'eau chaude salée, couvrir, cuire 18 min."},{t:"Finir",d:"Hors feu, ajouter le reste du beurre et le parmesan."}], equip:["Casserole"], allerg:["Lait"], nut:{kcal:250,prot:5,lip:12,glu:30}, co2:"1.1 kg", eau:"160 L", env:34, nota:"" }
+];
+
+// ========== FONCTIONS DYNAMIQUES ==========
+function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({ '&':'&amp;','<':'&lt;','>':'&gt;' }[m])); }
+function formatDuration(min) { if (min < 60) return min.toString(); let h = Math.floor(min/60), m = min%60; return m===0 ? h+"h" : h+"h"+m; }
+function parseDurationToMinutes(str) { if (typeof str !== 'string') return parseInt(str); str=str.trim().toLowerCase(); if (/^\d+$/.test(str)) return parseInt(str); const m = str.match(/^(\d+)(?:h|:)?(\d{1,2})?$/); if(m){ let h=parseInt(m[1]), mn=m[2]?parseInt(m[2]):0; return h*60+mn; } return NaN; }
+
+let currentItemId = null, currentPortions = 6, coeffVente = 3.5, autoTimes = true;
+let currentPrepRaw, currentCookRaw, currentDressRaw, ingredientsData = [], defaultIngredients = [], defaultPrep, defaultDress;
+let ficheContainer, prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput, portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function renderIngredientTable() {
+  tbody.innerHTML = '';
+  for(let i=0; i<ingredientsData.length; i++) {
+    const ing = ingredientsData[i];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:600">${escapeHtml(ing.name)}<\/td>
+      <td><input type="number" class="ni qty" data-idx="${i}" value="${ing.qty.toFixed(2)}" step="0.01" style="width:85px;"> <span>${ing.unit}<\/span><\/td>
+      <td><input type="number" class="ni a" data-idx="${i}" value="${ing.priceUnit.toFixed(2)}" step="0.10" style="width:78px;"><\/td>
+      <td class="unit-price-display" style="text-align:right">${ing.priceUnit.toFixed(2)} €/unit<\/td>
+      <td class="line-total" style="text-align:right;font-weight:600">${(ing.qty * ing.priceUnit).toFixed(2)} €<\/td>
+    `;
+    tbody.appendChild(tr);
+    tr.querySelector('.qty').addEventListener('input', () => updateFromInputs());
+    tr.querySelector('.a').addEventListener('input', () => updateFromInputs());
+  }
+}
+function updateFromInputs() {
+  const rows = tbody.querySelectorAll('tr');
+  for(let i=0; i<rows.length; i++) {
+    const row = rows[i];
+    const qty = parseFloat(row.querySelector('.qty').value) || 0;
+    const price = parseFloat(row.querySelector('.a').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    row.querySelector('.unit-price-display').innerText = price.toFixed(2)+' €/unit';
+    row.querySelector('.line-total').innerText = (qty * price).toFixed(2)+' €';
+  }
+  updateAllCosts();
+}
+function updateAllCosts() {
+  let total = 0;
+  for(let ing of ingredientsData) total += ing.qty * ing.priceUnit;
+  const costPer = total / currentPortions;
+  const pvTotal = costPer * coeffVente * currentPortions;
+  const margin = (pvTotal - total) / pvTotal * 100;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2)+' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2)+' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2)+' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1)+'%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2)+' €';
+  if(marginBar) {
+    let w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w+'%';
+    marginBar.style.background = margin>65?'#1D9E75':(margin>40?'#EF9F27':'#E24B4A');
+  }
+}
+function applyAutoTimes() { if(!autoTimes) return; const ratio = currentPortions / 6; currentPrepRaw = Math.round(defaultPrep * ratio); currentDressRaw = Math.round(defaultDress * ratio); syncTimesToUI(); }
+function syncTimesToUI() { if(prepInput) prepInput.value = formatDuration(currentPrepRaw); if(dressInput) dressInput.value = formatDuration(currentDressRaw); if(cookInput) cookInput.value = currentCookRaw; }
+function syncTimesFromUI() { if(prepInput) { let m = parseDurationToMinutes(prepInput.value); if(!isNaN(m)) currentPrepRaw = m; else currentPrepRaw = parseInt(prepInput.value)||0; } if(dressInput) { let m = parseDurationToMinutes(dressInput.value); if(!isNaN(m)) currentDressRaw = m; else currentDressRaw = parseInt(dressInput.value)||0; } if(cookInput) currentCookRaw = cookInput.value; }
+function updateQuantitiesByPortions() { const factor = currentPortions / 6; for(let i=0;i<ingredientsData.length;i++) ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor; renderIngredientTable(); updateAllCosts(); }
+function loadItem(itemId) {
+  const item = itemsData.find(i => i.id === itemId);
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(ing => ({ name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice }));
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer = ficheContainer || document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+function generateFicheHTML(item) {
+  const stepsHtml = item.steps.map((s,i) => `<div class="step"><div class="snum">${i+1}</div><div><div class="stitle">${escapeHtml(s.t)}</div><div class="sdesc">${escapeHtml(s.d)}</div></div></div>`).join('');
+  const tagsHtml = item.tags.map(t => `<span class="tag tag-amber">${escapeHtml(t)}</span>`).join('');
+  const equipHtml = (item.equip||["Ustensiles classiques"]).map(e => `<span class="tag tag-gray">${escapeHtml(e)}</span>`).join('');
+  const allergHtml = (item.allerg||[]).map(a => `<span class="tag tag-red">⚠ ${escapeHtml(a)}</span>`).join('');
+  const notaText = item.nota ? `<p style="font-size:12px; margin-top:8px; font-style:italic; background:var(--bg2); padding:6px; border-radius:6px;">📜 NOTA — ${escapeHtml(item.nota)}</p>` : '';
+  return `<div class="fiche-header"><div class="title-row"><div class="main-title">${escapeHtml(item.nom)}</div><div class="reference">MA CUISINE · Page ${item.page}</div></div><div class="fiche-source">${escapeHtml(item.source)}</div><div class="tags">${tagsHtml}</div></div>
+    <div class="two-col"><div class="card"><div class="clabel">⏱ TEMPS</div><div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="${item.prepBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="${item.cookBase}"><div class="time-unit">min</div></div>
+    <div class="time-grid"><div class="time-label">Montage / dressage</div><input type="text" id="dressTime" class="time-input" value="${item.dressBase}"><div class="time-unit">min</div></div>
+    <div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto‑ajustement selon portions (préparation + montage)</span></div>
+    <div class="info-time">✔️ Base portions : 6 couverts. Les ingrédients s'adaptent automatiquement.</div></div>
+    <div class="card"><div class="clabel">💰 Coût & marge (HT)</div><div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>
+    <div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div><div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>
+    <div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div></div></div>
+    <div class="card"><div class="clabel">🥖 Ingrédients · base <span id="portionLabel">6</span> portions</div>
+    <div style="display:flex; gap:1rem; align-items:center; margin-bottom:1rem; flex-wrap:wrap;"><div><span class="plbl">🍽️ Nombre de couverts</span><br><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px; padding:6px; border-radius:20px;"></div>
+    <div><span class="plbl">Coef. vente (multiplicateur)</span><br><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px; padding:6px; border-radius:20px;"></div>
+    <div style="flex:1"><div class="plbl">Marge réelle (barre)</div><div class="env-bar"><div id="marginBar" style="height:100%; width:0%; background:#1D9E75; border-radius:4px;"></div></div></div></div>
+    <table class="ingr-table"><thead><tr><th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Prix unit.</th><th>Coût total</th></tr></thead><tbody id="ingredientTbody"></tbody></table>
+    <div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div></div>
+    <div class="card"><div class="clabel">📋 Façonnage & cuisson (d'après Escoffier)</div>${stepsHtml}</div>
+    <div class="two-col"><div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">${equipHtml}</div></div>
+    <div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">${allergHtml}</div></div></div>
+    <div class="card"><div class="clabel">🍽️ Présentation & conseil du chef</div><p style="font-size:13px;">Les pommes de terre doivent être cuites juste à point. Le riz se lave avant cuisson. Les purées se travaillent vigoureusement hors du feu.</p>${notaText}</div>
+    <div class="card"><div class="clabel">🧼 HACCP / PMS (recommandations)</div><p style="font-size:12px;">• Pommes de terre fermes. • Riz lavé. • Respect des températures.</p></div>
+    <div class="two-col"><div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div><div><span style="font-size:12px;">Empreinte ${item.env<35?"faible":(item.env<45?"modérée":"élevée")}</span><div class="env-bar"><div class="env-fill" style="width:${item.env}%; background:#daa153;"></div></div><div style="display:flex; gap:1rem; margin-top:6px;"><span>🌍 CO₂: ${item.co2}</span><span>💧 Eau: ${item.eau}</span></div></div></div>
+    <div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div><div class="nut-grid"><div class="nc"><div class="nv">${item.nut.kcal}</div><div class="nl">kcal</div></div><div class="nc"><div class="nv">${item.nut.prot} g</div><div class="nl">Protéines</div></div><div class="nc"><div class="nv">${item.nut.lip} g</div><div class="nl">Lipides</div></div><div class="nc"><div class="nv">${item.nut.glu} g</div><div class="nl">Glucides</div></div></div></div></div>`;
+}
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime'); cookInput = document.getElementById('cookTime'); dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox'); portionsInput = document.getElementById('portionsInput'); coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel'); qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue'); costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue'); marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost'); marginBar = document.getElementById('marginBar'); tbody = document.getElementById('ingredientTbody');
+}
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', () => { let newP = parseInt(portionsInput.value)||1; currentPortions = newP; if(portionLabel) portionLabel.innerText = currentPortions; qtyLabels.forEach(lbl=>lbl.innerText=currentPortions); updateQuantitiesByPortions(); if(autoTimes) applyAutoTimes(); });
+  if(coeffInput) coeffInput.addEventListener('input', () => { coeffVente = parseFloat(coeffInput.value)||3.0; updateAllCosts(); });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', () => { autoTimes = autoCheckbox.checked; if(autoTimes) applyAutoTimes(); });
+  if(prepInput) prepInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(cookInput) cookInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+  if(dressInput) dressInput.addEventListener('input', () => { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked=false; autoTimes=false; } });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const select = document.getElementById('itemSelect');
+  for (let i = 0; i < itemsData.length; i++) {
+    const item = itemsData[i];
+    const option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = `${item.nom} (p. ${item.page})`;
+    select.appendChild(option);
+  }
+  ficheContainer = document.getElementById('ficheContainer');
+  select.addEventListener('change', function(e) { loadItem(e.target.value); });
+  const hash = window.location.hash.replace('#fiche-', '');
+  const targetId = hash && itemsData.find(i => i.id === hash) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+</script>
+</body>
+</html>
